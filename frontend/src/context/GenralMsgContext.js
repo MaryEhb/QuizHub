@@ -15,9 +15,13 @@ export const useGeneralMsgUpdate = () => {
 export const GeneralMsgProvider = ({ children }) => {
     const [message, setMessage] = useState({ text: null, type: 'info' });
 
+    const updateMessage = (text, type = 'info') => {
+        setMessage({ text, type });
+    };
+
     return (
         <GeneralMsgContext.Provider value={message}>
-            <GeneralMsgUpdateContext.Provider value={setMessage}>
+            <GeneralMsgUpdateContext.Provider value={updateMessage}>
                 {message.text && <GeneralMsg message={message.text} type={message.type} />}
                 {children}
             </GeneralMsgUpdateContext.Provider>

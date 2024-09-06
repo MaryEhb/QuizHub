@@ -13,15 +13,18 @@ export const useLoadingUpdate = () => {
 }
 
 export const LoadingProvider = ({ children }) => {
-
     const [isLoading, setIsLoading] = useState(false);
-    
+
+    const toggleLoading = (state) => {
+        setIsLoading(state);
+    };
+
     return (
         <>
             {isLoading && <Loading />}
             <LoadingContext.Provider value={isLoading}>
-                <LoadingUpdateContext.Provider value={setIsLoading}>
-                    { children }
+                <LoadingUpdateContext.Provider value={toggleLoading}>
+                    {children}
                 </LoadingUpdateContext.Provider>
             </LoadingContext.Provider>
         </>
