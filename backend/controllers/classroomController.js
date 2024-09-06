@@ -2,6 +2,7 @@
 // and retrieving classroom details, and managing classroom membership and tests.
 import User from '../model/User.js';
 import Classroom from '../model/Classroom.js';
+import Test from '../model/Test.js';
 
 class ClassroomController {
   // Create a new classroom
