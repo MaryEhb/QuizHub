@@ -1,0 +1,30 @@
+{
+  "name": "alx-final-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "dev": "nodemon server.js"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jwt-simple": "^0.5.6",
+    "mongoose": "^8.6.0",
+    "nodemon": "^3.1.4",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.1",
+    "prettier": "^3.3.3"
+  }
+}
