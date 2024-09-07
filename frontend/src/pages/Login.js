@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import main_img from '../assets/authentication_without_text.svg';
 import { login, checkAuth } from '../services/authService';
 import { useGeneralMsg, useGeneralMsgUpdate } from '../context/GenralMsgContext';
-import { useAuthUpdate } from '../context/AuthContext';
+import { useAuth, useAuthUpdate } from '../context/AuthContext';
 import { useLoadingUpdate } from '../context/LoadingContext';
 
 const Login = () => {
@@ -16,6 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
   const generalMsg = useGeneralMsg();
   const setGeneralMsg = useGeneralMsgUpdate();
+  const { user, isAuthenticated } = useAuth();
   const updateUser = useAuthUpdate();
   const setLoading = useLoadingUpdate();
 
@@ -29,27 +30,19 @@ const Login = () => {
     try {
       // Call login API and save token to cookies
       await login(email, password);
-
       // Call checkAuth to fetch user data and update context
       setLoginLoading(false);
       setLoading(true);
-
-      const { isAuthenticated, user } = await checkAuth();
-      updateUser(user); // Update the user context with the fetched user data
+      await updateUser(); // Refresh user authentication status
+      
       setLoading(false);
-
       // Redirect to another page on successful login (e.g., dashboard)
       navigate('/dashboard'); 
     } catch (error) {
       setLoginLoading(false);
-      const errorMsg = error?.message || error.toString();
-      if (errorMsg.includes('User not found')) {
-        setEmailError('User not found');
-      } else if (errorMsg.includes('Invalid email or password')) {
-        setPasswordError('Invalid email or password');
-      } else {
-        setGeneralMsg(errorMsg, 'error');
-      }
+      // Show a general error message
+      const errorMsg = error? error : 'An unknown error occurred';
+      setGeneralMsg(errorMsg, 'error');
     }
   };
 
@@ -89,8 +82,6 @@ const Login = () => {
           </label>
           <a href='/forgot-password' className='forgot-password'>Forgot Password?</a>
         </div>
-
-        {generalMsg && <span className='error'>{generalMsg}</span>}
 
         <button type='submit' disabled={loginLoading}>
           {loginLoading ? 'Logging in...' : 'Login'}
