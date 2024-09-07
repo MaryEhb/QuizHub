@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import main_img from '../assets/authentication_without_text.svg';
 import { register } from '../services/authService';
 import { GoAlert } from "react-icons/go";
+import ValidationUtil from '../utils/ValidationUtil';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -28,6 +29,26 @@ const Register = () => {
     setFirstNameError('');
     setLastNameError('');
     setGeneralMsg('');
+
+    // Validate form inputs using ValidationUtil
+    const emailValidationError = ValidationUtil.validateEmail(email);
+    const passwordValidationError = ValidationUtil.validatePassword(password);
+
+    // Basic first name and last name validations
+    const firstNameValidationError = firstName === '' ? 'First Name should not be empty' : '';
+    const lastNameValidationError = lastName === '' ? 'Last Name should not be empty' : '';
+
+    // Set validation errors
+    setFirstNameError(firstNameValidationError);
+    setLastNameError(lastNameValidationError);
+    setEmailError(emailValidationError);
+    setPasswordError(passwordValidationError);
+
+    // If there are validation errors, stop the registration process
+    if (firstNameValidationError || lastNameValidationError || emailValidationError || passwordValidationError) {
+      setRegisterLoading(false);
+      return;
+    }
 
     try {
       await register(firstName, lastName, email, password);
@@ -62,7 +83,7 @@ const Register = () => {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             placeholder='First Name'
-            required
+            
           />
           {firstNameError && <div className='error'><GoAlert className='error-icon'/> {firstNameError}</div>}
         </div>
@@ -74,7 +95,7 @@ const Register = () => {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             placeholder='Last Name'
-            required
+            
           />
           {lastNameError && <div className='error'><GoAlert className='error-icon'/> {lastNameError}</div>}
         </div>
@@ -88,7 +109,6 @@ const Register = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder='Email Address'
-            required
           />
           {emailError && <div className='error'><GoAlert className='error-icon'/> {emailError}</div>}
         </div>
@@ -99,8 +119,7 @@ const Register = () => {
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder='Password'
-            required
+            placeholder='Password'  
           />
           {passwordError && <div className='error'><GoAlert className='error-icon'/> {passwordError}</div>}
         </div>

@@ -5,6 +5,7 @@ import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { useAuth } from '../context/AuthContext';
 import { FcGoogle } from "react-icons/fc";
 import { GoAlert } from "react-icons/go";
+import ValidationUtil from '../utils/ValidationUtil';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,6 +24,19 @@ const Login = () => {
     setEmailError('');
     setPasswordError('');
     setGeneralMsg('');
+
+    // Validate form inputs using ValidationUtil
+    const emailValidationError = ValidationUtil.validateEmail(email);
+    // Basic first name and last name validations
+    const passwordValidationError = password === '' ? 'Password should not be empty' : '';
+
+    setEmailError(emailValidationError);
+    setPasswordError(passwordValidationError);
+
+    if (emailValidationError || passwordValidationError) {
+      setLoginLoading(false);
+      return;
+    }
 
     try {
       // Call login API and save token to cookies
@@ -54,7 +68,6 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder='Email Address'
-            required
           />
           {emailError && <div className='error'><GoAlert className='error-icon'/> {emailError}</div>}
         </div>
@@ -66,7 +79,6 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder='Password'
-            required
           />
           {passwordError && <div className='error'><GoAlert className='error-icon'/> {passwordError}</div>}
         </div>
