@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { FcGoogle } from "react-icons/fc";
 import main_img from '../assets/authentication_without_text.svg';
+import { register } from '../services/authService';
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -28,12 +29,14 @@ const Register = () => {
     setGeneralMsg('');
 
     try {
-      throw Error('not handled yet')
+      await register(firstName, lastName, email, password);
       setRegisterLoading(false);
+      setGeneralMsg('Your account was created successfully. Confirm your email then login', 'success');
       navigate('/login'); 
     } catch (error) {
       setRegisterLoading(false);
-      const errorMsg = error? error.message : 'An unknown error occurred';
+      // Show a general error message
+      const errorMsg = error? error : 'An unknown error occurred';
       setGeneralMsg(errorMsg, 'error');
     }
 

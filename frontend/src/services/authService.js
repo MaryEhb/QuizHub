@@ -27,6 +27,16 @@ export const logout = () => {
   Cookies.remove('token');
 };
 
+export const register = async (firstName, lastName, email, password) => {
+  try {
+    const response = await API.post('/auth/register', { firstName, lastName, email, password });
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred during register.';
+  }
+};
+
 // Checks if the user is authenticated by verifying the token and fetching user data
 export const checkAuth = async () => {
   try {
