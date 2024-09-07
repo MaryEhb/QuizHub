@@ -4,6 +4,7 @@ import main_img from '../assets/authentication_without_text.svg';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { useAuth } from '../context/AuthContext';
 import { FcGoogle } from "react-icons/fc";
+import { GoAlert } from "react-icons/go";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -55,7 +56,7 @@ const Login = () => {
             placeholder='Email Address'
             required
           />
-          {emailError && <span className='error'>{emailError}</span>}
+          {emailError && <div className='error'><GoAlert className='error-icon'/> {emailError}</div>}
         </div>
 
         <div className='form-group'>
@@ -67,7 +68,7 @@ const Login = () => {
             placeholder='Password'
             required
           />
-          {passwordError && <span className='error'>{passwordError}</span>}
+          {passwordError && <div className='error'><GoAlert className='error-icon'/> {passwordError}</div>}
         </div>
 
         <div className='form-group options'>

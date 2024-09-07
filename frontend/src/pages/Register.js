@@ -4,6 +4,7 @@ import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { FcGoogle } from "react-icons/fc";
 import main_img from '../assets/authentication_without_text.svg';
 import { register } from '../services/authService';
+import { GoAlert } from "react-icons/go";
 
 const Register = () => {
   const [firstName, setFirstName] = useState('');
@@ -63,7 +64,7 @@ const Register = () => {
             placeholder='First Name'
             required
           />
-          {firstNameError && <span className='error'>{firstNameError}</span>}
+          {firstNameError && <div className='error'><GoAlert className='error-icon'/> {firstNameError}</div>}
         </div>
 
         <div className='form-group'>
@@ -75,7 +76,7 @@ const Register = () => {
             placeholder='Last Name'
             required
           />
-          {lastNameError && <span className='error'>{lastNameError}</span>}
+          {lastNameError && <div className='error'><GoAlert className='error-icon'/> {lastNameError}</div>}
         </div>
 
         </div>
@@ -89,7 +90,7 @@ const Register = () => {
             placeholder='Email Address'
             required
           />
-          {emailError && <span className='error'>{emailError}</span>}
+          {emailError && <div className='error'><GoAlert className='error-icon'/> {emailError}</div>}
         </div>
 
         <div className='form-group'>
@@ -101,7 +102,7 @@ const Register = () => {
             placeholder='Password'
             required
           />
-          {passwordError && <span className='error'>{passwordError}</span>}
+          {passwordError && <div className='error'><GoAlert className='error-icon'/> {passwordError}</div>}
         </div>
 
         <div className='submit-btns-container'>
