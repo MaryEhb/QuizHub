@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import main_img from '../assets/authentication_without_text.svg';
 import { register } from '../services/authService';
 import { GoAlert } from "react-icons/go";
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import ValidationUtil from '../utils/ValidationUtil';
 
 const Register = () => {
@@ -17,6 +18,7 @@ const Register = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [registerLoading, setRegisterLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
   const setGeneralMsg = useGeneralMsgUpdate();
@@ -63,6 +65,10 @@ const Register = () => {
     }
 
   }
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   return (
     <div className='authentication-container'>
@@ -113,16 +119,19 @@ const Register = () => {
           {emailError && <div className='error'><GoAlert className='error-icon'/> {emailError}</div>}
         </div>
 
-        <div className='form-group'>
-          <input 
-            className='input-text'
-            type='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder='Password'  
-          />
-          {passwordError && <div className='error'><GoAlert className='error-icon'/> {passwordError}</div>}
-        </div>
+        <div className='form-group password-container'>
+            <input
+              className='input-text'
+              type={passwordVisible ? 'text' : 'password'}  // Toggle input type based on visibility
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Password'
+            />
+            <span className='password-toggle-icon' onClick={togglePasswordVisibility}>
+              {passwordVisible ? <AiFillEye /> : <AiFillEyeInvisible />}  {/* Toggle icon */}
+            </span>
+            {passwordError && <div className='error'><GoAlert className='error-icon'/> {passwordError}</div>}
+          </div>
 
         <div className='submit-btns-container'>
           <button className='submit' type='submit' disabled={registerLoading}>

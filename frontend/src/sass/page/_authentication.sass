@@ -7,7 +7,6 @@
     @media (min-width: 700px)
         width: 100vw
 
-
     @media (max-width: 700px)
         flex-direction: column-reverse
 
@@ -20,7 +19,6 @@
         background-size: contain
         background-repeat: no-repeat
         background-color: $color-light-beige
-
 
         @media (max-width: 1000px)
             max-width: 50%
@@ -56,8 +54,7 @@
             font-size: 2rem
             font-weight: 600
             margin-bottom: 2rem
-
-        
+ 
         .forgot-password, .new-user
                 color: $color-tangerine
                 &:hover
@@ -104,7 +101,22 @@
                     cursor: pointer
                     input
                         margin-right: .3rem
-                    
+
+            .password-container
+                position: relative
+
+                .password-toggle-icon
+                    position: absolute
+                    top: 65%
+                    right: 10px
+                    transform: translateY(-50%)
+                    cursor: pointer
+                    font-size: 20px
+                    color: $color-gray
+                    transition: color 0.3s ease
+
+                    &:hover
+                        color: $color-black
 
             .submit-btns-container
                 padding-top: 1rem

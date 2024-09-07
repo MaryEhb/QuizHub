@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 
 const Sidebar = () => {
   const { logout } = useAuth();
+  const setGeneralMsg = useGeneralMsgUpdate();
   const handleLogout = () => {
     logout();
+    setGeneralMsg('Logged Out Successfully', 'success');
   };
   return (
     <div className="sidebar">

@@ -5,6 +5,7 @@ import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { useAuth } from '../context/AuthContext';
 import { FcGoogle } from "react-icons/fc";
 import { GoAlert } from "react-icons/go";
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import ValidationUtil from '../utils/ValidationUtil';
 
 const Login = () => {
@@ -13,6 +14,7 @@ const Login = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [loginLoading, setLoginLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
   const setGeneralMsg = useGeneralMsgUpdate();
@@ -50,6 +52,10 @@ const Login = () => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   return (
     <div className='authentication-container'>
       <div className='authentication-img' style={{ backgroundImage: `url(${main_img})` }} aria-hidden='true'/>
@@ -72,16 +78,19 @@ const Login = () => {
           {emailError && <div className='error'><GoAlert className='error-icon'/> {emailError}</div>}
         </div>
 
-        <div className='form-group'>
-          <input 
-            className='input-text'
-            type='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder='Password'
-          />
-          {passwordError && <div className='error'><GoAlert className='error-icon'/> {passwordError}</div>}
-        </div>
+        <div className='form-group password-container'>
+            <input
+              className='input-text'
+              type={passwordVisible ? 'text' : 'password'}  // Toggle input type based on visibility
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Password'
+            />
+            <span className='password-toggle-icon' onClick={togglePasswordVisibility}>
+              {passwordVisible ? <AiFillEye /> : <AiFillEyeInvisible />}  {/* Toggle icon */}
+            </span>
+            {passwordError && <div className='error'><GoAlert className='error-icon'/> {passwordError}</div>}
+          </div>
 
         <div className='form-group options'>
           <label className='checkbox-container'>
