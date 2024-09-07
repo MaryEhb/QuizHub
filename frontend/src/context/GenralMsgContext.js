@@ -19,10 +19,14 @@ export const GeneralMsgProvider = ({ children }) => {
         setMessage({ text, type });
     };
 
+    const exitMessage = (type = 'info') => {
+        setMessage({ text: '', type });
+    };
+
     return (
         <GeneralMsgContext.Provider value={message}>
             <GeneralMsgUpdateContext.Provider value={updateMessage}>
-                {message.text && <GeneralMsg message={message.text} type={message.type} />}
+                {message.text && <GeneralMsg message={message.text} type={message.type} handleExit={exitMessage}/>}
                 {children}
             </GeneralMsgUpdateContext.Provider>
         </GeneralMsgContext.Provider>

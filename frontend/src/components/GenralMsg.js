@@ -1,23 +1,45 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { FaRegWindowClose } from "react-icons/fa";
 
-const GeneralMsg = ({ message, type }) => {
-    // TODO: add close btn, add timeout to disappear after a default amount of time (in future can be changed from settings)
-    const getMessageStyle = () => {
-        switch (type) {
-            case 'success':
-                return 'general-msg success';
-            case 'error':
-                return 'general-msg error';
-            case 'info':
-                return 'general-msg info';
-            default:
-                return 'general-msg';
-        }
-    };
+const GeneralMsg = ({ message, type, handleExit }) => {
+    
+    const [progress, setProgress] = useState(0);
+    const timeoutDuration = 7000; // 7 seconds
+
+    useEffect(() => {
+        const progressInterval = setInterval(() => {
+            setProgress((prev) => {
+                if (prev >= 100) {
+                    clearInterval(progressInterval);
+                    return 100;
+                }
+                return prev + (100 / (timeoutDuration / 100));
+            });
+        }, 100);
+
+        const timeout = setTimeout(() => {
+            handleExit();
+        }, timeoutDuration);
+
+        return () => {
+            clearInterval(progressInterval);
+            clearTimeout(timeout);
+        };
+    }, [message]);
 
     return (
-        <div className={getMessageStyle()}>
-            {message}
+        <div className={`general-msg-container ${type}`}>
+            <div className='general-msg'>
+                {message}
+            </div>
+
+            <button onClick={handleExit}>
+                <FaRegWindowClose />
+            </button>
+
+            <div className='progress-bar'>
+                <div className='progress' style={{ width: `${progress}%` }} />
+            </div>
         </div>
     );
 };
