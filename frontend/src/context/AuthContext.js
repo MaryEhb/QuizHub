@@ -1,16 +1,16 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { checkAuth } from "../services/authService";
-import { useLoadingUpdate } from "./LoadingContext";
+import { createContext, useContext, useEffect, useState } from 'react';
+import { checkAuth } from '../services/authService';
+import { useLoadingUpdate } from './LoadingContext';
 
 const AuthContext = createContext();
 const AuthUpdateContext = createContext();
 
 export const useAuth = () => {
-    useContext(AuthContext);
+    return useContext(AuthContext);
 };
 
 export const useAuthUpdate = () => {
-    useContext(AuthUpdateContext);
+    return useContext(AuthUpdateContext);
 };
 
 export const AuthProvider = ({ children }) => {
@@ -18,26 +18,22 @@ export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const setLoading = useLoadingUpdate();
 
+    const initializeAuth = async () => {
+        setLoading(true);
+        const { isAuthenticated, user } = await checkAuth();
+        setUser(user);
+        setIsAuthenticated(isAuthenticated);
+        setLoading(false);
+    };
+
     useEffect(() => {
-        const initializeAuth = async () => {
-            setLoading(true);
-            const { isAuthenticated, user } = await checkAuth();
-            setUser(user);
-            setIsAuthenticated(isAuthenticated);
-            setLoading(false);
-        }
         initializeAuth();
     }, []);
 
-
-    const updateUser = (user) => {
-        setUser(user);
-    };
-
-    return(
+    return (
         <AuthContext.Provider value={{ user, isAuthenticated }}>
-            <AuthUpdateContext.Provider value={updateUser}>
-                { children }
+            <AuthUpdateContext.Provider value={initializeAuth}>
+                {children}
             </AuthUpdateContext.Provider>
         </AuthContext.Provider>
     );
