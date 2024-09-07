@@ -1,10 +1,92 @@
-*
-    padding: 0
-    margin: 0
-    box-sizing: border-box
+* 
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+
+html
+  scroll-behavior: smooth
+  font-size: $font-size-medium
+
+@media (max-width: 600px)
+  html
+    font-size: $font-size-small
+
+@media (min-width: 2000px)
+  html
+    font-size: $font-size-large
 
 body
-  font-family: 'Arial', sans-serif
+  font-family: $main-font
   color: $color-black
-//   background-color: $color-bej2
+  background-color: $color-white
+  font-size: 1rem
 
+input, button
+  color: inherit
+  border: none
+  background: none
+  font-family: inherit
+  font-size: inherit
+  line-height: inherit
+  cursor: pointer
+
+input::placeholder
+  color: rgba($color-black, 0.56)
+  // font-size: $input-font-size
+
+a
+  text-decoration: none
+  color: inherit
+
+ul, ol
+  list-style: none
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+
+img
+  max-width: 100%
+  height: auto
+  display: block
+
+button
+  cursor: pointer
+  transition: all 0.3s ease
+
+  &:hover
+    filter: brightness(90%) saturate(170%) 
+  &:active
+    transform: scale(0.95)
+
+textarea
+  resize: vertical
+
+fieldset
+  border: none
+
+legend
+  display: block
+  padding: 0
+
+h1, h2, h3, h4, h5, h6
+  margin: 0
+  font-weight: normal
+
+p
+  margin: 0
+
+hr
+  border: none
+  border-top: 1px solid $color-gray
+  margin: 1em 0
+
+code
+  font-family: monospace
+
+input[type="checkbox"]
+  accent-color: $color-mint-green
+
+.logo
+  font-size: 1.75rem
+  font-weight: 600

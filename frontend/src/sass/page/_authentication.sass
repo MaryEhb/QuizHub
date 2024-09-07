@@ -1,0 +1,134 @@
+.authentication-container
+    display: flex
+    width: 100%
+    min-height: 100vh
+    overflow: hidden
+
+    @media (min-width: 700px)
+        width: 100vw
+
+
+    @media (max-width: 700px)
+        flex-direction: column-reverse
+
+    .authentication-img
+        width: 100%
+        max-width: 60%
+        height: 100vh
+        max-height: 100vh
+        background-position: center
+        background-size: contain
+        background-repeat: no-repeat
+        background-color: $color-light-beige
+
+
+        @media (max-width: 1000px)
+            max-width: 50%
+
+        @media (max-width: 700px)
+            max-width: 100%
+
+    .authentication
+        flex-grow: 1
+        height: 100vh
+        padding: 4rem
+        display: flex
+        flex-direction: column
+        align-items: center
+
+        @media (min-width: 700px)
+            overflow-y: scroll
+            &::-webkit-scrollbar
+                display: none
+            scrollbar-width: none
+
+        .logo
+            width: 100%
+            max-width: 450px
+            padding-bottom: 2rem
+
+        h1
+            font-size: 2rem
+            color: $color-tangerine
+            font-weight: 300
+
+        h2
+            font-size: 2rem
+            font-weight: 600
+            margin-bottom: 2rem
+
+        
+        .forgot-password, .new-user
+                color: $color-tangerine
+                &:hover
+                    font-weight: 500
+
+        form
+            width: 100%
+            max-width: 450px
+            flex-grow: 1
+            .input-text
+                border-bottom: solid 1px $color-black
+                width: 100%
+                padding: .5rem
+
+            .input-names-container
+                display: flex
+                gap: 1rem
+                justify-content: space-between
+                width: 100%
+                .form-group
+                    width: 100%
+
+            .form-group                
+                margin-bottom: 1rem
+                &.options
+                    display: flex
+                    width: 100%
+                    justify-content: space-between
+                    font-size: .8rem
+                
+                .checkbox-container
+                    display: flex
+                    align-items: center
+                    cursor: pointer
+                    input
+                        margin-right: .3rem
+                    
+
+            .submit-btns-container
+                padding-top: 1rem
+            .submit
+                background: $color-mint-green
+                width: 100%
+                display: block
+                padding: .9rem
+                border-radius: 5px
+                border: solid 1px $color-black
+                font-weight: 500
+
+            .google-login
+                display: flex
+                align-items: center
+                justify-content: center
+                background: none
+
+                &:hover
+                    background: rgba($color-black, .07)
+                .google-icon
+                    width: 1.2rem
+                    height: 1.2rem
+                    margin-right: .5rem
+
+            .or-divider
+                text-align: center
+                width: 100%
+                padding: 1.5rem
+                color: rgba( $color-black, 56% )
+                font-weight: 500
+                font-size: .9rem
+
+        .new-user-container
+            font-size: .9rem
+
+

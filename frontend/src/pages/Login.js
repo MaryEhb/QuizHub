@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import main_img from '../assets/authentication_without_text.svg';
-import { useGeneralMsg, useGeneralMsgUpdate } from '../context/GenralMsgContext';
-import { useAuth, useAuthUpdate } from '../context/AuthContext';
-import { useLoadingUpdate } from '../context/LoadingContext';
+import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
+import { useAuth } from '../context/AuthContext';
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -13,11 +13,8 @@ const Login = () => {
   const [loginLoading, setLoginLoading] = useState(false);
 
   const navigate = useNavigate();
-  const generalMsg = useGeneralMsg();
   const setGeneralMsg = useGeneralMsgUpdate();
-  const { user, isAuthenticated, login} = useAuth();
-  const updateUser = useAuthUpdate();
-  const setLoading = useLoadingUpdate();
+  const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -39,18 +36,23 @@ const Login = () => {
   };
 
   return (
-    <div className='authentication'>
+    <div className='authentication-container'>
       <div className='authentication-img' style={{ backgroundImage: `url(${main_img})` }} aria-hidden='true'/>
+      <div className='authentication'>
+      <div className='logo'>
+        Logo
+      </div>
       <form onSubmit={handleLogin}>
-        <h2>Welcome Back!</h2>
-        <p>Login to your account</p>
+        <h1>Welcome Back!</h1>
+        <h2>Login to your account</h2>
 
         <div className='form-group'>
           <input 
+            className='input-text'
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder='Email'
+            placeholder='Email Address'
             required
           />
           {emailError && <span className='error'>{emailError}</span>}
@@ -58,6 +60,7 @@ const Login = () => {
 
         <div className='form-group'>
           <input 
+            className='input-text'
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -67,28 +70,32 @@ const Login = () => {
           {passwordError && <span className='error'>{passwordError}</span>}
         </div>
 
-        <div className='form-group'>
-          <label>
+        <div className='form-group options'>
+          <label className='checkbox-container'>
             <input type='checkbox' />
             Remember me
           </label>
           <a href='/forgot-password' className='forgot-password'>Forgot Password?</a>
         </div>
 
-        <button type='submit' disabled={loginLoading}>
-          {loginLoading ? 'Logging in...' : 'Login'}
-        </button>
+        <div className='submit-btns-container'>
+          <button className='submit' type='submit' disabled={loginLoading}>
+            {loginLoading ? 'Logging in...' : 'Login'}
+          </button>
 
-        <span className='or-divider'>OR</span>
+          <p className='or-divider'>OR</p>
 
-        <button type='button' className='google-login'>
-          Login with Google
-        </button>
+          <button className='submit google-login' type='button'>
+            <FcGoogle className='google-icon'/> Login with Google
+            {/* TODO: add google signing functionality */}
+          </button>
+        </div>
       </form>
 
-      <p className='new-user'>
-        New user? <a href='/signup'>Sign up</a>
+      <p className='new-user-container'>
+        New user? <a className='new-user' href='/register'>Register</a>
       </p>
+      </div>
     </div>
   );
 };
