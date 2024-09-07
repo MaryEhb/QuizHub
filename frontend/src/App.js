@@ -12,9 +12,14 @@ import Profile from './pages/Profile';
 
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();
-
   return isAuthenticated ? element : <Navigate to="/login" />;
 };
+
+const PublicRoute = ({ element }) => {
+  const { isAuthenticated } = useAuth();
+  return !isAuthenticated ? element : <Navigate to="/dashboard" />;
+};
+
 
 const App = () => {
   return (
@@ -23,8 +28,9 @@ const App = () => {
         <GeneralMsgProvider>
           <AuthProvider>
             <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              {/* Public Routes */}
+              <Route path="/login" element={<PublicRoute element={<Login />} />} />
+              <Route path="/register" element={<PublicRoute element={<Register />} />} />
               <Route path="/" element={<Navigate to="/dashboard" />} />
 
               {/* Protected Routes */}

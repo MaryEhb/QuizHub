@@ -38,6 +38,7 @@ export const checkAuth = async () => {
 
     // Send request to server to check if the token is valid
     const response = await API.get('/users/me'); // Use /users/me to fetch user data
+
     return { isAuthenticated: response.status === 200, user: response.data };
   } catch (error) {
     // Return not authenticated status if there's an error
