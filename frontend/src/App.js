@@ -9,16 +9,18 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Classrooms from './pages/Classrooms';
 import Profile from './pages/Profile';
+import Layout from './components/Layout'; 
 
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();
-  return isAuthenticated ? element : <Navigate to="/login" />;
+  return isAuthenticated ? <Layout>{element}</Layout> : <Navigate to="/login" />;
 };
 
 const PublicRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();
   return !isAuthenticated ? element : <Navigate to="/dashboard" />;
 };
+
 
 
 const App = () => {

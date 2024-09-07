@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import main_img from '../assets/authentication_without_text.svg';
-import { login, checkAuth } from '../services/authService';
 import { useGeneralMsg, useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { useAuth, useAuthUpdate } from '../context/AuthContext';
 import { useLoadingUpdate } from '../context/LoadingContext';
@@ -16,7 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
   const generalMsg = useGeneralMsg();
   const setGeneralMsg = useGeneralMsgUpdate();
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, login} = useAuth();
   const updateUser = useAuthUpdate();
   const setLoading = useLoadingUpdate();
 
@@ -29,14 +28,7 @@ const Login = () => {
 
     try {
       // Call login API and save token to cookies
-      await login(email, password);
-      // Call checkAuth to fetch user data and update context
-      setLoginLoading(false);
-      setLoading(true);
-      await updateUser(); // Refresh user authentication status
-      
-      setLoading(false);
-      // Redirect to another page on successful login (e.g., dashboard)
+      await login(email, password, setLoginLoading);
       navigate('/dashboard'); 
     } catch (error) {
       setLoginLoading(false);

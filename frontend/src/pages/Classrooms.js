@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 
 const Classrooms = () => {
 
-  const user = useAuth();
+  const { user } = useAuth();
   const { ownedClassrooms, enrolledClassrooms } = user;
 
   return (

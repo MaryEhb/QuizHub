@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { checkAuth } from '../services/authService';
 import { useLoadingUpdate } from './LoadingContext';
+import { checkAuth, login as loginService, logout as logoutService } from '../services/authService';
 
 const AuthContext = createContext();
 const AuthUpdateContext = createContext();
@@ -30,9 +30,37 @@ export const AuthProvider = ({ children }) => {
         initializeAuth();
     }, []);
 
+    const login = async (email, password, setLoginLoading) => {
+        setLoginLoading(true);
+        try {
+            await loginService(email, password);
+            await initializeAuth(); // Refresh user authentication status
+        } catch (error) {
+            // Handle login errors if needed
+            throw error;
+        } finally {
+            setLoginLoading(false);
+        }
+    };
+
+    const logout = () => {
+        try {
+            logoutService(); // Call logout service to remove token
+            setUser(null);
+            setIsAuthenticated(false);
+        } catch (error) {
+            // Handle logout errors if needed
+            console.error('Logout error:', error);
+        }
+    };
+
+    const updateUser = (user) => {
+        setUser(user);
+    };
+
     return (
-        <AuthContext.Provider value={{ user, isAuthenticated }}>
-            <AuthUpdateContext.Provider value={initializeAuth}>
+        <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
+            <AuthUpdateContext.Provider value={updateUser}>
                 {children}
             </AuthUpdateContext.Provider>
         </AuthContext.Provider>
