@@ -1,0 +1,46 @@
+
+.general-msg-container
+  position: absolute
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+  padding: 1rem
+  font-weight: 500
+  background: $color-soft-beige
+  width: 100%
+  color: $color-gray
+  z-index: 100
+
+  &.success
+    background: $color-success
+    .progress
+      background: $color-success
+      filter: brightness(90%) saturate(170%) 
+
+  &.error
+    background: $color-error
+    color: $color-black
+    .progress
+      background: $color-error
+      filter: brightness(90%) saturate(170%)
+
+  .general-msg
+    flex-grow: 1
+    padding-right: 0.5rem
+    font-size: 1rem
+  button
+    font-size: 1.5rem
+
+  .progress-bar
+    position: absolute
+    bottom: 0
+    left: 0
+    height: 4px
+    width: 100%
+    background: $color-light-beige
+    border-radius: 2px
+
+  .progress
+    height: 100%
+    background: $color-gray
+    border-radius: 2px
