@@ -1,0 +1,113 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import main_img from '../assets/authentication_without_text.svg';
+import { login, checkAuth } from '../services/authService';
+import { useGeneralMsg, useGeneralMsgUpdate } from '../context/GenralMsgContext';
+import { useAuthUpdate } from '../context/AuthContext';
+import { useLoadingUpdate } from '../context/LoadingContext';
+
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const generalMsg = useGeneralMsg();
+  const setGeneralMsg = useGeneralMsgUpdate();
+  const updateUser = useAuthUpdate();
+  const setLoading = useLoadingUpdate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoginLoading(true);
+    setEmailError('');
+    setPasswordError('');
+    setGeneralMsg('');
+
+    try {
+      // Call login API and save token to cookies
+      await login(email, password);
+
+      // Call checkAuth to fetch user data and update context
+      setLoginLoading(false);
+      setLoading(true);
+
+      const { isAuthenticated, user } = await checkAuth();
+      updateUser(user); // Update the user context with the fetched user data
+      setLoading(false);
+
+      // Redirect to another page on successful login (e.g., dashboard)
+      navigate('/dashboard'); 
+    } catch (error) {
+      setLoginLoading(false);
+      const errorMsg = error?.message || error.toString();
+      if (errorMsg.includes('User not found')) {
+        setEmailError('User not found');
+      } else if (errorMsg.includes('Invalid email or password')) {
+        setPasswordError('Invalid email or password');
+      } else {
+        setGeneralMsg(errorMsg, 'error');
+      }
+    }
+  };
+
+  return (
+    <div className='authentication'>
+      <div className='authentication-img' style={{ backgroundImage: `url(${main_img})` }} aria-hidden='true'/>
+      <form onSubmit={handleLogin}>
+        <h2>Welcome Back!</h2>
+        <p>Login to your account</p>
+
+        <div className='form-group'>
+          <input 
+            type='email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder='Email'
+            required
+          />
+          {emailError && <span className='error'>{emailError}</span>}
+        </div>
+
+        <div className='form-group'>
+          <input 
+            type='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder='Password'
+            required
+          />
+          {passwordError && <span className='error'>{passwordError}</span>}
+        </div>
+
+        <div className='form-group'>
+          <label>
+            <input type='checkbox' />
+            Remember me
+          </label>
+          <a href='/forgot-password' className='forgot-password'>Forgot Password?</a>
+        </div>
+
+        {generalMsg && <span className='error'>{generalMsg}</span>}
+
+        <button type='submit' disabled={loginLoading}>
+          {loginLoading ? 'Logging in...' : 'Login'}
+        </button>
+
+        <span className='or-divider'>OR</span>
+
+        <button type='button' className='google-login'>
+          Login with Google
+        </button>
+      </form>
+
+      <p className='new-user'>
+        New user? <a href='/signup'>Sign up</a>
+      </p>
+    </div>
+  );
+};
+
+export default Login;
