@@ -5,20 +5,22 @@
   width: 100%
   max-width: 250px
   background-color: $color-light-beige
+  border-right: 2px solid $color-soft-beige
   display: flex
   flex-direction: column
   transition: width 0.3s ease
-  z-index: 99
+  z-index: 97
   color: $color-gray
-  padding: 1rem
+  padding: 3rem 1rem
   font-size: .95rem
+  transition: all 0.3s ease
   overflow-y: scroll
   &::-webkit-scrollbar
     display: none
     scrollbar-width: none
 
   .logo
-    padding: 1rem
+    padding: 0 1rem 1rem
     color: $color-black
     border-bottom: 2px solid $color-soft-beige
     display: flex
@@ -36,6 +38,8 @@
     li
       padding: 1rem
       font-weight: 500
+      transition: all 0.3s ease
+
 
       &.active
         background: $color-white
@@ -50,7 +54,8 @@
         text-decoration: none
         display: flex
         align-items: center
-        transition: font-size 0.3s ease
+        transition: all 0.3s ease
+
 
         &:hover
           color: $color-black
@@ -65,6 +70,7 @@
         width: 35px
         height: 35px
         margin-right: 1rem
+        transition: all 0.3s ease
       .link-icon
         color: $color-black
         width: 15px
@@ -77,7 +83,7 @@
     justify-content: center
     width: 100%
     gap: .5rem
-    padding: 1rem
+    padding: 0 1rem
     color: $color-tangerine
 
     &:hover
@@ -99,6 +105,10 @@
     .logo
         font-size: .9rem
         flex-direction: column
+        gap: 1rem
+
+    .link-icon-container
+        margin-right: 0
 
 
 //   // Media Queries for Mobile Screens

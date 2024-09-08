@@ -1,0 +1,61 @@
+.classroom-card
+    background-color: $color-light-beige
+    border: 1px solid $color-soft-beige
+    border-radius: 15px
+    padding: 20px
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+    width: 255px
+    height: 260px
+    display: flex
+    flex-direction: column
+
+    h3
+      margin-bottom: 10px
+      font-size: 1.2rem
+      color: #231F20
+
+    p
+      margin: 5px 0
+      font-size: .8rem
+      color: #848182
+      overflow: hidden
+      max-height: 200px
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
+
+      //   white-space: nowrap
+      //   text-overflow: ellipsis
+    .counts-container
+        flex-grow: 1
+        display: flex
+        align-items: flex-end
+        width: 100%
+    .counts
+        display: flex
+        background: $color-soft-beige
+        padding: .5rem 1.5rem
+        border-radius: .5rem
+        width: 100%
+        border: 1px solid $color-soft-beige
+        p
+          display: flex
+          align-items: center
+          gap: .1rem
+          color: $color-black
+          font-weight: 500
+
+          .icon
+            width: 10px
+            height: 10px
+            margin-left: .3rem
+
+          &:first-child
+            &::after
+              content: '|'
+              padding: 0 .6rem
+            
+
+
+    strong
+      color: #231F20

@@ -29,7 +29,7 @@ export const logout = () => {
 
 export const register = async (firstName, lastName, email, password) => {
   try {
-    const response = await API.post('/auth/register', { firstName, lastName, email, password });
+    await API.post('/auth/register', { firstName, lastName, email, password });
   } catch (error) {
     throw error.response && error.response.data
       ? error.response.data.message

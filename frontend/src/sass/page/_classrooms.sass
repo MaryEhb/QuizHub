@@ -1,0 +1,45 @@
+.classrooms-page
+  margin: 0 auto
+  max-width: 1104px
+  h1
+    text-align: center
+    margin-bottom: 30px
+
+  section
+    margin-bottom: 40px
+
+    h2
+      font-size: 1.5rem
+      font-weight: 600
+
+    .section-header
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding-bottom: 2rem
+
+    .add-classroom-button
+      color: $color-gray
+      font-weight: 500
+
+    .classroom-list
+      display: flex
+      flex-wrap: wrap
+      width: 100%
+      gap: 2rem
+
+      @media (max-width: 700px)
+        flex-direction: column
+        // overflow-x: scroll
+        align-items: center
+        justify-content: center
+
+    .view-more-button
+      border: 1px solid $color-black
+      margin-top: 2rem
+      padding: .5rem 1rem
+      border-radius: .5rem
+
+      &:hover
+        background: rgba($color-black, .05)
+        font-weight: 600

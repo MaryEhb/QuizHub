@@ -1,0 +1,81 @@
+.classroom-details
+
+  .close-button
+    color: $color-soft-beige
+    font-size: 1.5rem
+    padding-bottom: 2rem
+
+    &:hover
+      color: darken($color-soft-beige, 20%)
+
+
+  .title-container
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    align-items: center
+    padding-bottom: 1rem
+
+  .title
+    display: flex
+    align-items: center
+    gap: .3rem
+
+  .locked-icon
+    width: 25px
+    height: 31px
+
+  .title-owner
+    display: flex
+    gap: 1rem
+    .option
+      display: flex
+      font-weight: 500
+      font-size: 1.4rem
+      align-items: flex-end
+      gap: .3rem
+      p
+        padding: 0
+        margin: 0
+        &.number
+            color: $color-black
+        
+    .icon
+      width: 30px
+      height: 30px
+
+
+  h2
+    font-size: 2rem
+    font-weight: 600
+
+  h3
+    margin-top: 2rem
+    padding-bottom: .5rem
+
+
+  p
+    color: $color-gray
+
+  .tabs
+    display: flex
+    gap: 2rem
+    margin: 2rem 0
+
+    .tab
+      padding-bottom: 1rem
+      cursor: pointer
+      font-weight: normal
+      border-bottom: 2px solid transparent
+      transition: all 0.3s ease
+
+      &:hover
+        font-weight: 500
+
+      &.active
+        font-weight: bold
+        border-bottom: 2px solid $color-mint-green
+      
+      
+
+  .tab-content
