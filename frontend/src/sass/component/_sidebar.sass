@@ -1,0 +1,115 @@
+.sidebar
+  top: 0
+  left: 0
+  height: 100%
+  width: 100%
+  max-width: 250px
+  background-color: $color-light-beige
+  display: flex
+  flex-direction: column
+  transition: width 0.3s ease
+  z-index: 99
+  color: $color-gray
+  padding: 1rem
+  font-size: .95rem
+  overflow-y: scroll
+  &::-webkit-scrollbar
+    display: none
+    scrollbar-width: none
+
+  .logo
+    padding: 1rem
+    color: $color-black
+    border-bottom: 2px solid $color-soft-beige
+    display: flex
+    justify-content: space-between
+    align-items: center
+    gap: 2rem
+
+    .icon
+        width: 15px
+        height: 15px
+
+  ul
+    padding-top: 1rem
+    flex-grow: 1
+    li
+      padding: 1rem
+      font-weight: 500
+
+      &.active
+        background: $color-white
+        border-radius: 1rem
+        color: $color-black
+        font-weight: 700
+        
+        .link-icon-container
+            background: $color-mint-green
+
+      a
+        text-decoration: none
+        display: flex
+        align-items: center
+        transition: font-size 0.3s ease
+
+        &:hover
+          color: $color-black
+
+      .link-icon-container
+        background: $color-white
+        display: flex
+        align-items: center
+        justify-content: center
+        padding: .6rem
+        border-radius: .9rem
+        width: 35px
+        height: 35px
+        margin-right: 1rem
+      .link-icon
+        color: $color-black
+        width: 15px
+        height: 15px
+        
+
+  .logout-button
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    gap: .5rem
+    padding: 1rem
+    color: $color-tangerine
+
+    &:hover
+      color: darken($color-tangerine, 10%)
+
+  // Sidebar Shrink Feature
+  &.shrink
+    max-width: 90px
+
+    li
+        padding: 1rem 0
+
+    li.active
+        background: none
+
+    ul li a
+      justify-content: center
+
+    .logo
+        font-size: .9rem
+        flex-direction: column
+
+
+//   // Media Queries for Mobile Screens
+//   @media (max-width: 768px)
+//     width: 100px
+
+//     &.shrink
+//       width: 60px
+
+//     ul li a
+//       justify-content: center
+
+//     .logout-button
+//       font-size: 14px
