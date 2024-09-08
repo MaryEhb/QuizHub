@@ -61,7 +61,7 @@ const Login = () => {
       <div className='authentication-img' style={{ backgroundImage: `url(${main_img})` }} aria-hidden='true'/>
       <div className='authentication'>
       <div className='logo'>
-        Logo
+        QuizHub
       </div>
       <form onSubmit={handleLogin}>
         <h1>Welcome Back!</h1>

@@ -75,7 +75,7 @@ const Register = () => {
       <div className='authentication-img' style={{ backgroundImage: `url(${main_img})` }} aria-hidden='true'/>
       <div className='authentication'>
       <div className='logo'>
-        Logo
+        QuizHub
       </div>
       <form onSubmit={handleRegister}>
         <h2>Create an Account to get started</h2>
