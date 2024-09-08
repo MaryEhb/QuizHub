@@ -28,7 +28,7 @@ class ClassroomController {
       req.user.ownedClassrooms.push(newClassroom._id);
       await req.user.save();
 
-      res.status(201).json(newClassroom);
+      res.status(201).json(newClassroom._id);
     } catch (error) {
       // Log the error and send response with error message
       console.error('Error creating classroom:', error);
