@@ -76,6 +76,7 @@ class ClassroomController {
   static async getClassroomById(req, res) {
     try {
       const { id } = req.params;
+      const userId = req.user.id; 
 
       // Find the classroom and populate related fields
       const classroom = await Classroom.findById(id)
@@ -85,6 +86,11 @@ class ClassroomController {
 
       if (!classroom) {
         return res.status(404).json({ message: 'Classroom not found' });
+      }
+
+      // Check if the user is the owner or a member of the classroom
+      if (classroom.owner._id.toString() !== userId && !classroom.members.some(member => member._id.toString() === userId)) {
+        return res.status(403).json({ message: 'Not authorized to view this classroom' });
       }
 
       res.status(200).json(classroom);
