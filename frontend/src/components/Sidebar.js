@@ -47,7 +47,7 @@ const Sidebar = () => {
         <li className={isActive('/classrooms') ? 'active' : ''}>
           <Link to="/classrooms">
             <div className='link-icon-container'><SiGoogleclassroom className='link-icon'/></div>
-            {!isShrink && 'Classrooms'}
+            {!isShrink && 'My Classrooms'}
           </Link>
         </li>
         <li className={isActive('/leaderboard') ? 'active' : ''}>

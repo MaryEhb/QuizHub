@@ -38,3 +38,49 @@ export const fetchClassroomDetails = async (classroomId) => {
   }
 };
 
+// Send enrollment request to a classroom
+export const sendEnrollmentRequest = async (classroomId) => {
+  try {
+    const response = await API.post(`/classrooms/${classroomId}/enroll`);
+    return response.data;
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred while sending the enrollment request.';
+  }
+};
+
+// Accept enrollment request for a classroom
+export const acceptEnrollmentRequest = async (classroomId, userId) => {
+  try {
+    const response = await API.put(`/classrooms/${classroomId}/enroll/${userId}/accept`);
+    return response.data;
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred while accepting the enrollment request.';
+  }
+};
+
+// Reject enrollment request for a classroom
+export const rejectEnrollmentRequest = async (classroomId, userId) => {
+  try {
+    const response = await API.put(`/classrooms/${classroomId}/enroll/${userId}/reject`);
+    return response.data;
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred while rejecting the enrollment request.';
+  }
+};
+
+export const sendUnenrollmentRequest = async (classroomId, userId = null) => {
+  try {
+    const response = await API.post(`/classrooms/${classroomId}/unenroll`, { userId });
+    return response.data;
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred while rejecting the enrollment request.';
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchClassroomDetails, fetchClassrooms } from '../services/classroomService';
+import { fetchClassroomDetails, fetchClassrooms, sendEnrollmentRequest } from '../services/classroomService';
 import ClassroomCard from './ClassroomCard';
 import ClassroomView from './ClassroomView';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
@@ -13,6 +13,8 @@ const DiscoverSection = () => {
   const classroomsPerPage = 10; // Number of classrooms per page
   const [selectedClassroomId, setSelectedClassroomId] = useState(null);
   const [classroomDetails, setClassroomDetails] = useState(null);
+  const [showEnrollmentPrompt, setShowEnrollmentPrompt] = useState(false);
+  const [prompetClassroomId, setPrompetClassroomId] = useState(null);
   
   const toggleLoading = useLoadingUpdate();
   const updateGeneralMsg = useGeneralMsgUpdate();
@@ -41,7 +43,6 @@ const DiscoverSection = () => {
   };
 
   const handleClassroomClick = async (classroomId) => {
-    console.log(classroomId)
     setSelectedClassroomId(classroomId);
 
     toggleLoading(true);
@@ -49,7 +50,12 @@ const DiscoverSection = () => {
       const details = await fetchClassroomDetails(classroomId);
       setClassroomDetails(details);
     } catch (err) {
-      updateGeneralMsg('Failed to fetch classroom details', 'error');
+      if (err === 'Not authorized to view this classroom'){
+        setPrompetClassroomId(classroomId);
+        setShowEnrollmentPrompt(true);
+      } else {
+        updateGeneralMsg('Failed to fetch classroom details', 'error');
+      }
       handleCloseClassroomView();
     } finally {
       toggleLoading(false);
@@ -61,6 +67,23 @@ const DiscoverSection = () => {
     setClassroomDetails(null);
   };
 
+  const handleSendEnrollmentRequest = async () => {
+    try {
+      await sendEnrollmentRequest(prompetClassroomId);
+      updateGeneralMsg('Enrollment request sent successfully', 'success');
+      setShowEnrollmentPrompt(false); // Hide prompt after successful request
+    } catch (error) {
+      if (error === 'Enrollment request already sent') {
+        updateGeneralMsg('You already sent an enrollment request', 'error');
+      } else {
+        updateGeneralMsg('Failed to send enrollment request', 'error');
+      }
+    } finally {
+      setPrompetClassroomId(null);
+      setShowEnrollmentPrompt(false); 
+    }
+  };
+
   return (
     <>
     {classroomDetails && (
@@ -70,6 +93,13 @@ const DiscoverSection = () => {
           details={classroomDetails}
         />
     )}
+    {showEnrollmentPrompt && (
+        <div className="enrollment-prompt">
+          <p>You are not authorized to view this classroom. Would you like to send an enrollment request?</p>
+          <button onClick={handleSendEnrollmentRequest}>Send Request</button>
+          <button onClick={() => setShowEnrollmentPrompt(false)}>Cancel</button>
+        </div>
+      )}
     <div className={`discover-section ${classroomDetails ? 'classroomviewed' : ''}`}>
       <h2>Discover Classrooms</h2>
       {pageLoading && <p>Loading...</p>}
