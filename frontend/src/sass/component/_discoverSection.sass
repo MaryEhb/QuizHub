@@ -1,0 +1,30 @@
+.discover-section
+    position: relative
+    display: flex
+    flex-direction: column
+
+    &.classroomviewed
+        display: none
+    h2
+        padding-bottom: 1rem
+        font-weight: 500
+
+    .pagination-controls
+        display: flex
+        justify-content: center
+        align-items: center
+        gap: 1rem
+        padding-bottom: 1rem
+
+        button
+            background-color: $color-mint-green
+            border: 1px solid $color-black
+            border-radius: 5px
+            padding: 10px 15px
+            cursor: pointer
+            font-size: 14px
+            transition: background-color 0.3s, color 0.3s
+
+    .classroom-list
+        align-self: center
+        gap: 0
