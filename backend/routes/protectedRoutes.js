@@ -16,6 +16,8 @@ router.put('/users/profile', UserController.updateUserProfile);
 
 // Create a new classroom
 router.post('/classrooms', ClassroomController.createClassroom);
+// Get route for fetching all classrooms with index support
+router.get('/classrooms', ClassroomController.getClassrooms);
 // Get a classroom by ID
 router.get('/classrooms/:id', ClassroomController.getClassroomById);
 // Update a classroom

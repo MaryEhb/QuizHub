@@ -36,6 +36,42 @@ class ClassroomController {
     }
   }
 
+  // Get all unowned classrooms for with pagination
+  static async getClassrooms(req, res) {
+    try {
+      const { limit = 10, skip = 0 } = req.query; // Default limit of 10 classrooms
+      const userId = req.user.id; // Assuming `req.user` contains the authenticated user's ID
+
+      // Find classrooms that the user doesn't own
+      const classrooms = await Classroom.find({ owner: { $ne: userId } })
+        .sort({ createdAt: -1 }) // Sort by newest first
+        .skip(parseInt(skip)) // Skip the number of classrooms based on the skip value
+        .limit(parseInt(limit)) // Limit the number of classrooms returned
+        .select('title description isPublic members tests maxScore createdAt')
+        .populate('members', 'firstName lastName') // Populate members' names
+        .populate('tests', 'title');
+
+      const transformedClassrooms = classrooms.map(classroom => ({
+        id: classroom._id.toString(), // Convert ObjectId to string
+        ...classroom._doc // Spread the remaining fields
+      }));
+
+      // Total number of classrooms excluding the ones the user owns
+      const totalClassrooms = await Classroom.countDocuments({ owner: { $ne: userId } });
+      const hasMoreClassrooms = totalClassrooms > parseInt(skip) + parseInt(limit);
+
+      res.status(200).json({
+        classrooms: transformedClassrooms,
+        hasMoreClassrooms, // Indicator if there are more classrooms available
+        totalClassrooms
+      });
+    } catch (error) {
+      // Log the error and send a response with the error message
+      console.error('Error retrieving classrooms:', error);
+      res.status(500).json({ message: error.message });
+    }
+  }
+
   // Get classroom by ID
   static async getClassroomById(req, res) {
     try {
@@ -208,8 +244,16 @@ class ClassroomController {
       const { userId } = req.params;
 
       // Retrieve owned and enrolled classrooms for the user
-      const ownedClassrooms = await Classroom.find({ owner: userId });
-      const enrolledClassrooms = await Classroom.find({ members: userId });
+      const ownedClassrooms = await Classroom.find({ owner: userId })
+      .select('title description isPublic members tests maxScore')
+      .populate('members', 'firstName lastName') // Populate members' names
+      .populate('tests', 'title'); // Populate test titles
+
+      // Get enrolled classrooms
+      const enrolledClassrooms = await Classroom.find({ members: userId })
+      .select('title description isPublic members tests maxScore')
+      .populate('members', 'firstName lastName') // Populate members' names
+      .populate('tests', 'title'); // Populate test titles
 
       res.status(200).json({
         ownedClassrooms,
