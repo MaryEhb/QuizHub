@@ -24,11 +24,17 @@ router.get('/classrooms/:id', ClassroomController.getClassroomById);
 router.put('/classrooms/:id', ClassroomController.updateClassroom);
 // Delete a classroom
 router.delete('/classrooms/:id', ClassroomController.deleteClassroom);
-// Enroll in a classroom
-router.post('/classrooms/:id/enroll', ClassroomController.enrollInClassroom);
 // Remove from a classroom
 router.post('/classrooms/:id/remove', ClassroomController.removeFromClassroom);
+
+// Routes to enroll a user in a classroom
+router.post('/classrooms/:id/enroll', ClassroomController.enrollInClassroom);
+router.post('/classrooms/:id/unenroll', ClassroomController.unEnrollRequest);
+router.put('/classrooms/:classroomId/enroll/:userId/accept', ClassroomController.acceptEnrollmentRequest);
+router.put('/classrooms/:classroomId/enroll/:userId/reject', ClassroomController.rejectEnrollmentRequest);
+
 // Get all classrooms for a user
 router.get('/users/:userId/classrooms', ClassroomController.getClassroomsForUser);
+
 
 export default router;
