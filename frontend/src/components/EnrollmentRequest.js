@@ -1,6 +1,7 @@
 import React from 'react';
 import { acceptEnrollmentRequest, rejectEnrollmentRequest } from '../services/classroomService'; // Assuming the service is here
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
+import { IoIosArrowBack } from 'react-icons/io';
 
 const EnrollmentRequests = ({ classroomId, requests, updateRequests, updateMembers, onClose }) => {
   const generalMsgUpdate = useGeneralMsgUpdate();
@@ -28,22 +29,24 @@ const EnrollmentRequests = ({ classroomId, requests, updateRequests, updateMembe
   };
 
   return (
-    <div className="enrollment-requests-modal">
-      <h3>Enrollment Requests</h3>
-      {requests.length > 0 ? (
-        <ul>
-          {requests.map((request) => (
-            <li key={request._id}>
-              <p>{request.firstName} {request.lastName}</p>
-              <button onClick={() => handleAccept(request)}>Accept</button>
-              <button onClick={() => handleReject(request._id)}>Reject</button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No enrollment requests.</p>
-      )}
-      <button className="close-modal" onClick={onClose}>Close</button>
+    <div className="enrollment-requests-modal prompt-container">
+      <div className='prompt'>
+      <button className="btn-remove" onClick={onClose}><IoIosArrowBack /></button>
+        <h3>Enrollment Requests</h3>
+        {requests.length > 0 ? (
+          <ul>
+            {requests.map((request) => (
+              <li key={request._id}>
+                <p>{request.firstName} {request.lastName}</p>
+                <button className='btn btn-success' onClick={() => handleAccept(request)}>Accept</button>
+                <button className='btn btn-remove' onClick={() => handleReject(request._id)}>Reject</button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className='empty'>No enrollment requests.</p>
+        )}
+      </div>
     </div>
   );
 };

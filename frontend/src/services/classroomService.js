@@ -32,6 +32,7 @@ export const fetchClassroomDetails = async (classroomId) => {
     const response = await API.get(`/classrooms/${classroomId}`);
     return response.data;
   } catch (error) {
+    console.log(error)
     throw error.response && error.response.data
       ? error.response.data.message
       : 'An error occurred while fetching classroom details.';

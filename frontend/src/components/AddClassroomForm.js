@@ -53,9 +53,9 @@ const AddClassroomForm = ({ onClose }) => {
   };
 
   return (
-    <div className="add-classroom-form">
-      <div className="form-container">
-        <button className="close-button" onClick={onClose}><IoIosArrowBack /></button>
+    <div className="add-classroom-form prompt-container">
+      <div className="form-container prompt">
+        <button className="btn-remove" onClick={onClose}><IoIosArrowBack /></button>
         <h2>Add New Classroom</h2>
         <form onSubmit={handleSubmit}>
           <label>

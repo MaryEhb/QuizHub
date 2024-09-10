@@ -68,11 +68,10 @@ const ClassroomView = ({ classroomId, onClose, details }) => {
           ...prevUser.enrolledClassrooms,
           {
             id: classroomId,
-            // You might need to fetch the classroom details here to add them to the state
             title: classroomDetails.title,
             description: classroomDetails.description,
             isPublic: classroomDetails.isPublic,
-            membersCount: classroomDetails.membersCount + 1,
+            membersCount: (classroomDetails.membersCount + 1),
             testsCount: classroomDetails.testsCount,
             maxScore: classroomDetails.maxScore
           }
@@ -80,6 +79,7 @@ const ClassroomView = ({ classroomId, onClose, details }) => {
       }));  
       setClassroomDetails(prevDetails => ({
         ...prevDetails,
+        membersCount: classroomDetails.membersCount + 1,
         members: [...prevDetails.members, {
           _id: user._id,
           firstName: user.firstName,
@@ -114,6 +114,20 @@ const ClassroomView = ({ classroomId, onClose, details }) => {
     }
   };
 
+  const handleUnenrollOthers = async (memberId) => {
+    try {
+      await sendUnenrollmentRequest(classroomId, memberId);
+      setClassroomDetails(prevDetails => ({
+        ...prevDetails,
+        members: prevDetails.members.filter(member => member._id !== memberId)
+      }));
+
+      updateGeneralMsg('Successfully unenroll member from classroom', 'success');
+    } catch (error) {
+      updateGeneralMsg('Failed to unenroll member from classroom', 'error');
+    }
+  }
+
   return (
     <div className="classroom-details">
       <button className="close-button" onClick={onClose}><IoIosArrowBack /></button> {/* Close Button */}
@@ -142,9 +156,9 @@ const ClassroomView = ({ classroomId, onClose, details }) => {
           <div className='title-member'>
             {/* Display Enroll or Unenroll Button */}
             {!isEnrolled ? (
-              <button onClick={handleEnroll}>Enroll</button>
+              <button className='btn' onClick={handleEnroll}>Enroll</button>
             ) : (
-              <button onClick={handleUnenroll}>Unenroll</button>
+              <button className='btn btn-error' onClick={handleUnenroll}>Unenroll</button>
             )}
           </div>
         )}
@@ -167,14 +181,24 @@ const ClassroomView = ({ classroomId, onClose, details }) => {
             >
               Leaderboard
             </div>
+
             {isOwner && (
-              <div
-                className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
-                onClick={() => handleTabClick('settings')}
-              >
-                Settings
-              </div>
+              <>
+                <div
+                  className={`tab ${activeTab === 'members' ? 'active' : ''}`}
+                  onClick={() => handleTabClick('members')}
+                >
+                  Enrolled Users
+                </div>
+                <div
+                  className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
+                  onClick={() => handleTabClick('settings')}
+                >
+                  Settings
+                </div>
+              </>
             )}
+
           </div>
 
           {/* Content Based on Active Tab */}
@@ -194,6 +218,24 @@ const ClassroomView = ({ classroomId, onClose, details }) => {
             )}
             {activeTab === 'leaderboard' && (
               <p>Leaderboard coming soon...</p>
+            )}
+
+            {activeTab === 'members' && (
+              <div className="members-list">
+                {classroomDetails.members.length > 0 ? (
+                  <ol>
+                  {classroomDetails.members.map((member) => (
+                    <li key={member._id} className="member-item">
+                      <span>{member.firstName} {member.lastName}</span>
+                      <button className="btn-remove" onClick={() => handleUnenrollOthers(member._id)}>Remove</button>
+                    </li>
+                    
+                  ))}
+                  </ol>
+                ) : (
+                  <p>No enrolled users yet</p>
+                )}
+              </div>
             )}
 
             {activeTab === 'settings' && (

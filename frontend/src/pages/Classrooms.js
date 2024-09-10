@@ -95,13 +95,13 @@ const Classrooms = () => {
 
             {/* Show 'View More' button if there are more classrooms to display */}
             {ownedVisibleCount < ownedClassrooms.length && (
-              <button className="view-more-button" onClick={handleShowMoreOwned}>View More</button>
+              <button className="btn-view-more btn" onClick={handleShowMoreOwned}>View More</button>
             )}
           </section>
 
           {/* Enrolled Classrooms Section */}
           <section className="enrolled-classrooms">
-            <h2>Enrolled Classrooms</h2>
+            <h2 className='section-header'>Enrolled Classrooms</h2>
 
             {enrolledClassrooms.length > 0 ? (
               <div className="classroom-list">
@@ -119,7 +119,7 @@ const Classrooms = () => {
 
             {/* Show 'View More' button if there are more classrooms to display */}
             {enrolledVisibleCount < enrolledClassrooms.length && (
-              <button className="view-more-button" onClick={handleShowMoreEnrolled}>View More</button>
+              <button className="btn-view-more btn" onClick={handleShowMoreEnrolled}>View More</button>
             )}
           </section>       
         </>

@@ -41,6 +41,9 @@ a
 ul, ol
   list-style: none
 
+li
+  list-style-position: inside
+
 table
   border-collapse: collapse
   border-spacing: 0
@@ -87,6 +90,34 @@ code
 input[type="checkbox"]
   accent-color: $color-mint-green
 
+.btn
+  border: 1px solid $color-soft-beige
+  background-color: $color-light-beige
+  padding: 1rem 1rem
+  border-radius: .7rem
+  font-weight: 500
+
+.btn-error
+  background-color: $color-error
+  font-weight: 600
+  border: 1px solid $color-black
+
+.btn-remove
+  background: none
+  border: none
+  color: $color-tangerine
+
+.btn-success
+  background-color: $color-mint-green
+  border: 1px solid $color-black
+
+.btn-view-more
+  border: 1px solid $color-black
+  background: none
+
+  &:hover
+    background: rgba($color-black, .05)
+
 .logo
   font-size: 1.75rem
   font-weight: 600
@@ -97,3 +128,34 @@ input[type="checkbox"]
   background-repeat: no-repeat
   width: 15px
   height: 15px
+
+.prompt-container
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: rgba(0, 0, 0, 0.5)
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 98
+
+.prompt
+  background: $color-white
+  border-radius: .7rem
+  padding: 2rem
+  max-width: 500px
+  width: 100%
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+  margin: 2rem
+  overflow-y: scroll
+  &::-webkit-scrollbar
+    display: none
+    scrollbar-width: none
+
+  .btn-remove
+    margin-bottom: 1rem
+
+.empty
+  padding: 1rem 0
