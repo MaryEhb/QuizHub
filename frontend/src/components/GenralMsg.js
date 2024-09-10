@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import { FaRegWindowClose } from "react-icons/fa";
+import React, { useState, useEffect } from 'react';
+import { FaRegWindowClose } from 'react-icons/fa';
 
 const GeneralMsg = ({ message, type, handleExit }) => {
-    
     const [progress, setProgress] = useState(0);
     const timeoutDuration = 7000; // 7 seconds
 
     useEffect(() => {
+        // Calculate progress and set timeout
         const progressInterval = setInterval(() => {
             setProgress((prev) => {
                 if (prev >= 100) {
@@ -21,11 +21,12 @@ const GeneralMsg = ({ message, type, handleExit }) => {
             handleExit();
         }, timeoutDuration);
 
+        // Cleanup on unmount or when message changes
         return () => {
             clearInterval(progressInterval);
             clearTimeout(timeout);
         };
-    }, [message]);
+    }, [message, handleExit]);
 
     return (
         <div className={`general-msg-container ${type}`}>
@@ -33,7 +34,7 @@ const GeneralMsg = ({ message, type, handleExit }) => {
                 {message}
             </div>
 
-            <button onClick={handleExit}>
+            <button onClick={handleExit} aria-label="Close message">
                 <FaRegWindowClose />
             </button>
 

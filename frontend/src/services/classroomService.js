@@ -25,6 +25,18 @@ export const fetchClassrooms = async (limit = 10, skip = 0) => {
       : 'An error occurred while fetching classrooms.';
   }
 };
+
+// Fetch classrooms for the logged-in user
+export const fetchMyClassrooms = async (userId) => {
+  try {
+    const response = await API.get(`/users/${userId}/classrooms`);
+    return response.data;
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred while fetching your classrooms.';
+  }
+};
   
 // Fetch classroom details by ID
 export const fetchClassroomDetails = async (classroomId) => {
@@ -32,7 +44,13 @@ export const fetchClassroomDetails = async (classroomId) => {
     const response = await API.get(`/classrooms/${classroomId}`);
     return response.data;
   } catch (error) {
-    console.log(error)
+    if (error.response && error.response.status === 403) {
+      // Custom error message for 403: Private classroom and not enrolled
+      throw new Error('This classroom is private, and you are not enrolled to access it.');
+    }
+
+    // Log the error and throw a general error message for other cases
+    console.log(error);
     throw error.response && error.response.data
       ? error.response.data.message
       : 'An error occurred while fetching classroom details.';

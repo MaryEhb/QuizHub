@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom'; 
+import { useParams, useNavigate } from 'react-router-dom'; 
 import { createTest } from '../services/testService';  // Import the service
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 
-const CreateTestView = () => {
+const CreateTest = () => {
   const { classroomId } = useParams();  
   const [testTitle, setTestTitle] = useState('');
   const [questions, setQuestions] = useState([
     { questionText: '', options: ['', ''], correctAnswerIndex: 0 }
   ]);
   const updateGeneralMsg = useGeneralMsgUpdate();
+  const navigate = useNavigate();
 
   const handleTitleChange = (e) => {
     setTestTitle(e.target.value);
@@ -73,7 +74,7 @@ const CreateTestView = () => {
       };
       // Call the createTest service to send the request to the backend
       await createTest(classroomId, newTest);
-
+      navigate(-1);
       // Show success message
       updateGeneralMsg('Test created successfully', 'success');
     } catch (error) {
@@ -160,4 +161,4 @@ const CreateTestView = () => {
   );
 };
 
-export default CreateTestView;
+export default CreateTest;

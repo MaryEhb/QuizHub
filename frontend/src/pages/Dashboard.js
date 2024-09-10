@@ -1,15 +1,16 @@
 import React from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useParams } from 'react-router-dom';
 import DiscoverSection from '../components/DiscoverSection';
 
 const Dashboard = () => {
-  const { user } = useAuth(); // Access user data from AuthContext
+  const { page } = useParams();
+  const currentPage = parseInt(page) || 1; // Default to page 1 if no page is specified
 
   return (
     <div className='dashboard'>
       {/* <h1>Welcome, {user ? user.firstName : 'Guest'}!</h1> */}
       {/* TODO: dashboard content */}
-      <DiscoverSection />
+      <DiscoverSection initialPage={currentPage} />
     </div>
   );
 };

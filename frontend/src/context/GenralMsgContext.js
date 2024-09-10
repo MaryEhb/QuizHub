@@ -19,8 +19,8 @@ export const GeneralMsgProvider = ({ children }) => {
         setMessage({ text, type });
     };
 
-    const exitMessage = (type = 'info') => {
-        setMessage({ text: '', type });
+    const exitMessage = () => {
+        setMessage({ text: '', type: 'info' });
     };
 
     return (

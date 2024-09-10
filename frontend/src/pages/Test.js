@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { fetchTestDetails } from '../services/testService'; // Import service to fetch test details
 import { useAuth } from '../context/AuthContext'; // Import AuthContext to get user info
 
-const TestView = () => {
+const Test = () => {
   const { classroomId, testId } = useParams(); // Get classroomId and testId from route parameters
   const { user } = useAuth(); // Get user info from AuthContext
   const [test, setTest] = useState(null);
   const [answers, setAnswers] = useState({}); // For storing user answers
   const [submitted, setSubmitted] = useState(false);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getTestDetails = async () => {
@@ -129,4 +130,4 @@ const TestView = () => {
   );
 };
 
-export default TestView;
+export default Test;

@@ -15,15 +15,20 @@ export const useAuthUpdate = () => {
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const setLoading = useLoadingUpdate();
 
     const initializeAuth = async () => {
         setLoading(true);
-        const { isAuthenticated, user } = await checkAuth();
-        setUser(user);
-        setIsAuthenticated(isAuthenticated);
-        setLoading(false);
+        try {
+            const user = await checkAuth();
+            // Set user if authenticated, otherwise null
+            setUser(user);
+        } catch (error) {
+            console.error('Initialization error:', error);
+            setUser(null); // Ensure user is set to null on error
+        } finally {
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -36,7 +41,7 @@ export const AuthProvider = ({ children }) => {
             await loginService(email, password);
             await initializeAuth(); // Refresh user authentication status
         } catch (error) {
-            // Handle login errors if needed
+            // Optionally handle login errors, rethrow if necessary
             throw error;
         } finally {
             setLoginLoading(false);
@@ -46,8 +51,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         try {
             logoutService(); // Call logout service to remove token
-            setUser(null);
-            setIsAuthenticated(false);
+            setUser(null); // Clear user state
         } catch (error) {
             // Handle logout errors if needed
             console.error('Logout error:', error);
@@ -55,11 +59,11 @@ export const AuthProvider = ({ children }) => {
     };
 
     const updateUser = (user) => {
-        setUser(user);
+        setUser(user); // Update user state
     };
 
     return (
-        <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout }}>
             <AuthUpdateContext.Provider value={updateUser}>
                 {children}
             </AuthUpdateContext.Provider>
