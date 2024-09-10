@@ -1,6 +1,7 @@
 import express from 'express';
 import UserController from '../controllers/userController.js';
 import ClassroomController from '../controllers/classroomController.js';
+import TestController from '../controllers/testController.js';
 
 const router = express.Router();
 
@@ -36,5 +37,15 @@ router.put('/classrooms/:classroomId/enroll/:userId/reject', ClassroomController
 // Get all classrooms for a user
 router.get('/users/:userId/classrooms', ClassroomController.getClassroomsForUser);
 
+// Create a new test in a classroom
+router.post('/classrooms/:classroomId/tests', TestController.createTest);
+// Get all tests for a classroom
+router.get('/classrooms/:classroomId/tests', TestController.getTestsForClassroom);
+// Get a specific test by its ID
+router.get('/classrooms/:classroomId/tests/:testId', TestController.getTestById);
+// Update a test
+router.put('/classrooms/:classroomId/tests/:testId', TestController.updateTest);
+// Delete a test
+router.delete('/classrooms/:classroomId/tests/:testId', TestController.deleteTest);
 
 export default router;
