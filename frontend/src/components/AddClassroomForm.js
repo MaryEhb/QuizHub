@@ -23,7 +23,7 @@ const AddClassroomForm = ({ onClose }) => {
     setSubmitLoading(true);
 
     try {
-      const response = await addClassroom(title, description, isPublic);
+      const response = await addClassroom(title, description, !isPublic);
       console.log(response)
 
       const newClassroom = {
@@ -84,7 +84,7 @@ const AddClassroomForm = ({ onClose }) => {
               className='public-input'
               checked={isPublic}
               onChange={() => setIsPublic(!isPublic)}
-            />Public
+            />Private
           </label>
           <button type="submit" disabled={submitloading}>
             {submitloading ? 'Submitting...' : 'Submit'}

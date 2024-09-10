@@ -7,6 +7,8 @@ import person from '../assets/person.svg';
 import EnrollmentRequests from './EnrollmentRequest';
 import { sendEnrollmentRequest, sendUnenrollmentRequest } from '../services/classroomService';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
+import TestCard from './TestCard';
+import { useNavigate } from 'react-router-dom';
 
 const ClassroomView = ({ classroomId, onClose, details }) => {
   const [classroomDetails, setClassroomDetails] = useState(details);
@@ -16,6 +18,7 @@ const ClassroomView = ({ classroomId, onClose, details }) => {
   const [showRequests, setShowRequests] = useState(false); 
 
   const updateGeneralMsg = useGeneralMsgUpdate();
+  const navigate = useNavigate();
 
   // Check if classroomDetails is null or undefined
   if (!classroomDetails) {
@@ -128,6 +131,10 @@ const ClassroomView = ({ classroomId, onClose, details }) => {
     }
   }
 
+  const handleCreateTest = () => {
+    navigate(`/classrooms/${classroomDetails._id}/create-test`);
+  }
+
   return (
     <div className="classroom-details">
       <button className="close-button" onClick={onClose}><IoIosArrowBack /></button> {/* Close Button */}
@@ -205,14 +212,17 @@ const ClassroomView = ({ classroomId, onClose, details }) => {
           <div className="tab-content">
             {activeTab === 'tests' && (
               <div className="tests-list">
+                {isOwner && <div className='Create-test' onClick={handleCreateTest}>+</div>}
                 {classroomDetails.tests.length > 0 ? (
                   <ul>
                     {classroomDetails.tests.map((test) => (
-                      <li key={test._id}>{test.title}</li>
+                      <li key={test._id}>
+                        <TestCard test={test} isOwner={isOwner} classroomId={classroomDetails._id} />
+                      </li>
                     ))}
                   </ul>
                 ) : (
-                  <p>No tests available</p>
+                  (isOwner? '' : <p>No tests available</p>)
                 )}
               </div>
             )}

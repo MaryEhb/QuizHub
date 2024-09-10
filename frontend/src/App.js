@@ -12,6 +12,9 @@ import Profile from './pages/Profile';
 import Layout from './components/Layout'; 
 import Leaderboard from './pages/Leaderboard';
 import Settings from './pages/Settings';
+import CreateTestView from './components/CreateTestView';
+import ClassroomView from './components/ClassroomView';
+import TestView from './components/TestView';
 
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();
@@ -43,6 +46,15 @@ const App = () => {
               <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
               <Route path="/leaderboard" element={<ProtectedRoute element={<Leaderboard />} />} />
               <Route path="/settings" element={<ProtectedRoute element={<Settings />} />} />
+
+              <Route
+                path="/classrooms/:classroomId/create-test"
+                element={<ProtectedRoute element={<CreateTestView />} />}
+              />
+
+              <Route path="/classrooms/:classroomId" element={<ClassroomView />} />
+              <Route path="/classrooms/:classroomId/tests/:testId" element={<TestView />} />
+
               {/* Catch-All Route */}
               <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
