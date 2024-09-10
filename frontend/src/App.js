@@ -10,6 +10,8 @@ import Dashboard from './pages/Dashboard';
 import Classrooms from './pages/Classrooms';
 import Profile from './pages/Profile';
 import Layout from './components/Layout'; 
+import Leaderboard from './pages/Leaderboard';
+import Settings from './pages/Settings';
 
 const ProtectedRoute = ({ element }) => {
   const { isAuthenticated } = useAuth();
@@ -39,7 +41,8 @@ const App = () => {
               <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
               <Route path="/classrooms" element={<ProtectedRoute element={<Classrooms />} />} />
               <Route path="/profile" element={<ProtectedRoute element={<Profile />} />} />
-
+              <Route path="/leaderboard" element={<ProtectedRoute element={<Leaderboard />} />} />
+              <Route path="/settings" element={<ProtectedRoute element={<Settings />} />} />
               {/* Catch-All Route */}
               <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
