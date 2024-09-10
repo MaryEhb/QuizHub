@@ -1,0 +1,25 @@
+# Set to 'true' if connecting to a local MongoDB instance
+USE_LOCAL_DB=true
+
+# MongoDB Connection Details for Remote (Leave these empty for local usage)
+MONGO_HOST=
+MONGO_PORT=
+MONGO_USER=
+MONGO_PASSWORD=
+MONGO_DB_NAME=
+
+# MongoDB Connection Details for Local
+LOCAL_DB_NAME=alxFinalProjectDB
+LOCAL_DB_PORT=27017
+LOCAL_DB_HOST=localhost
+
+# Authentication JWT Secret
+JWT_SECRET=secret
+# Authentication JWT after how many days it expires
+VALID_DAYS = 7
+
+# For server
+PORT=8081
+
+#frontend client for cors
+FRONTEND_URL=http://localhost:3000
