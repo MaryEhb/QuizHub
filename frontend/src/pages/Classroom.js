@@ -100,6 +100,10 @@ const Classroom = () => {
     }));
   };
 
+  const handleCloseEnrollmentRequests = () => {
+    setShowRequests(false);
+  }
+
   const handleEnroll = async () => {
     try {
       await sendEnrollmentRequest(classroomId);
@@ -303,10 +307,11 @@ const Classroom = () => {
 
       {showRequests && (
         <EnrollmentRequests
-          enrollRequests={classroomDetails.enrollRequests}
+          requests={classroomDetails.enrollRequests}
           updateRequests={updateRequests}
           updateMembers={updateMembers}
           classroomId={classroomDetails._id}
+          onClose={handleCloseEnrollmentRequests}
         />
       )}
       </>)}
