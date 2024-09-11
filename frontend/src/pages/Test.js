@@ -121,7 +121,7 @@ const Test = () => {
                         disabled={submitted || isOwner} // Disable inputs if submitted or if user is owner
                       />
                       {option}
-                      {submitted && isCorrect && ( // Show checkmark only after submission
+                      {(isOwner || submitted) && isCorrect && ( // Show checkmark only after submission
                         <FaCheck className="checkmark-icon" />
                       )}
                       {submitted && isWrong && ( // Show cross for wrong answer only after submission
