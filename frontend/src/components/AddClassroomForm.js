@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { addClassroom } from '../services/classroomService';
 import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 // Get the character limits from environment variables
 const TITLE_LIMIT = parseInt(process.env.REACT_APP_CLASSROOM_TITLE_LIMIT, 10);
@@ -14,6 +15,7 @@ const AddClassroomForm = ({ onClose }) => {
   const [submitLoading, setSubmitLoading] = useState(false);
 
   const setGeneralMsg = useGeneralMsgUpdate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,6 +26,7 @@ const AddClassroomForm = ({ onClose }) => {
 
       setGeneralMsg('Classroom created successfully', 'success');
       onClose();
+      navigate(`/classrooms/${response.data}`); 
     } catch (error) {
       const errorMsg = error.response?.data?.message || 'An error occurred while creating the classroom';
       setGeneralMsg(errorMsg, 'error');

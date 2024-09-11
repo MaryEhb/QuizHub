@@ -26,7 +26,7 @@ const Sidebar = () => {
   };
 
   const isActive = (path) => {
-    return location.pathname === path;
+    return location.pathname.includes(path);
   }
 
   return (

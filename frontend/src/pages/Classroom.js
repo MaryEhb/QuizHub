@@ -179,7 +179,7 @@ const Classroom = () => {
         <div className="enrollment-prompt">
           <p>You are not authorized to view this classroom. Would you like to send an enrollment request?</p>
           <button onClick={handleSendEnrollmentRequest}>Send Request</button>
-          <button onClick={() => setShowEnrollmentPrompt(false)}>Cancel</button>
+          <button onClick={() => navigate(-1)}>Cancel</button>
         </div>
       )}
       {classroomDetails && (<>
@@ -194,7 +194,7 @@ const Classroom = () => {
           <div className='title-owner'>
             <div className='option'>
               <p className={`${classroomDetails.members.length > 0 ? 'number' : ''}`}>{classroomDetails.members.length}</p>
-              <div className='person-icon icon' style={{ backgroundImage: `url(${person})` }}></div>
+              <div className='person-icon icon' onClick={() => handleTabClick('members')} style={{ backgroundImage: `url(${person})` }}></div>
             </div>
             { !classroomDetails.isPublic && 
               <div className='option' onClick={toggleRequests}>
@@ -256,20 +256,20 @@ const Classroom = () => {
       {/* Content Based on Active Tab */}
       <div className="tab-content">
         {activeTab === 'tests' && (
-          <div className="tests-list">
+          <ul className="tests-list">
             {isOwner && <div className='Create-test' onClick={handleCreateTest}>+</div>}
             {classroomDetails.tests.length > 0 ? (
-              <ul>
+              <>
                 {classroomDetails.tests.map((test) => (
                   <li key={test._id}>
                     <TestCard test={test} isOwner={isOwner} classroomId={classroomDetails._id} />
                   </li>
                 ))}
-              </ul>
+              </>
             ) : (
-              (isOwner ? '' : <p>No tests available</p>)
+              (isOwner ? '' : <li>No tests available</li>)
             )}
-          </div>
+          </ul>
         )}
         {activeTab === 'leaderboard' && (
           <p>Leaderboard coming soon...</p>
@@ -279,11 +279,11 @@ const Classroom = () => {
           <div className="members-list">
             {classroomDetails.members.length > 0 ? (
               <ol>
-                {classroomDetails.members.map((member) => (
+                {classroomDetails.members.map((member, index) => (
                   <li key={member._id}>
-                    <p>{member.firstName} {member.lastName}</p>
+                    <p>{index + 1}. {member.firstName} {member.lastName}</p>
                     {isOwner && member._id !== user._id && (
-                      <button onClick={() => handleUnenrollOthers(member._id)}>Remove</button>
+                      <button className='btn-remove' onClick={() => handleUnenrollOthers(member._id)}>Remove</button>
                     )}
                   </li>
                 ))}

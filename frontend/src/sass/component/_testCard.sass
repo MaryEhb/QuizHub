@@ -1,35 +1,43 @@
 .test-card
-  border: 1px solid #ddd
-  border-radius: 8px
-  padding: 16px
-  margin-bottom: 16px
+  position: relative
+  background: $color-light-beige
+  gap: 1rem
+  display: flex
+  flex-direction: column
+  width: 155px
+  height: 180px
+  border-radius: .7rem
+  border: 2px solid $color-soft-beige
   cursor: pointer
+  transition: all ease .3s
+  padding: 1rem
+  &:hover
+    filter: brightness(95%) saturate(170%) 
+    &::after
+      width: 100px
+      text-align: center
+      border-radius: .3rem
+      background: $color-soft-beige
+      padding: .5rem .5rem
+      // content: 'Take Test'
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+  &:active
+    transform: scale(0.9)
 
-  h3
-    margin: 0 0 8px
+  &:hover
+    &.owner::after
+      content: 'View Test'
+
+    &.not-owner::after
+      content: 'Take Test'
 
   p
-    margin: 0 0 16px
-
-  .test-taking
-    display: flex
-    flex-direction: column
-
-  .test-question
-    margin-bottom: 12px
-
-  .correct-answer
-    &.highlight
-      color: green
-      font-weight: bold
-
-  .btn-take-test
-    background-color: #28a745
-    color: white
-    border: none
-    padding: 10px
-    border-radius: 4px
-    cursor: pointer
-
-    &:hover
-      background-color: #218838
+    font-size: .9rem
+    overflow: hidden
+    max-height: 200px
+    display: -webkit-box
+    -webkit-line-clamp: 4
+    -webkit-box-orient: vertical

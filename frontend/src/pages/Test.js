@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchTestDetails } from '../services/testService'; // Import service to fetch test details
-import { useAuth } from '../context/AuthContext'; // Import AuthContext to get user info
+import { fetchTestDetails } from '../services/testService';
+import { useAuth } from '../context/AuthContext';
+import { IoIosArrowBack } from 'react-icons/io';
+import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 
 const Test = () => {
-  const { classroomId, testId } = useParams(); // Get classroomId and testId from route parameters
-  const { user } = useAuth(); // Get user info from AuthContext
+  const { classroomId, testId } = useParams();
+  const { user } = useAuth();
   const [test, setTest] = useState(null);
-  const [answers, setAnswers] = useState({}); // For storing user answers
+  const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
+  const [showScorePrompt, setShowScorePrompt] = useState(false);
   const navigate = useNavigate();
+  const generalMsgUpdate = useGeneralMsgUpdate();
 
   useEffect(() => {
     const getTestDetails = async () => {
       try {
-        const testData = await fetchTestDetails(classroomId, testId); // Fetch test details
+        const testData = await fetchTestDetails(classroomId, testId);
+        console.log(testData);
         setTest(testData);
       } catch (error) {
         console.error('Failed to fetch test details:', error);
@@ -34,17 +39,33 @@ const Test = () => {
 
   const handleSubmit = () => {
     if (test) {
-      // Calculate the number of correct answers
       let count = 0;
+
       test.questions.forEach(question => {
-        if (answers[question._id] === question.correctAnswer) {
+        const selectedAnswerIndex = question.options.indexOf(answers[question._id]);
+        if (selectedAnswerIndex === Number(question.correctAnswer)) {
           count += 1;
         }
       });
+
       setCorrectAnswersCount(count);
+      generalMsgUpdate('Submitted answers successfully', 'success');
+      setSubmitted(true);
+      setShowScorePrompt(true); // Show score prompt after submission
     }
-    setSubmitted(true);
   };
+
+  const handleViewTest = () => {
+    setShowScorePrompt(false); // Remove the prompt
+  };
+
+  const handleGoBackToClassroom = () => {
+    navigate(-1); // Navigate back to the classroom
+  };
+
+  const isOwner = user._id === test?.classroomId.owner; // Check if user is the owner
+
+  const allQuestionsAnswered = test ? test.questions.every(question => answers[question._id]) : false;
 
   if (!test) {
     return <p>Loading test details...</p>;
@@ -52,78 +73,74 @@ const Test = () => {
 
   return (
     <div className="test-page">
-      <h1>{test.title}</h1>
-      <p>{test.description}</p>
+      <button className="close-button" onClick={() => navigate(-1)}><IoIosArrowBack /></button>
+      <div className='test-info-container'>
+        <h1>{test.title}</h1>
+        {test.description && (
+          <div className='test-info'>
+            <h2>Description:</h2>
+            <p>{test.description}</p>
+          </div>
+        )}
+        {test.requirements && (
+          <div className='test-info'>
+            <h2>Requirements:</h2>
+            <p>{test.requirements}</p>
+          </div>
+        )}
+      </div>
+
       <div className="questions">
-        {test.questions.map(question => (
-          <div key={question._id} className="question">
-            <p>{question.questionText}</p>
-            {user ? (
+        <ol>
+          {test.questions.map((question, index) => (
+            <li key={question._id} className={`question-container ${submitted ? 'submitted' : ''}`}>
+              <p className="question">Question {index + 1}: {question.questionText}</p>
               <div className="options">
-                {question.options.map((option, index) => (
-                  <label key={index}>
+                {question.options.map((option, optionIndex) => (
+                  <label key={optionIndex} className={submitted ? (optionIndex === Number(question.correctAnswer) ? 'correct' : option === answers[question._id] ? 'wrong' : '') : ''}>
                     <input
                       type="radio"
                       name={question._id}
                       value={option}
                       checked={answers[question._id] === option}
                       onChange={() => handleAnswerChange(question._id, option)}
-                      disabled={submitted}
+                      disabled={submitted || isOwner} // Disable inputs if submitted or if user is owner
                     />
                     {option}
                   </label>
                 ))}
               </div>
-            ) : (
-              <p>Login to take the test</p>
-            )}
-          </div>
-        ))}
+              {isOwner && (
+                <p className="correct-answer">Correct answer: {question.options[Number(question.correctAnswer)]}</p> // Highlight correct answer for owner
+              )}
+            </li>
+          ))}
+        </ol>
       </div>
 
-      {user && !submitted && (
-        <button onClick={handleSubmit}>Submit</button>
-      )}
-
-      {submitted && (
-        <div className="submission-feedback">
-          <p>Thank you for submitting the test!</p>
-          <p>Your answers:</p>
-          <ul>
-            {Object.entries(answers).map(([questionId, answer]) => {
-              const question = test.questions.find(q => q._id === questionId);
-              return (
-                <li key={questionId}>
-                  <strong>{question.questionText}</strong>: {answer || 'No answer'}
-                </li>
-              );
-            })}
-          </ul>
-          <p>
-            You got {correctAnswersCount} out of {test.questions.length} correct.
-          </p>
+      {!submitted && !isOwner && (
+        <div className="submit-button-container">
+          <button
+            className='btn btn-success'
+            onClick={handleSubmit}
+            disabled={!allQuestionsAnswered}
+          >
+            Submit
+          </button>
+          {!allQuestionsAnswered && (
+            <span className="tooltip">Please answer all questions before submitting.</span>
+          )}
         </div>
       )}
 
-      {/* For owners only */}
-      {user && user._id === test.owner && (
-        <div className="correct-answers">
-          <h2>Correct Answers</h2>
-          {test.questions.map(question => (
-            <div key={question._id} className="question">
-              <p>{question.questionText}</p>
-              <div className="options">
-                {question.options.map((option, index) => (
-                  <p
-                    key={index}
-                    className={`option ${option === question.correctAnswer ? 'correct' : ''}`}
-                  >
-                    {option}
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
+      {/* Prompt after submission */}
+      {showScorePrompt && !isOwner && (
+        <div className='prompt-container'> 
+          <div className="submission-prompt prompt">
+            <p>You scored {correctAnswersCount} out of {test.questions.length}.</p>
+            <button className='btn' onClick={handleViewTest}>View Test</button>
+            <button className='btn btn-close' onClick={handleGoBackToClassroom}>Go Back to Classroom</button>
+          </div>
         </div>
       )}
     </div>
