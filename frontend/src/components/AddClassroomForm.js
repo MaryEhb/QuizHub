@@ -58,6 +58,7 @@ const AddClassroomForm = ({ onClose }) => {
             Description:
             <textarea
               value={description}
+              placeholder='Optional'
               onChange={(e) => setDescription(e.target.value)}
               maxLength={DESCRIPTION_LIMIT}
             />

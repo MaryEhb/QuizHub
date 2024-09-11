@@ -3,16 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
 import cardPerson from '../assets/card-person1.svg';
 import cardTest from '../assets/card-test.svg';
+import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 
 const ClassroomCard = ({ classroom }) => {
   const navigate = useNavigate(); 
+  const generalMsgUpdate = useGeneralMsgUpdate();
 
   const onClick = () => {
     const classroomId = classroom._id || classroom.id; // Check for both _id and id
     if (classroomId) {
       navigate(`/classrooms/${classroomId}`);
     } else {
-      console.error('Classroom ID is missing.');
+      generalMsgUpdate('Classroom ID is missing.', 'error');
     }
   };
 
@@ -28,14 +30,14 @@ const ClassroomCard = ({ classroom }) => {
       {classroom.description && <p>{classroom.description}</p>}
       <div className='counts-container'>
         <div className='counts'>
-          <p>
+          <div className='count'>
             {classroom.testsCount ? classroom.testsCount : 0}
             <div className='locked-icon icon' style={{ backgroundImage: `url(${cardTest})` }}></div>
-          </p>
-          <p>
+          </div>
+          <div className='count'>
             {classroom.membersCount ? classroom.membersCount : 0}
             <div className='locked-icon icon' style={{ backgroundImage: `url(${cardPerson})` }}></div>
-          </p>
+          </div>
         </div>
       </div>
     </div>

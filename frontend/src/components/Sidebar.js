@@ -33,7 +33,7 @@ const Sidebar = () => {
     <div className={`sidebar ${isShrink ? 'shrink' : ''}`}>
       <div className='logo'>
         <div>QuizHub</div>
-        <button className="shrink-toggle" onClick={toggleSidebar}>
+        <button aria-label={isShrink ? 'Expand sidebar' : 'Shrink sidebar'} className="shrink-toggle" onClick={toggleSidebar}>
           {isShrink ? <RiExpandRightFill className='icon'/> : <RiExpandLeftFill className='icon'/>}
         </button>
       </div>

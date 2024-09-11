@@ -7,6 +7,7 @@ import person from '../assets/person.svg';
 import EnrollmentRequests from '../components/EnrollmentRequest';
 import { sendEnrollmentRequest, sendUnenrollmentRequest, fetchClassroomDetails } from '../services/classroomService';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
+import { useLoadingUpdate } from '../context/LoadingContext';
 import TestCard from '../components/TestCard';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -19,21 +20,26 @@ const Classroom = () => {
   const [showEnrollmentPrompt, setShowEnrollmentPrompt] = useState(false);
 
   const updateGeneralMsg = useGeneralMsgUpdate();
+  const setLoading = useLoadingUpdate();
   const navigate = useNavigate();
   const { classroomId } = useParams(); // Extract classroomId from URL
 
   useEffect(() => {
     const fetchDetails = async () => {
       try {
+        setLoading(true);
         const details = await fetchClassroomDetails(classroomId);
         setClassroomDetails(details);
       } catch (error) {
         if (error.message === 'This classroom is private, and you are not enrolled to access it.') {
           setShowEnrollmentPrompt(true); // Show prompt if classroom is private and user not enrolled
         } else {
-          setClassroomDetails({});
+          setClassroomDetails(null);
+          navigate(-1);
           updateGeneralMsg('Failed to load classroom details', 'error');
         }
+      } finally {
+        setLoading(false);
       }
     };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchClassrooms } from '../services/classroomService';
 import ClassroomCard from './ClassroomCard';
+import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 
 const DiscoverSection = ({ initialPage }) => {
   const [classrooms, setClassrooms] = useState([]);
@@ -10,6 +11,7 @@ const DiscoverSection = ({ initialPage }) => {
   const [pageLoading, setPageLoading] = useState(false);
   const classroomsPerPage = 4; // Number of classrooms per page
   const navigate = useNavigate();
+  const generalMsgUpdate = useGeneralMsgUpdate();
 
   useEffect(() => {
     const loadClassrooms = async () => {
@@ -19,7 +21,7 @@ const DiscoverSection = ({ initialPage }) => {
         setClassrooms(fetchedClassrooms);
         setTotalClassrooms(total);
       } catch (error) {
-        console.error('Error fetching classrooms:', error);
+        generalMsgUpdate('Error fetching classrooms', 'error');
       } finally {
         setPageLoading(false);
       }
@@ -64,7 +66,7 @@ const DiscoverSection = ({ initialPage }) => {
               <div className="classroom-list">
                 {classrooms.map((classroom) => (
                   <ClassroomCard
-                    key={classroom._id}
+                    key={classroom.id}
                     classroom={classroom}
                   />
                 ))}

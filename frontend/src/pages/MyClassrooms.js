@@ -27,7 +27,7 @@ const MyClassrooms = () => {
           setOwnedClassrooms(owned);
           setEnrolledClassrooms(enrolled);
         } catch (err) {
-          updateGeneralMsg('An error occurred while fetching classrooms.');
+          updateGeneralMsg('An error occurred while fetching classrooms.', 'error');
         } finally {
           setLoading(false);
         }
