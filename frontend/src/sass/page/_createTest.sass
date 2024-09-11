@@ -1,0 +1,105 @@
+.create-test
+
+  h2
+    color: $color-black
+    margin-bottom: 2rem
+    text-align: center
+    font-size: 1.5rem
+    font-weight: 600
+
+  form
+    display: flex
+    flex-direction: column
+    gap: 4rem
+    padding: 4rem
+    max-width: 900px
+    margin: 0 auto
+    border-radius: 0.5rem
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)
+
+    .test-info, .question
+      display: flex
+      flex-direction: column
+      gap: 2rem
+      border: 1px solid $color-gray
+      border-radius: .5rem
+      padding: 4rem
+
+    label
+      display: flex
+      flex-direction: column
+      gap: 0.5rem
+
+    input[type='text']
+      padding: 0.5rem
+      border-radius: 0.25rem
+      &:disabled
+        cursor: not-allowed
+
+    .question
+      padding-top: 2rem
+
+      .remove-option
+        align-self: flex-end
+
+      .choices
+        border: 1px solid $color-gray
+        border-radius: .5rem
+        padding: 2rem
+        display: flex
+        flex-direction: column
+        gap: 2rem
+
+      .option
+        display: flex
+        width: 100%
+        align-items: flex-end
+        flex-wrap: wrap
+        gap: 0.5rem
+        position: relative
+
+        label
+          flex-grow: 1
+
+        .correct-answer-btn
+          background: $color-white
+          border: 2px solid $color-gray
+          border-radius: 0.25rem
+          cursor: pointer
+          display: flex
+          align-items: center
+          justify-content: center
+          width: 2.5rem
+          height: 2.5rem
+
+          .checkmark
+            font-size: 1rem
+            display: none
+
+          &.selected
+            background-color: $color-mint-green
+            border-color: $color-mint-green
+
+            .checkmark
+              display: block
+
+          &:disabled
+            background-color: $color-gray
+            cursor: not-allowed
+            opacity: 0.3
+
+    button.remove-option
+        background-color: $color-tangerine
+        width: 2.5rem
+        height: 2.5rem
+        font-size: 1rem
+        border-radius: 0.25rem
+
+        &:disabled
+            background-color: $color-gray
+            cursor: not-allowed
+            opacity: 0.3
+
+    .choose-answer-container
+        flex-direction: row
+        flex-wrap: wrap

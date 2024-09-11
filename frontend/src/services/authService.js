@@ -43,15 +43,15 @@ export const checkAuth = async () => {
     // Retrieve the JWT token from cookies
     const token = Cookies.get('token');
     if (!token) {
-      return { isAuthenticated: false }; // No token means not authenticated
+      return null; // No token means not authenticated
     }
 
     // Send request to server to check if the token is valid
     const response = await API.get('/users/me'); // Use /users/me to fetch user data
 
-    return { isAuthenticated: response.status === 200, user: response.data };
+    return response.data;
   } catch (error) {
     // Return not authenticated status if there's an error
-    return { isAuthenticated: false, user: null };
+    return null;
   }
 };

@@ -227,33 +227,56 @@ class ClassroomController {
     }
   }
 
-  // Get all classrooms for a specific user
-  static async getClassroomsForUser(req, res) {
-    try {
-      const { userId } = req.params;
+// Get all classrooms for a specific user
+static async getClassroomsForUser(req, res) {
+  try {
+    const { userId } = req.params;
 
-      // Retrieve owned and enrolled classrooms for the user
-      const ownedClassrooms = await Classroom.find({ owner: userId })
+    // Retrieve owned classrooms
+    const ownedClassrooms = await Classroom.find({ owner: userId })
       .select('title description isPublic members tests maxScore')
       .populate('members', 'firstName lastName') // Populate members' names
       .populate('tests', 'title'); // Populate test titles
 
-      // Get enrolled classrooms
-      const enrolledClassrooms = await Classroom.find({ members: userId })
+    // Retrieve enrolled classrooms
+    const enrolledClassrooms = await Classroom.find({ members: userId })
       .select('title description isPublic members tests maxScore')
       .populate('members', 'firstName lastName') // Populate members' names
       .populate('tests', 'title'); // Populate test titles
 
-      res.status(200).json({
-        ownedClassrooms,
-        enrolledClassrooms,
-      });
-    } catch (error) {
-      // Log the error and send response with error message
-      console.error('Error retrieving classrooms for user:', error);
-      res.status(500).json({ message: error.message });
-    }
+    // Format owned classrooms
+    const formattedOwnedClassrooms = ownedClassrooms.map(classroom => ({
+      id: classroom._id,
+      title: classroom.title,
+      description: classroom.description,
+      isPublic: classroom.isPublic,
+      membersCount: classroom.members.length,
+      testsCount: classroom.tests.length,
+      maxScore: classroom.maxScore,
+    }));
+
+    // Format enrolled classrooms
+    const formattedEnrolledClassrooms = enrolledClassrooms.map(classroom => ({
+      id: classroom._id,
+      title: classroom.title,
+      description: classroom.description,
+      isPublic: classroom.isPublic,
+      membersCount: classroom.members.length,
+      testsCount: classroom.tests.length,
+      maxScore: classroom.maxScore,
+    }));
+
+    // Send the response with formatted classrooms
+    res.status(200).json({
+      ownedClassrooms: formattedOwnedClassrooms,
+      enrolledClassrooms: formattedEnrolledClassrooms,
+    });
+  } catch (error) {
+    // Log the error and send response with error message
+    console.error('Error retrieving classrooms for user:', error);
+    res.status(500).json({ message: error.message });
   }
+}
 
   // Enroll a user in a classroom
   static async enrollInClassroom(req, res) {

@@ -66,7 +66,11 @@ class TestController {
   static async getTestById(req, res) {
     try {
       const { testId } = req.params;
-      const test = await Test.findById(testId);
+      const test = await Test.findById(testId).populate({
+        path: 'classroomId',
+        select: 'owner'
+      });
+  
       if (!test) {
         return res.status(404).json({ message: 'Test not found' });
       }

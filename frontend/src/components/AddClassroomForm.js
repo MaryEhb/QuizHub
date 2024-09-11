@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
-import { useAuth, useAuthUpdate } from '../context/AuthContext';
 import { addClassroom } from '../services/classroomService';
 import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 // Get the character limits from environment variables
 const TITLE_LIMIT = parseInt(process.env.REACT_APP_CLASSROOM_TITLE_LIMIT, 10);
@@ -12,11 +12,10 @@ const AddClassroomForm = ({ onClose }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [isPublic, setIsPublic] = useState(false);
-  const [submitloading, setSubmitLoading] = useState(false);
-  const setGeneralMsg = useGeneralMsgUpdate();
-  const updateUser = useAuthUpdate();
-  const { user } = useAuth();
+  const [submitLoading, setSubmitLoading] = useState(false);
 
+  const setGeneralMsg = useGeneralMsgUpdate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,29 +23,13 @@ const AddClassroomForm = ({ onClose }) => {
 
     try {
       const response = await addClassroom(title, description, !isPublic);
-      console.log(response)
 
-      const newClassroom = {
-        id: response.data,
-        title,
-        description,
-        isPublic,
-        membersCount: 0,
-        testsCount: 0,
-        maxScore: 0,
-      };
-
-      const updatedUser = {
-        ...user,
-        ownedClassrooms: [...user.ownedClassrooms, newClassroom],
-      };
-
-      updateUser(updatedUser);
       setGeneralMsg('Classroom created successfully', 'success');
       onClose();
-    
+      navigate(`/classrooms/${response.data}`); 
     } catch (error) {
-      setGeneralMsg( error, 'error');
+      const errorMsg = error.response?.data?.message || 'An error occurred while creating the classroom';
+      setGeneralMsg(errorMsg, 'error');
     } finally {
       setSubmitLoading(false);
     }
@@ -55,7 +38,9 @@ const AddClassroomForm = ({ onClose }) => {
   return (
     <div className="add-classroom-form prompt-container">
       <div className="form-container prompt">
-        <button className="btn-remove" onClick={onClose}><IoIosArrowBack /></button>
+        <button className="btn-remove" onClick={onClose}>
+          <IoIosArrowBack />
+        </button>
         <h2>Add New Classroom</h2>
         <form onSubmit={handleSubmit}>
           <label>
@@ -84,16 +69,16 @@ const AddClassroomForm = ({ onClose }) => {
               className='public-input'
               checked={isPublic}
               onChange={() => setIsPublic(!isPublic)}
-            />Private
+            />
+            Private
           </label>
-          <button type="submit" disabled={submitloading}>
-            {submitloading ? 'Submitting...' : 'Submit'}
+          <button type="submit" disabled={submitLoading}>
+            {submitLoading ? 'Submitting...' : 'Submit'}
           </button>
         </form>
       </div>
     </div>
   );
-
 };
 
 export default AddClassroomForm;

@@ -1,0 +1,107 @@
+.test-page
+  h1
+    text-align: center
+    padding-bottom: 2rem
+    border-bottom: 1px solid $color-soft-beige
+    margin-bottom: 1rem
+
+  h2
+    font-size: 1.2rem
+    font-weight: 500
+    padding: 1rem 0
+
+  .test-info-container
+    padding-bottom: 2rem
+    border-bottom: 1px solid $color-soft-beige
+    p
+      color: $color-gray
+
+  .questions
+    .question-container
+      border-bottom: 1px solid $color-soft-beige
+      padding: 2rem 0
+
+      &:last-of-type
+        border: none
+
+      .question
+        padding-bottom: 1rem
+        font-size: 1rem
+        font-weight: 600
+        color: $color-black
+
+      .options
+        display: flex
+        flex-direction: column
+        gap: 0.5rem
+
+        label
+          color: $color-gray
+          display: flex
+          align-items: center
+
+          input[type='radio']
+            margin-right: 0.5rem
+
+        &.correct
+          background-color: $color-mint-green
+          color: $color-white
+
+        &.wrong
+          background-color: $color-tangerine
+          color: $color-white
+
+      .correct-answer
+        color: $color-mint-green
+        font-weight: bold
+
+  .submission-prompt
+    width: 95%
+    max-width: 500px
+    text-align: center
+    p
+        padding-bottom: 2rem
+    .btn:first-of-type
+        margin-right: 2rem
+    .btn:last-of-type
+        background: none
+        border: none
+        color: $color-gray
+        &:hover
+            color: $color-black
+
+  .correct
+    background-color: $color-mint-green
+    color: $color-white
+
+  .wrong
+    background-color: $color-tangerine
+    color: $color-white
+
+  /* Test.sass */
+.submit-button-container
+  position: relative
+  display: inline-block
+
+.tooltip
+  visibility: hidden
+  background-color: #555
+  color: $color-white
+  text-align: center
+  border-radius: 5px
+  padding: 5px
+  position: absolute
+  z-index: 1
+  bottom: 125%
+  left: 50%
+  margin-left: -40px
+  opacity: 0
+  transition: opacity 0.3s
+
+.submit-button-container:hover .tooltip
+  visibility: visible
+  opacity: 1
+
+.btn:disabled
+  background-color: #ddd
+  cursor: not-allowed

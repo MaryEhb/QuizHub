@@ -27,20 +27,9 @@ export const fetchTestDetails = async (classroomId, testId) => {
 
 export const createTest = async (classroomId, newTest) => {
     try {
-      // Ensure all questions are set as multiple-choice
-      const questionsWithType = newTest.questions.map(question => ({
-        ...question,
-        questionType: 'multiple-choice'
-      }));
   
       // Send the request with updated questions
-      const response = await API.post(`/classrooms/${classroomId}/tests`, {
-        title: newTest.title,
-        description: '',
-        requirements: '',
-        allowMultipleSubmissions: false,
-        questions: questionsWithType
-      });
+      const response = await API.post(`/classrooms/${classroomId}/tests`, newTest);
   
       return response.data;
     } catch (error) {
