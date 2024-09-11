@@ -189,7 +189,9 @@ const Classroom = () => {
         <div className='title'>
           <h2>{classroomDetails.title}</h2>
           {!classroomDetails.isPublic && <div className='locked-icon icon' style={{ backgroundImage: `url(${lock})` }}></div>}
+          <p>Owner: {classroomDetails.owner.firstName} {classroomDetails.owner.lastName}</p>
         </div>
+
         {isOwner && (
           <div className='title-owner'>
             <div className='option'>

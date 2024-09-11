@@ -4,6 +4,7 @@ import { fetchTestDetails } from '../services/testService';
 import { useAuth } from '../context/AuthContext';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
+import { FaCheck } from "react-icons/fa6";
 
 const Test = () => {
   const { classroomId, testId } = useParams();
@@ -97,7 +98,10 @@ const Test = () => {
               <p className="question">Question {index + 1}: {question.questionText}</p>
               <div className="options">
                 {question.options.map((option, optionIndex) => (
-                  <label key={optionIndex} className={submitted ? (optionIndex === Number(question.correctAnswer) ? 'correct' : option === answers[question._id] ? 'wrong' : '') : ''}>
+                  <label 
+                    key={optionIndex} 
+                    className={submitted ? (optionIndex === Number(question.correctAnswer) ? 'correct' : option === answers[question._id] ? 'wrong' : '') : ''}
+                  >
                     <input
                       type="radio"
                       name={question._id}
@@ -107,12 +111,12 @@ const Test = () => {
                       disabled={submitted || isOwner} // Disable inputs if submitted or if user is owner
                     />
                     {option}
+                    {isOwner && optionIndex === Number(question.correctAnswer) && (
+                      <FaCheck className="checkmark-icon" /> // Show checkmark for correct answer
+                    )}
                   </label>
                 ))}
               </div>
-              {isOwner && (
-                <p className="correct-answer">Correct answer: {question.options[Number(question.correctAnswer)]}</p> // Highlight correct answer for owner
-              )}
             </li>
           ))}
         </ol>
