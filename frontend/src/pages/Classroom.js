@@ -219,7 +219,7 @@ const Classroom = () => {
         )}
       </div>
 
-      <p>{classroomDetails.description}</p>
+      <p className='description'>{classroomDetails.description}</p>
 
       {/* Tabs for Tests, Leaderboard, and Settings */}
       <div className="tabs">

@@ -39,21 +39,21 @@
           color: $color-gray
           display: flex
           align-items: center
+          cursor: pointer
+          font-weight: normal /* Ensure normal weight by default */
 
           input[type='radio']
             margin-right: 0.5rem
 
-        &.correct
-          background-color: $color-mint-green
-          color: $color-white
+          /* Correct answer styling */
+          &.correct
+            color: $color-black
+            font-weight: bold
 
-        &.wrong
-          background-color: $color-tangerine
-          color: $color-white
-
-      .correct-answer
-        color: $color-mint-green
-        font-weight: bold
+          /* Wrong answer styling */
+          &.wrong
+            color: $color-tangerine
+            font-weight: bold
 
   .submission-prompt
     width: 95%
@@ -70,15 +70,6 @@
         &:hover
             color: $color-black
 
-  .correct
-    background-color: $color-mint-green
-    color: $color-white
-
-  .wrong
-    background-color: $color-tangerine
-    color: $color-white
-
-  /* Test.sass */
 .submit-button-container
   position: relative
   display: inline-block
@@ -106,11 +97,13 @@
   background-color: #ddd
   cursor: not-allowed
 
-.checkmark-icon
+.checkmark-icon, .wrongmark-icon
   color: $color-black
   background-color: $color-mint-green
   padding: .2rem
   font-size: 1.5rem
   border: 1px solid $color-black
   margin-left: 1rem
-  
+
+.wrongmark-icon
+  background-color: $color-tangerine

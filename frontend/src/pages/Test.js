@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { FaCheck } from "react-icons/fa6";
+import { IoClose } from "react-icons/io5";
 
 const Test = () => {
   const { classroomId, testId } = useParams();
@@ -97,25 +98,38 @@ const Test = () => {
             <li key={question._id} className={`question-container ${submitted ? 'submitted' : ''}`}>
               <p className="question">Question {index + 1}: {question.questionText}</p>
               <div className="options">
-                {question.options.map((option, optionIndex) => (
-                  <label 
-                    key={optionIndex} 
-                    className={submitted ? (optionIndex === Number(question.correctAnswer) ? 'correct' : option === answers[question._id] ? 'wrong' : '') : ''}
-                  >
-                    <input
-                      type="radio"
-                      name={question._id}
-                      value={option}
-                      checked={answers[question._id] === option}
-                      onChange={() => handleAnswerChange(question._id, option)}
-                      disabled={submitted || isOwner} // Disable inputs if submitted or if user is owner
-                    />
-                    {option}
-                    {isOwner && optionIndex === Number(question.correctAnswer) && (
-                      <FaCheck className="checkmark-icon" /> // Show checkmark for correct answer
-                    )}
-                  </label>
-                ))}
+                {question.options.map((option, optionIndex) => {
+                  const isCorrect = optionIndex === Number(question.correctAnswer);
+                  const isSelected = option === answers[question._id];
+                  const isWrong = isSelected && !isCorrect;
+
+                  return (
+                    <label 
+                      key={optionIndex} 
+                      className={
+                        submitted ? 
+                          (isCorrect ? 'correct' : isWrong ? 'wrong' : '') 
+                          : ''
+                      }
+                    >
+                      <input
+                        type="radio"
+                        name={question._id}
+                        value={option}
+                        checked={isSelected}
+                        onChange={() => handleAnswerChange(question._id, option)}
+                        disabled={submitted || isOwner} // Disable inputs if submitted or if user is owner
+                      />
+                      {option}
+                      {submitted && isCorrect && ( // Show checkmark only after submission
+                        <FaCheck className="checkmark-icon" />
+                      )}
+                      {submitted && isWrong && ( // Show cross for wrong answer only after submission
+                        <IoClose className="wrongmark-icon" />
+                      )}
+                    </label>
+                  );
+                })}
               </div>
             </li>
           ))}
