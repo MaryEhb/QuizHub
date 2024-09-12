@@ -52,7 +52,7 @@
 
           /* Correct answer styling */
           &.correct
-            background-color: $color-mint-green
+            background-color: transparentize($color-mint-green, .3)
             border: 1px solid $color-black
             padding: 0.5rem
             border-radius: 0.3rem
@@ -63,7 +63,7 @@
 
           /* Wrong answer styling */
           &.wrong
-            background-color: $color-tangerine
+            background-color: transparentize($color-tangerine, 0.3)
             border: 1px solid $color-black
             padding: 0.5rem
             border-radius: 0.3rem
