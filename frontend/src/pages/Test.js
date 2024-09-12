@@ -4,8 +4,6 @@ import { fetchTestDetails } from '../services/testService';
 import { useAuth } from '../context/AuthContext';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
-import { FaCheck } from "react-icons/fa6";
-import { IoClose } from "react-icons/io5";
 import ScorePrompt from '../components/ScorePrompt';
 
 const Test = () => {
@@ -108,7 +106,7 @@ const Test = () => {
                     <label 
                       key={optionIndex} 
                       className={
-                        submitted ? 
+                        (isOwner || submitted) ? 
                           (isCorrect ? 'correct' : isWrong ? 'wrong' : '') 
                           : ''
                       }
@@ -122,12 +120,6 @@ const Test = () => {
                         disabled={submitted || isOwner} // Disable inputs if submitted or if user is owner
                       />
                       {option}
-                      {(isOwner || submitted) && isCorrect && ( // Show checkmark only after submission
-                        <FaCheck className="checkmark-icon" />
-                      )}
-                      {submitted && isWrong && ( // Show cross for wrong answer only after submission
-                        <IoClose className="wrongmark-icon" />
-                      )}
                     </label>
                   );
                 })}
