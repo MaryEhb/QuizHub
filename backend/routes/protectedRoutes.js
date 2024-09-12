@@ -14,8 +14,9 @@ router.get('/users/user/:id', UserController.getUserById);
 // Get and update the currently authenticated user's profile
 router.get('/users/profile', UserController.getUserProfile);
 router.put('/users/profile', UserController.updateUserProfile);
-// Update recent classrooms viewed by the user
+// Update and get recent classrooms viewed by the user
 router.post('/users/recent-classrooms/:id', UserController.updateRecentClassrooms);
+router.get('/users/recent-classrooms', UserController.getRecentClassrooms);
 
 // Create a new classroom
 router.post('/classrooms', ClassroomController.createClassroom);

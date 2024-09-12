@@ -7,13 +7,7 @@ class UserController {
   // Get the currently authenticated user's info
   static async getCurrentUser(req, res) {
     try {
-      const userId = req.user.id; // Extract user ID from authenticated request
-
-      // Fetch user information
-      const user = await User.findById(userId);
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
+      const user = req.user; // Extract user ID from authenticated request
 
       // Fetch owned classrooms if any
       const ownedClassrooms = user.ownedClassrooms && user.ownedClassrooms.length > 0
@@ -161,12 +155,8 @@ class UserController {
   // Get the currently authenticated user's profile
   static async getUserProfile(req, res) {
     try {
-      const userId = req.user.id; // Extract user ID from authenticated request
+      const userId = req.user; // Extract user ID from authenticated request
       const user = await User.findById(userId);
-
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
 
       res.status(200).json(user);
     } catch (error) {
@@ -199,18 +189,11 @@ class UserController {
 
   static async updateRecentClassrooms(req, res) {
     try {
-      const userId = req.user.id; // Extract user ID from authenticated request
+      const user = req.user; // Extract user ID from authenticated request
       const { id: classroomId } = req.params; // Expecting classroom ID in the request body
 
       if (!classroomId) {
         return res.status(400).json({ message: 'Classroom ID is required' });
-      }
-
-      // Fetch the user
-      const user = await User.findById(userId);
-
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
       }
 
       // Remove the classroom if it already exists in recentClassrooms
@@ -220,7 +203,7 @@ class UserController {
       user.recentClassrooms.unshift(classroomId);
 
       // Limit the array length to a maximum of 5 recent classrooms
-      if (user.recentClassrooms.length > 5) {
+      if (user.recentClassrooms.length > 4) {
         user.recentClassrooms.pop();
       }
 
@@ -230,6 +213,37 @@ class UserController {
       res.status(200).json(user.recentClassrooms);
     } catch (error) {
       console.error('Error updating recent classrooms:', error); // Log error details
+      res.status(500).json({ message: 'Server error', error });
+    }
+  }
+
+  // Get the currently authenticated user's recent classrooms
+  static async getRecentClassrooms(req, res) {
+    try {
+      const user = req.user; // Extract user ID from authenticated request
+
+      // Fetch recent classrooms if any
+      const recentClassrooms = user.recentClassrooms && user.recentClassrooms.length > 0
+        ? await Classroom.find({ _id: { $in: user.recentClassrooms } })
+            .select('title description isPublic members tests maxScore')
+            .populate('members', 'firstName lastName')
+            .populate('tests', 'title')
+        : [];
+
+      // Prepare response with recent classrooms details
+      const response = recentClassrooms.map(classroom => ({
+        id: classroom._id,
+        title: classroom.title,
+        description: classroom.description,
+        isPublic: classroom.isPublic,
+        membersCount: classroom.members.length,
+        testsCount: classroom.tests.length,
+        maxScore: classroom.maxScore,
+      }));
+
+      res.status(200).json(response);
+    } catch (error) {
+      console.error('Error fetching recent classrooms:', error); // Log error details
       res.status(500).json({ message: 'Server error', error });
     }
   }
