@@ -72,8 +72,8 @@ const MyClassrooms = () => {
 
         {ownedClassrooms.length > 0 ? (
           <div className="classroom-list">
-            {visibleOwnedClassrooms.map((classroom) => (
-              <ClassroomCard key={classroom._id} classroom={classroom} />
+            {visibleOwnedClassrooms.map((classroom, index) => (
+              <ClassroomCard key={classroom._id} classroom={classroom} index={index}/>
             ))}
           </div>
         ) : (
@@ -94,8 +94,8 @@ const MyClassrooms = () => {
 
         {enrolledClassrooms.length > 0 ? (
           <div className="classroom-list">
-            {visibleEnrolledClassrooms.map((classroom) => (
-              <ClassroomCard key={classroom._id} classroom={classroom} />
+            {visibleEnrolledClassrooms.map((classroom, index) => (
+              <ClassroomCard key={classroom._id} classroom={classroom} index={index + 4}/>
             ))}
           </div>
         ) : (

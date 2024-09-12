@@ -48,6 +48,15 @@ const DiscoverSection = ({ initialPage }) => {
             <p>No classrooms available.</p>
           ) : (
             <>
+              <div className="classroom-list">
+                {classrooms.map((classroom, index) => (
+                  <ClassroomCard
+                    key={classroom.id}
+                    classroom={classroom}
+                    index={index + 4}
+                  />
+                ))}
+              </div>
               <div className="pagination-controls">
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
@@ -62,14 +71,6 @@ const DiscoverSection = ({ initialPage }) => {
                 >
                   Next
                 </button>
-              </div>
-              <div className="classroom-list">
-                {classrooms.map((classroom) => (
-                  <ClassroomCard
-                    key={classroom.id}
-                    classroom={classroom}
-                  />
-                ))}
               </div>
             </>
           )}

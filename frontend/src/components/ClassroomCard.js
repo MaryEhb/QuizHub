@@ -4,22 +4,32 @@ import PropTypes from 'prop-types';
 import cardPerson from '../assets/card-person1.svg';
 import cardTest from '../assets/card-test.svg';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
-import { updateRecentClassrooms } from '../services/userService';
+import lockIcon from '../assets/lock.svg';
 
-const ClassroomCard = ({ classroom }) => {
+const ClassroomCard = ({ classroom, small=false, index=0 }) => {
   const navigate = useNavigate(); 
   const generalMsgUpdate = useGeneralMsgUpdate();
+
+  // Define your extended colors array here
+  const colors = [
+    '#8FFFA9', // $color-mint-green
+    '#FE5D32', // $color-tangerine
+    '#FFF461', // $color-sunshine-yellow
+    '#FFE499', // $color-light-sunshine-yellow
+    '#C53EFF',
+    '#C0FF8F',
+    '#FFB53E',
+    '#8FECFF',
+  ];
+
+  // Function to get color based on index
+const getColorByIndex = (index) => {
+  return colors[index % colors.length];
+};
 
   const onClick = async () => {
     const classroomId = classroom._id || classroom.id; // Check for both _id and id
     if (classroomId) {
-      // Update recent classrooms without waiting for it to complete
-      updateRecentClassrooms(classroomId)
-        .catch(error => {
-          // Optionally log error or handle it if needed
-          // console.error('Error updating recent classrooms:', error);
-        });
-
       // Navigate to the classroom details page
       navigate(`/classrooms/${classroomId}`);
     } else {
@@ -29,16 +39,16 @@ const ClassroomCard = ({ classroom }) => {
 
   return (
     <div 
-      className="classroom-card"
+      className={`classroom-card ${small && 'small'}`}
       onClick={onClick}
       role="button"
       tabIndex={0}
       aria-label={`View details for ${classroom.title}`}
     >
       <h3>{classroom.title}</h3>
-      {classroom.description && <p>{classroom.description}</p>}
+      {!small && classroom.description && <p>{classroom.description}</p>}
       <div className='counts-container'>
-        <div className='counts'>
+        <div className='counts' style={{ backgroundColor: getColorByIndex(index) }}>
           <div className='count'>
             {classroom.testsCount ? classroom.testsCount : 0}
             <div className='locked-icon icon' style={{ backgroundImage: `url(${cardTest})` }}></div>
@@ -48,6 +58,7 @@ const ClassroomCard = ({ classroom }) => {
             <div className='locked-icon icon' style={{ backgroundImage: `url(${cardPerson})` }}></div>
           </div>
         </div>
+        {!classroom.isPublic && <div className='icon lock-icon' style={{ backgroundImage: `url(${lockIcon})` }}></div>}
       </div>
     </div>
   );

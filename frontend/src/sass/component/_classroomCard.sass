@@ -11,8 +11,9 @@
 
 
 .classroom-card
-    background-color: $color-light-beige
-    border: 1px solid $color-soft-beige
+    // background-color: $color-light-beige
+    // border: 1px solid $color-soft-beige
+    border: 1px solid $color-black
     border-radius: 15px
     padding: 20px
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
@@ -21,16 +22,22 @@
     display: flex
     flex-direction: column
     cursor: pointer
+    transition: transform ease-in-out .25s
+
+    &:hover
+      transform: scale(1.1)
+
+    &:active
+      transform: scale(1)
 
     h3
       margin-bottom: 10px
       font-size: 1.2rem
-      color: #231F20
 
     p, .count
       margin: 5px 0
       font-size: .8rem
-      color: #848182
+      color: $color-gray
       overflow: hidden
       max-height: 200px
       display: -webkit-box
@@ -38,17 +45,27 @@
       -webkit-box-orient: vertical
 
     .counts-container
+        position: relative
         flex-grow: 1
         display: flex
         align-items: flex-end
         width: 100%
+
+    .lock-icon
+      position: absolute
+      width: 30px
+      height: 30px
+      bottom: 42px
+      right: 10px
     .counts
         display: flex
-        background: $color-soft-beige
+        // background: $color-soft-beige
+        background: $color-mint-green
         padding: .5rem 1.5rem
         border-radius: .5rem
         width: 100%
-        border: 1px solid $color-soft-beige
+        // border: 1px solid $color-soft-beige
+        border: 1px solid $color-black
         .count
           display: flex
           align-items: center
@@ -65,8 +82,17 @@
             &::after
               content: '|'
               padding: 0 .6rem
-            
 
+    &.small
+      height: 170px
+      padding: 0
+      overflow: hidden
 
-    strong
-      color: #231F20
+      h3
+        padding: 1.5rem
+        
+      .counts
+        border-radius: 0
+        border: none
+        border-top: 1px solid $color-black
+
