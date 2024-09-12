@@ -16,6 +16,7 @@ import Settings from './pages/Settings';
 import CreateTest from './pages/CreateTest';
 import Classroom from './pages/Classroom';
 import Test from './pages/Test';
+import NotFound from './pages/NotFound'; 
 
 const ProtectedRoute = ({ element }) => {
   const { user } = useAuth();
@@ -52,7 +53,8 @@ const App = () => {
               <Route path="/classrooms/:classroomId/create-test" element={<ProtectedRoute element={<CreateTest />} />}/>
 
               {/* Catch-All Route */}
-              <Route path="*" element={<Navigate to="/login" />} />
+              <Route path="*" element={<NotFound />} />
+              {/* <Route path="*" element={<Navigate to="/login" />} /> */}
             </Routes>
           </AuthProvider>
         </GeneralMsgProvider>
