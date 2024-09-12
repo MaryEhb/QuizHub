@@ -37,36 +37,8 @@ const Classroom = () => {
       .catch(error => {
         // Optionally log error or handle it if needed
         // console.error('Error updating recent classrooms:', error);
-      }).finally(() => {
-        console.log('done')
-        // setUser((prevUser) => {
-        //   // Extract or create recentClassrooms
-        //   let recentClassrooms = prevUser.recentClassrooms ? [...prevUser.recentClassrooms] : [];
-        
-        //   // Remove the classroom if it exists, and add it to the front
-        //   recentClassrooms = recentClassrooms.filter(classroom => classroom.id !== classroomId);
-        //   recentClassrooms.unshift({
-        //     id: classroomId,
-        //     title: classroomDetails.title,
-        //     description: classroomDetails.description,
-        //     isPublic: classroomDetails.isPublic,
-        //     membersCount: (classroomDetails.membersCount + 1),
-        //     testsCount: classroomDetails.testsCount,
-        //     maxScore: classroomDetails.maxScore
-        //   });
-        //   console.log(recentClassrooms)
-        //   // Ensure the list does not exceed 5 items
-        //   if (recentClassrooms.length > 5) {
-        //     recentClassrooms.pop();
-        //   }
+      });
 
-        //   return {
-        //     ...prevUser,
-        //     recentClassrooms,
-        //   };
-        // });
-        
-      })
       } catch (error) {
         if (error.message === 'This classroom is private, and you are not enrolled to access it.') {
           setShowEnrollmentPrompt(true); // Show prompt if classroom is private and user not enrolled

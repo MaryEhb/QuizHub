@@ -1,24 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../context/AuthContext';
 import ClassroomCard from './ClassroomCard';
+import { getRecentClassrooms } from '../services/userService';
+import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 
 const RecentClassrooms = () => {
-  const { user } = useAuth();
   const [recentClassrooms, setRecentClassrooms] = useState([]);
   const [shownStart, setShownStart] = useState(0);
   const [shownEnd, setShownEnd] = useState(4);
+  const [loading, setLoading] = useState(true);
+  const generalMsgUpdate = useGeneralMsgUpdate();
 
   useEffect(() => {
-    if (user && user.recentClassrooms) {
-      setRecentClassrooms(user.recentClassrooms);
-    } else {
-      setRecentClassrooms([]);
-    }
-  }, [user]);
+    const fetchRecentClassrooms = async () => {
+      try {
+        const data = await getRecentClassrooms();
+        setRecentClassrooms(data);
+      } catch (err) {
+        generalMsgUpdate('Error Fetching Recent classrooms', 'error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecentClassrooms();
+
+  }, []);
+
+  if (loading) {
+    return (
+      <p>Loading...</p>
+    )
+  }
 
   return (
     <div className='recent-classrooms'>
       <h2>Recent Classrooms</h2>
+
       {recentClassrooms.length > 0 ? (
         <div className='classroom-list'>
           {recentClassrooms.slice(shownStart, shownEnd).map((classroom, index) => (

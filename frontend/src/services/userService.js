@@ -21,3 +21,14 @@ export const updateRecentClassrooms = async (recentClassrooms) => {
       : 'An error occurred while updating recent classrooms.';
   }
 };
+
+export const getRecentClassrooms = async () => {
+  try {
+    const response = await API.get('/users/recent-classrooms');
+    return response.data;
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred while fetching recent classrooms.';
+  }
+};
