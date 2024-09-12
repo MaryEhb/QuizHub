@@ -6,6 +6,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { FaCheck } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
+import ScorePrompt from '../components/ScorePrompt';
 
 const Test = () => {
   const { classroomId, testId } = useParams();
@@ -153,14 +154,12 @@ const Test = () => {
 
       {/* Prompt after submission */}
       {showScorePrompt && !isOwner && (
-        <div className='prompt-container'> 
-        <div className='prompt-background' onClick={handleViewTest}></div>
-          <div className="submission-prompt prompt">
-            <p>You scored {correctAnswersCount} out of {test.questions.length}.</p>
-            <button className='btn' onClick={handleViewTest}>View Test</button>
-            <button className='btn btn-close' onClick={handleGoBackToClassroom}>Go Back to Classroom</button>
-          </div>
-        </div>
+        <ScorePrompt 
+        handleViewTest={handleViewTest}
+        correctAnswersCount={correctAnswersCount}
+        totalQuestionsCount={test.questions.length}
+        handleGoBackToClassroom={handleGoBackToClassroom}
+        />
       )}
     </div>
   );
