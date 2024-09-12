@@ -3,7 +3,7 @@ import { FaRegWindowClose } from 'react-icons/fa';
 
 const GeneralMsg = ({ message, type, handleExit }) => {
     const [progress, setProgress] = useState(0);
-    const timeoutDuration = 7000; // 7 seconds
+    const timeoutDuration = 5000; // 5 seconds
 
     useEffect(() => {
         // Calculate progress and set timeout
