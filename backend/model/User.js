@@ -67,6 +67,12 @@ const userSchema = new Schema(
         ref: 'Classroom',
       },
     ],
+    recentClassrooms: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Classroom',
+      },
+    ],
     createdAt: {
       type: Date,
       default: Date.now,

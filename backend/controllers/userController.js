@@ -10,15 +10,13 @@ class UserController {
       const userId = req.user.id; // Extract user ID from authenticated request
 
       // Fetch user information
-      const user = await User.findById(userId)
-        .select('firstName lastName email profileScore profilePicture ownedClassrooms enrolledClassrooms');
-
+      const user = await User.findById(userId);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
 
       // Fetch owned classrooms if any
-      const ownedClassrooms = user.ownedClassrooms.length > 0
+      const ownedClassrooms = user.ownedClassrooms && user.ownedClassrooms.length > 0
         ? await Classroom.find({ _id: { $in: user.ownedClassrooms } })
             .select('title description isPublic members tests maxScore')
             .populate('members', 'firstName lastName') // Populate members' names
@@ -26,12 +24,21 @@ class UserController {
         : [];
 
       // Fetch enrolled classrooms if any
-      const enrolledClassrooms = user.enrolledClassrooms.length > 0
+      const enrolledClassrooms = user.enrolledClassrooms && user.enrolledClassrooms.length > 0
         ? await Classroom.find({ _id: { $in: user.enrolledClassrooms } })
             .select('title description isPublic members tests maxScore')
             .populate('members', 'firstName lastName') // Populate members' names
             .populate('tests', 'title')
         : [];
+
+      // Fetch recent classrooms
+      const recentClassrooms = user.recentClassrooms && user.recentClassrooms.length > 0
+        ? await Classroom.find({ _id: { $in: user.recentClassrooms } })
+            .select('title description isPublic members tests maxScore')
+            .populate('members', 'firstName lastName')
+            .populate('tests', 'title')
+        : [];
+
 
       // Prepare the response with user and classroom details
       const response = {
@@ -55,6 +62,19 @@ class UserController {
           maxScore: classroom.maxScore,
         })),
       };
+
+      // Only add recentClassrooms to the response if it exists
+      if (user.recentClassrooms) {
+        response.recentClassrooms = recentClassrooms.map(classroom => ({
+          id: classroom._id,
+          title: classroom.title,
+          description: classroom.description,
+          isPublic: classroom.isPublic,
+          membersCount: classroom.members.length,
+          testsCount: classroom.tests.length,
+          maxScore: classroom.maxScore,
+        }));
+      }
 
       res.status(200).json(response);
     } catch (error) {
@@ -173,6 +193,43 @@ class UserController {
       res.status(200).json(user);
     } catch (error) {
       console.error('Error updating user profile:', error); // Log error details
+      res.status(500).json({ message: 'Server error', error });
+    }
+  }
+
+  static async updateRecentClassrooms(req, res) {
+    try {
+      const userId = req.user.id; // Extract user ID from authenticated request
+      const { id: classroomId } = req.params; // Expecting classroom ID in the request body
+
+      if (!classroomId) {
+        return res.status(400).json({ message: 'Classroom ID is required' });
+      }
+
+      // Fetch the user
+      const user = await User.findById(userId);
+
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      // Remove the classroom if it already exists in recentClassrooms
+      user.recentClassrooms = user.recentClassrooms.filter(id => id.toString() !== classroomId.toString());
+
+      // Add the new classroom to the beginning of the array
+      user.recentClassrooms.unshift(classroomId);
+
+      // Limit the array length to a maximum of 5 recent classrooms
+      if (user.recentClassrooms.length > 5) {
+        user.recentClassrooms.pop();
+      }
+
+      // Save the user with updated recentClassrooms
+      await user.save();
+
+      res.status(200).json(user.recentClassrooms);
+    } catch (error) {
+      console.error('Error updating recent classrooms:', error); // Log error details
       res.status(500).json({ message: 'Server error', error });
     }
   }
