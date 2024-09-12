@@ -23,6 +23,10 @@ const Register = () => {
   const navigate = useNavigate();
   const setGeneralMsg = useGeneralMsgUpdate();
 
+  const capitalizeWords = (str) => {
+    return str.replace(/\b\w/g, char => char.toUpperCase());
+  };  
+
   const handleRegister = async (e) => {
     e.preventDefault();
     setRegisterLoading(true);
@@ -53,7 +57,7 @@ const Register = () => {
     }
 
     try {
-      await register(firstName, lastName, email, password);
+      await register(capitalizeWords(firstName), capitalizeWords(lastName), email, password);
       setRegisterLoading(false);
       setGeneralMsg('Your account was created successfully. Confirm your email then login', 'success');
       navigate('/login'); 
