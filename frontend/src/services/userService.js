@@ -10,3 +10,14 @@ export const updateUserDetails = async (userData) => {
       : 'An error occurred while updating the profile.';
   }
 };
+
+export const updateRecentClassrooms = async (recentClassrooms) => {
+  try {
+    const response = await API.post(`/users/recent-classrooms/${recentClassrooms}`);
+    return response.data;
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred while updating recent classrooms.';
+  }
+};

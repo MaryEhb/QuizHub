@@ -4,14 +4,23 @@ import PropTypes from 'prop-types';
 import cardPerson from '../assets/card-person1.svg';
 import cardTest from '../assets/card-test.svg';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
+import { updateRecentClassrooms } from '../services/userService';
 
 const ClassroomCard = ({ classroom }) => {
   const navigate = useNavigate(); 
   const generalMsgUpdate = useGeneralMsgUpdate();
 
-  const onClick = () => {
+  const onClick = async () => {
     const classroomId = classroom._id || classroom.id; // Check for both _id and id
     if (classroomId) {
+      // Update recent classrooms without waiting for it to complete
+      updateRecentClassrooms(classroomId)
+        .catch(error => {
+          // Optionally log error or handle it if needed
+          // console.error('Error updating recent classrooms:', error);
+        });
+
+      // Navigate to the classroom details page
       navigate(`/classrooms/${classroomId}`);
     } else {
       generalMsgUpdate('Classroom ID is missing.', 'error');
