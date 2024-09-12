@@ -37,6 +37,7 @@ const AddClassroomForm = ({ onClose }) => {
 
   return (
     <div className="add-classroom-form prompt-container">
+      <div className='prompt-background' onClick={onClose}></div>
       <div className="form-container prompt">
         <button className="btn-remove" onClick={onClose}>
           <IoIosArrowBack />

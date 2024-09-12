@@ -30,6 +30,7 @@ const EnrollmentRequests = ({ classroomId, requests, updateRequests, updateMembe
 
   return (
     <div className="enrollment-requests-modal prompt-container">
+      <div className='prompt-background' onClick={onClose}></div>
       <div className='prompt'>
       <button className="btn-remove" onClick={onClose}><IoIosArrowBack /></button>
         <h3>Enrollment Requests</h3>

@@ -154,6 +154,7 @@ const Test = () => {
       {/* Prompt after submission */}
       {showScorePrompt && !isOwner && (
         <div className='prompt-container'> 
+        <div className='prompt-background' onClick={handleViewTest}></div>
           <div className="submission-prompt prompt">
             <p>You scored {correctAnswersCount} out of {test.questions.length}.</p>
             <button className='btn' onClick={handleViewTest}>View Test</button>

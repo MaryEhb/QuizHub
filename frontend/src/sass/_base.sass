@@ -145,13 +145,22 @@ input[type="checkbox"]
   left: 0
   right: 0
   bottom: 0
-  background: rgba(0, 0, 0, 0.5)
   display: flex
   justify-content: center
   align-items: center
-  z-index: 98
+  z-index: 97
+
+.prompt-background
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: rgba(0, 0, 0, 0.5)
+  z-index: 97
 
 .prompt
+  z-index: 98
   background: $color-white
   border-radius: .7rem
   padding: 2rem
