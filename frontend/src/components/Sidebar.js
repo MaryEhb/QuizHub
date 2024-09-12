@@ -14,7 +14,7 @@ const Sidebar = () => {
   const [isShrink, setIsShrink] = useState(false);
   const { logout } = useAuth();
   const setGeneralMsg = useGeneralMsgUpdate();
-  const location = useLocation(); // Access the current route location
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
@@ -30,49 +30,62 @@ const Sidebar = () => {
   }
 
   return (
-    <div className={`sidebar ${isShrink ? 'shrink' : ''}`}>
+    <nav className={`sidebar ${isShrink ? 'shrink' : ''}`} aria-label="Main Sidebar Navigation">
       <div className='logo'>
-        <div>QuizHub</div>
-        <button aria-label={isShrink ? 'Expand sidebar' : 'Shrink sidebar'} className="shrink-toggle" onClick={toggleSidebar}>
+        <div aria-label="Application Name">QuizHub</div>
+        <button 
+          title={isShrink ? 'Expand sidebar' : 'Shrink sidebar'}
+          aria-label={isShrink ? 'Expand sidebar' : 'Shrink sidebar'} 
+          className="shrink-toggle" 
+          onClick={toggleSidebar}
+          aria-expanded={!isShrink}
+        >
           {isShrink ? <RiExpandRightFill className='icon'/> : <RiExpandLeftFill className='icon'/>}
         </button>
       </div>
-      <ul>
-        <li className={isActive('/dashboard') ? 'active' : ''}>
-          <Link to="/dashboard">
+
+      <ul role="menubar">
+        <li className={isActive('/dashboard') ? 'active' : ''} role="none">
+          <Link to="/dashboard" role="menuitem" aria-label="Dashboard" title={isShrink ? 'Dashboard' : ''}>
             <div className='link-icon-container'><IoHomeOutline className='link-icon'/></div>
-            {!isShrink && 'Dashboard'}
+            {!isShrink && <span>Dashboard</span>}
           </Link>
         </li>
-        <li className={isActive('/myclassrooms') ? 'active' : ''}>
-          <Link to="/myclassrooms">
+        <li className={isActive('/myclassrooms') ? 'active' : ''} role="none">
+          <Link to="/myclassrooms" role="menuitem" aria-label="My Classrooms" title={isShrink ? 'My Classrooms' : ''}>
             <div className='link-icon-container'><SiGoogleclassroom className='link-icon'/></div>
-            {!isShrink && 'My Classrooms'}
+            {!isShrink && <span>My Classrooms</span>}
           </Link>
         </li>
-        <li className={isActive('/leaderboard') ? 'active' : ''}>
-          <Link to="/leaderboard">
+        <li className={isActive('/leaderboard') ? 'active' : ''} role="none">
+          <Link to="/leaderboard" role="menuitem" aria-label="Leaderboard" title={isShrink ? 'Leaderboard' : ''}>
             <div className='link-icon-container'><MdOutlineLeaderboard className='link-icon'/></div>
-            {!isShrink && 'Leaderboard'}
+            {!isShrink && <span>Leaderboard</span>}
           </Link>
         </li>
-        <li className={isActive('/profile') ? 'active' : ''}>
-          <Link to="/profile">
+        <li className={isActive('/profile') ? 'active' : ''} role="none">
+          <Link to="/profile" role="menuitem" aria-label="Profile" title={isShrink ? 'Profile' : ''}>
             <div className='link-icon-container'><CgProfile className='link-icon'/></div>
-            {!isShrink && 'Profile'}
+            {!isShrink && <span>Profile</span>}
           </Link>
         </li>
-        <li className={isActive('/settings') ? 'active' : ''}>
-          <Link to="/settings">
+        <li className={isActive('/settings') ? 'active' : ''} role="none">
+          <Link to="/settings" role="menuitem" aria-label="Settings" title={isShrink ? 'Settings' : ''}>
             <div className='link-icon-container'><LuSettings className='link-icon'/></div>
-            {!isShrink && 'Settings'}
+            {!isShrink && <span>Settings</span>}
           </Link>
         </li>
       </ul>
-      <button className="logout-button" onClick={handleLogout}>
+
+      <button 
+        className="logout-button" 
+        onClick={handleLogout} 
+        aria-label="Logout" 
+        title={isShrink ? 'Logout' : ''}
+      >
         <FaSignOutAlt />{!isShrink && 'Logout'}
       </button>
-    </div>
+    </nav>
   );
 };
 
