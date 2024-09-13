@@ -88,7 +88,15 @@ class TestController {
             select: 'firstName lastName'
           });
 
+      } else {
+        // Fetch the authenticated user's submission if they have one
+        submissions = await Submission.find({
+          testId,
+          userId: req.user._id
+        });
       }
+
+
       return res.status(200).json({
         ...test.toObject(),
         submissions
