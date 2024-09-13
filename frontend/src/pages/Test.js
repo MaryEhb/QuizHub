@@ -99,7 +99,8 @@ const Test = () => {
           score: count
         };
 
-        await createSubmission(testId, submissionData);
+        const newSubmission = await createSubmission(testId, submissionData);
+        setSubmissions(prevSubmissions => [...prevSubmissions, newSubmission]);
 
         generalMsgUpdate('Submitted answers successfully', 'success');
         setSubmitted(true);
@@ -154,12 +155,9 @@ const Test = () => {
     setShowSubmissionPrompt(false);
   
     try {
-      const testData = await fetchTestDetails(classroomId, testId);
-      setTest(testData);
-      setSubmissions(testData.submissions || []);
       
       // Reset state for a new attempt
-      if (testData.allowMultipleSubmissions) {
+      if (test.allowMultipleSubmissions) {
         generalMsgUpdate('You can now retake the test.', 'info');
       }
     } catch (error) {
@@ -199,7 +197,7 @@ const Test = () => {
             </button>
           </div>
         )}
-        {!isOwner && test.allowMultipleSubmissions && (
+        {!isOwner && test.allowMultipleSubmissions && submissions?.length > 0 && (
           <div>
             <select className="submission-dropdown" onChange={handleDropdownSelect} value={handleSelectSubmission || ''}>
               <option value="">Select Submission</option>
