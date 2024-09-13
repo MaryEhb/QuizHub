@@ -21,6 +21,7 @@ const Test = () => {
   const [selectedUserName, setSelectedUserName] = useState('');
   const [submissionLoading, setSubmissionLoading] = useState(false);
   const [submissions, setSubmissions] = useState([]);
+  const [isRetaking, setIsRetaking] = useState(false);
   const navigate = useNavigate();
   const generalMsgUpdate = useGeneralMsgUpdate();
   const setLoading = useLoadingUpdate();
@@ -43,7 +44,9 @@ const Test = () => {
           setSubmitted(true);
           setSelectedSubmission(firstSubmission);
           setSelectedUserName(`${firstSubmission.userId.firstName} ${firstSubmission.userId.lastName}`);
-          generalMsgUpdate('You have already submitted this test. Only one submission is allowed.', 'info');
+
+          if (!testData.allowMultipleSubmissions)
+            generalMsgUpdate('You have already submitted this test. Only one submission is allowed.', 'info');
         }
       } catch (error) {
         generalMsgUpdate('Failed to fetch test details', 'error');
@@ -142,6 +145,39 @@ const Test = () => {
     setAnswers({});
   };
 
+  const handleRetakeTest = async () => {
+    setIsRetaking(true);
+    setSubmitted(false);
+    setAnswers({});
+    setCorrectAnswersCount(0);
+    setShowScorePrompt(false);
+    setShowSubmissionPrompt(false);
+  
+    try {
+      const testData = await fetchTestDetails(classroomId, testId);
+      setTest(testData);
+      setSubmissions(testData.submissions || []);
+      
+      // Reset state for a new attempt
+      if (testData.allowMultipleSubmissions) {
+        generalMsgUpdate('You can now retake the test.', 'info');
+      }
+    } catch (error) {
+      generalMsgUpdate('Failed to fetch test details', 'error');
+      navigate(-1);
+    } finally {
+      setIsRetaking(false);
+    }
+  };
+
+  const handleDropdownSelect = (e) => {
+    const submissionId = e.target.value;
+    const submission = submissions.find(sub => sub._id === submissionId);
+    if (submission) {
+      handleSelectSubmission(submission);
+    }
+  };
+
   const isOwner = user._id === test?.classroomId.owner; // Check if user is the owner
 
   const allQuestionsAnswered = test ? test.questions.every(question => answers[question._id]) : false;
@@ -159,6 +195,19 @@ const Test = () => {
             <button className="btn btn-info" onClick={handleShowSubmissionsPrompt}>
               Submissions ({submissions.length})
             </button>
+          </div>
+        )}
+        {!isOwner && test.allowMultipleSubmissions && (
+          <div>
+            <select className="submission-dropdown" onChange={handleDropdownSelect} value={handleSelectSubmission || ''}>
+              <option value="">Select Submission</option>
+              {submissions.map(submission => (
+                <option key={submission._id} value={submission._id}>
+                  {submission.userId.firstName} {submission.userId.lastName} - {new Date(submission.submittedAt).toLocaleDateString()}
+                </option>
+              ))}
+            </select>
+            <button className="btn btn-retake" onClick={handleRetakeTest}>Retake the test</button>
           </div>
         )}
       </div>
@@ -269,6 +318,7 @@ const Test = () => {
           test={test}
           onClose={handleViewTest}
           handleGoBackToClassroom={handleGoBackToClassroom}
+          // totalQuestionsCount={totalQuestionsCount} TODO: put questions count
         />
       )}
     </div>

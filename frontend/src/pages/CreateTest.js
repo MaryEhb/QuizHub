@@ -12,6 +12,7 @@ const CreateTest = () => {
   ]);
   const [description, setDescription] = useState('');
   const [requirements, setRequirements] = useState('');
+  const [allowMultipleSubmissions, setAllowMultipleSubmissions] = useState(false); 
   const [loading, setLoading] = useState(false);
   const updateGeneralMsg = useGeneralMsgUpdate();
   const navigate = useNavigate();
@@ -73,6 +74,10 @@ const CreateTest = () => {
     setQuestions(updatedQuestions);
   };
 
+  const handleAllowMultipleSubmissionsChange = (e) => {
+    setAllowMultipleSubmissions(e.target.checked);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -81,7 +86,7 @@ const CreateTest = () => {
         title,
         description,
         requirements,
-        allowMultipleSubmissions: false,
+        allowMultipleSubmissions,
         questions: questions.map(question => ({
           questionText: question.questionText,
           options: question.options,
@@ -135,6 +140,16 @@ const CreateTest = () => {
               value={requirements}
               onChange={handleRequirementsChange}
               disabled={loading}  // Disable input during submission
+            />
+          </label>
+
+          <label>
+            Allow Multiple Submissions:
+            <input
+              type="checkbox"
+              checked={allowMultipleSubmissions}
+              onChange={handleAllowMultipleSubmissionsChange}
+              disabled={loading}  // Disable checkbox during submission
             />
           </label>
         </div>
