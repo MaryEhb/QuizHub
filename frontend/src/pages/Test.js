@@ -62,6 +62,13 @@ const Test = () => {
   const handleDeleteSubmission = async (submissionId) => {
     try {
       await deleteSubmission(testId, submissionId);
+
+      if (selectedSubmission && selectedSubmission._id === submissionId) {
+        setSelectedSubmission(null);
+        setSelectedUserName('');
+        setAnswers({});
+      }  
+
       setSubmissions(submissions.filter(submission => submission._id !== submissionId));
       generalMsgUpdate('Submission deleted successfully', 'success');
     } catch (error) {
