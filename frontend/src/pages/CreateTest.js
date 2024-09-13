@@ -143,14 +143,14 @@ const CreateTest = () => {
             />
           </label>
 
-          <label>
-            Allow Multiple Submissions:
-            <input
+          <label className='checkbox'>
+          <input
               type="checkbox"
               checked={allowMultipleSubmissions}
               onChange={handleAllowMultipleSubmissionsChange}
               disabled={loading}  // Disable checkbox during submission
             />
+            Allow Multiple Submissions
           </label>
         </div>
 
