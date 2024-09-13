@@ -54,5 +54,7 @@ router.delete('/classrooms/:classroomId/tests/:testId', TestController.deleteTes
 
 // Submit a test by testId
 router.post('/tests/:testId/submit', SubmissionController.createSubmission);
+// Delete a submission by submissionId (only for test owner)
+router.delete('/tests/:testId/submissions/:submissionId', SubmissionController.deleteSubmission);
 
 export default router;
