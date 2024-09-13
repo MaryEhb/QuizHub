@@ -3,8 +3,20 @@ import { useAuth, useAuthUpdate } from '../context/AuthContext';
 import { updateUserDetails } from '../services/userService';
 import { useLoadingUpdate } from '../context/LoadingContext';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
+import soonImage from '../assets/coming-soon.svg';
 
 const Profile = () => {
+
+  return (
+    <div className='profile'>
+      <div className='coming-soon'>
+        <h2>This page is under construction!</h2>
+        <div className='coming-soon-img' style={{ backgroundImage: `url(${soonImage})` }}></div>
+        <p>Our team is currently developing this feature. Stay tuned!</p>
+      </div>
+    </div>
+  )
+
   const { user } = useAuth();
   const updateAuthUser = useAuthUpdate();
   const setLoading = useLoadingUpdate();
