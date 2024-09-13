@@ -40,7 +40,7 @@ class SubmissionController {
 
       await submission.save();
 
-      res.status(201).json({ message: 'Submission saved successfully', submission });
+      res.status(201).json(submission);
     } catch (error) {
       console.error('Error creating submission:', error);
       res.status(500).json({ message: 'Failed to create submission', error: error.message });
