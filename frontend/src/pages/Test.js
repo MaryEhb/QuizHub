@@ -34,7 +34,7 @@ const Test = () => {
         setSubmissions(testData.submissions || []);
 
         // Use the first submission if available
-        if (testData.submissions.length > 0) {
+        if (testData.submissions.length > 0 && user._id !== testData.classroomId.owner) {
           const firstSubmission = testData.submissions[0];
           setAnswers(firstSubmission.answers.reduce((acc, { questionId, answer }) => {
             acc[questionId] = answer;
@@ -43,6 +43,7 @@ const Test = () => {
           setSubmitted(true);
           setSelectedSubmission(firstSubmission);
           setSelectedUserName(`${firstSubmission.userId.firstName} ${firstSubmission.userId.lastName}`);
+          generalMsgUpdate('You have already submitted this test. Only one submission is allowed.', 'info');
         }
       } catch (error) {
         generalMsgUpdate('Failed to fetch test details', 'error');
