@@ -1,0 +1,1964 @@
+[{
+  "_id": {
+    "$oid": "66e1b567e46f070c81b5c5d4"
+  },
+  "classroomId": {
+    "$oid": "66e1b368e46f070c81b5c5c6"
+  },
+  "title": "Programming Fundamentals",
+  "description": "This test covers the basic concepts of programming languages.",
+  "requirements": "Knowledge of basic programming concepts like variables, loops, and conditionals.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:21:11.278Z"
+  },
+  "isPublished": false,
+  "maxScore": 6,
+  "questions": [
+    {
+      "questionText": "What does HTML stand for?",
+      "questionType": "multiple-choice",
+      "options": [
+        "HyperText Markup Language",
+        "Hyperlinks Text Markup Language",
+        "Home Tool Markup Language"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1b567e46f070c81b5c5d5"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:21:11.283Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:21:11.283Z"
+      }
+    },
+    {
+      "questionText": "What is the purpose of a loop in programming?",
+      "questionType": "multiple-choice",
+      "options": [
+        "To store data",
+        "To repeat a block of code",
+        "To take user input"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b567e46f070c81b5c5d6"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:21:11.283Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:21:11.283Z"
+      }
+    },
+    {
+      "questionText": "What keyword is used to define a variable in JavaScript?",
+      "questionType": "multiple-choice",
+      "options": [
+        "define",
+        "var"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b567e46f070c81b5c5d7"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:21:11.283Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:21:11.283Z"
+      }
+    },
+    {
+      "questionText": "Which of the following is a programming language?",
+      "questionType": "multiple-choice",
+      "options": [
+        "HTML",
+        "Python",
+        "CSS"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b567e46f070c81b5c5d8"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:21:11.283Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:21:11.283Z"
+      }
+    },
+    {
+      "questionText": "What is the output of console.log(typeof 42) in JavaScript?",
+      "questionType": "multiple-choice",
+      "options": [
+        "'boolean'",
+        "'string'",
+        "'number'"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1b567e46f070c81b5c5d9"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:21:11.284Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:21:11.284Z"
+      }
+    },
+    {
+      "questionText": "How do you declare a function in Python?",
+      "questionType": "multiple-choice",
+      "options": [
+        "def",
+        "func",
+        "function"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1b567e46f070c81b5c5da"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:21:11.284Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:21:11.284Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:21:11.284Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:21:11.284Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1b6f0e46f070c81b5c63f"
+  },
+  "classroomId": {
+    "$oid": "66e1b368e46f070c81b5c5c6"
+  },
+  "title": "Data Structures",
+  "description": "Test your understanding of common data structures.",
+  "requirements": "Familiarity with stacks, queues, trees, and their applications.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:27:44.146Z"
+  },
+  "isPublished": false,
+  "maxScore": 10,
+  "questions": [
+    {
+      "questionText": "What is the time complexity of searching in a binary search tree (BST)?",
+      "questionType": "multiple-choice",
+      "options": [
+        " O(1)",
+        "O(n)",
+        "O(log n)"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c640"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.153Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.153Z"
+      }
+    },
+    {
+      "questionText": "Which of the following is a linear data structure?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Stack",
+        "Tree",
+        "Graph"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c641"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.153Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.153Z"
+      }
+    },
+    {
+      "questionText": "Which data structure follows the FIFO (First In, First Out) principle?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Queue",
+        "Stack",
+        "Linked List"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c642"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.153Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.153Z"
+      }
+    },
+    {
+      "questionText": "What is the maximum number of children a binary tree node can have?",
+      "questionType": "multiple-choice",
+      "options": [
+        "1",
+        "2",
+        "3"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c643"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      }
+    },
+    {
+      "questionText": "Which data structure is used to implement recursion?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Queue",
+        "Stack",
+        "Tree"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c644"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      }
+    },
+    {
+      "questionText": "How is a linked list different from an array?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Continuous memory allocation",
+        "Sequential access",
+        "Nodes with pointers"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c645"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      }
+    },
+    {
+      "questionText": "What is a hash table used for?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Fast data retrieval",
+        "Sorting",
+        "Storing hierarchical data"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c646"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      }
+    },
+    {
+      "questionText": "A graph is the best data structure to model a hierarchy.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c647"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      }
+    },
+    {
+      "questionText": "The search operation in a hash map generally has O(n) time complexity.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c648"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      }
+    },
+    {
+      "questionText": "A priority queue is a queue where each element has a priority associated with it.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1b6f0e46f070c81b5c649"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:27:44.154Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:27:44.154Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:27:44.154Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1b88ae46f070c81b5c6f5"
+  },
+  "classroomId": {
+    "$oid": "66e1b798e46f070c81b5c6e1"
+  },
+  "title": "UX Fundamentals",
+  "description": "Assess your understanding of basic UX design principles.",
+  "requirements": "Familiarity with UX design concepts and best practices.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:34:34.469Z"
+  },
+  "isPublished": false,
+  "maxScore": 4,
+  "questions": [
+    {
+      "questionText": "UX design is only concerned with the visual appearance of an interface.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b88ae46f070c81b5c6f6"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:34:34.473Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:34:34.473Z"
+      }
+    },
+    {
+      "questionText": "Which of the following is a primary goal of UX design?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Increase revenue",
+        "Enhance user satisfaction",
+        "Improve website loading speed",
+        "Boost social media presence"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b88ae46f070c81b5c6f7"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:34:34.473Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:34:34.473Z"
+      }
+    },
+    {
+      "questionText": "A user persona is a detailed description of the typical user for a product or service.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1b88ae46f070c81b5c6f8"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:34:34.473Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:34:34.473Z"
+      }
+    },
+    {
+      "questionText": "What is a wireframe used for in UX design?",
+      "questionType": "multiple-choice",
+      "options": [
+        "To create high-fidelity mockups",
+        "To conduct user testing",
+        "To write user stories",
+        "To define the layout and structure of a webpage"
+      ],
+      "correctAnswer": "3",
+      "_id": {
+        "$oid": "66e1b88ae46f070c81b5c6f9"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:34:34.473Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:34:34.473Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:34:34.473Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:34:34.473Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1b8eee46f070c81b5c72c"
+  },
+  "classroomId": {
+    "$oid": "66e1b798e46f070c81b5c6e1"
+  },
+  "title": "Interaction Design",
+  "description": "Evaluate your knowledge of interaction design principles",
+  "requirements": "Understanding of interaction design and user behavior.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:36:14.938Z"
+  },
+  "isPublished": false,
+  "maxScore": 4,
+  "questions": [
+    {
+      "questionText": "Which principle focuses on minimizing the cognitive load on users?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Consistency",
+        "Feedback",
+        "Simplicity",
+        "Affordance"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1b8eee46f070c81b5c72d"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:36:14.941Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:36:14.941Z"
+      }
+    },
+    {
+      "questionText": "Consistency in UX design helps users become familiar with the interface more quickly.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1b8eee46f070c81b5c72e"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:36:14.941Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:36:14.941Z"
+      }
+    },
+    {
+      "questionText": "Which of the following is an example of a feedback mechanism in UX design?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Error messages",
+        "Color scheme",
+        "Navigation menu",
+        "Branding"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1b8eee46f070c81b5c72f"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:36:14.941Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:36:14.941Z"
+      }
+    },
+    {
+      "questionText": "Interaction design should prioritize aesthetics over functionality.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b8eee46f070c81b5c730"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:36:14.941Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:36:14.941Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:36:14.941Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:36:14.941Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1b946e46f070c81b5c74d"
+  },
+  "classroomId": {
+    "$oid": "66e1b798e46f070c81b5c6e1"
+  },
+  "title": "User Research",
+  "description": "Test your understanding of methods and techniques in user research.",
+  "requirements": "Knowledge of user research methodologies and their applications.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:37:42.493Z"
+  },
+  "isPublished": false,
+  "maxScore": 3,
+  "questions": [
+    {
+      "questionText": "Which method is used to gather qualitative data about user preferences and behaviors?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Surveys",
+        "Usability Testing",
+        "Focus Groups"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1b946e46f070c81b5c74e"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:37:42.496Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:37:42.496Z"
+      }
+    },
+    {
+      "questionText": "interviews are a common method for gathering quantitative data.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1b946e46f070c81b5c74f"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:37:42.496Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:37:42.496Z"
+      }
+    },
+    {
+      "questionText": "What is the primary purpose of a usability test?",
+      "questionType": "multiple-choice",
+      "options": [
+        "To understand user needs",
+        "To test the overall design aesthetic",
+        "To evaluate how users interact with a product",
+        "To measure market trends"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1b946e46f070c81b5c750"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:37:42.497Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:37:42.497Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:37:42.497Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:37:42.497Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1ba14e46f070c81b5c773"
+  },
+  "classroomId": {
+    "$oid": "66e1b798e46f070c81b5c6e1"
+  },
+  "title": "Prototyping and Testing",
+  "description": "Assess your knowledge of prototyping and testing techniques in UX design.",
+  "requirements": "Familiarity with creating prototypes and conducting tests.d",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:41:08.230Z"
+  },
+  "isPublished": false,
+  "maxScore": 3,
+  "questions": [
+    {
+      "questionText": "Which type of prototype is typically used for early-stage design validation?",
+      "questionType": "multiple-choice",
+      "options": [
+        "High-fidelity prototype",
+        "Interactive prototype",
+        "Low-fidelity prototype",
+        "Static mockup"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1ba14e46f070c81b5c774"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:41:08.233Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:41:08.233Z"
+      }
+    },
+    {
+      "questionText": "Prototyping helps designers explore ideas and gather feedback before final development.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1ba14e46f070c81b5c775"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:41:08.233Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:41:08.233Z"
+      }
+    },
+    {
+      "questionText": "What is a common benefit of usability testing?",
+      "questionType": "multiple-choice",
+      "options": [
+        "It helps in the visual design process",
+        "It identifies usability issues before the product is finalized",
+        "It enhances marketing strategies",
+        "It accelerates project timelines"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1ba14e46f070c81b5c776"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:41:08.233Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:41:08.233Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:41:08.233Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:41:08.233Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1bb84e46f070c81b5c9a7"
+  },
+  "classroomId": {
+    "$oid": "66e1bae6e46f070c81b5c99c"
+  },
+  "title": "Introduction to Embedded Systems",
+  "description": "Test your understanding of basic embedded systems concepts.",
+  "requirements": "Familiarity with the fundamental principles of embedded systems.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:47:16.174Z"
+  },
+  "isPublished": false,
+  "maxScore": 5,
+  "questions": [
+    {
+      "questionText": "What is an embedded system?",
+      "questionType": "multiple-choice",
+      "options": [
+        "A system designed for general-purpose computing",
+        "A system that performs specific tasks within a larger system",
+        "A system used only for communication",
+        "A system that requires a large operating system"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bb84e46f070c81b5c9a8"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      }
+    },
+    {
+      "questionText": "Embedded systems are typically designed for specific, dedicated functions.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bb84e46f070c81b5c9a9"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      }
+    },
+    {
+      "questionText": "Which of the following is an example of an embedded system?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Personal Computer",
+        "Smartphone",
+        "Washing Machine",
+        "Desktop Printer"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1bb84e46f070c81b5c9aa"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      }
+    },
+    {
+      "questionText": "What is a microcontroller?",
+      "questionType": "multiple-choice",
+      "options": [
+        "A type of processor used in general-purpose computers",
+        "A device that stores data in a non-volatile manner",
+        "A hardware component for networking",
+        "A small computer on a single integrated circuit designed for embedded systems"
+      ],
+      "correctAnswer": "3",
+      "_id": {
+        "$oid": "66e1bb84e46f070c81b5c9ab"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      }
+    },
+    {
+      "questionText": "n embedded system usually runs a full-fledged operating system.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bb84e46f070c81b5c9ac"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:47:16.177Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:47:16.177Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:47:16.177Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1bc19e46f070c81b5c9cc"
+  },
+  "classroomId": {
+    "$oid": "66e1bae6e46f070c81b5c99c"
+  },
+  "title": "Embedded System Components",
+  "description": "Evaluate your knowledge of the components commonly found in embedded systems.",
+  "requirements": "Understanding of microcontrollers, sensors, actuators, and other components.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:49:45.593Z"
+  },
+  "isPublished": false,
+  "maxScore": 5,
+  "questions": [
+    {
+      "questionText": "What is the primary function of a microcontroller in an embedded system?",
+      "questionType": "multiple-choice",
+      "options": [
+        "To provide power to the system",
+        "To process data and execute instructions",
+        "To handle user input only",
+        "To manage network connections"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bc19e46f070c81b5c9cd"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:49:45.595Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:49:45.595Z"
+      }
+    },
+    {
+      "questionText": "Sensors are used to collect data from the environment in embedded systems.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bc19e46f070c81b5c9ce"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:49:45.595Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:49:45.595Z"
+      }
+    },
+    {
+      "questionText": "Which component is responsible for converting digital signals into analog signals?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Analog-to-Digital Converter (ADC)",
+        "Digital-to-Analog Converter (DAC)",
+        "Microcontroller",
+        "Sensor"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bc19e46f070c81b5c9cf"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:49:45.595Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:49:45.595Z"
+      }
+    },
+    {
+      "questionText": "Actuators are used to control physical processes based on digital signals.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bc19e46f070c81b5c9d0"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:49:45.595Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:49:45.595Z"
+      }
+    },
+    {
+      "questionText": "What does EEPROM stand for?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Electrically Erasable Programmable Read-Only Memory",
+        "Electronic Erasable Programmable Read-Only Memory",
+        "External Erasable Programmable Read-Only Memory",
+        "Electronic Enhanced Programmable Read-Only Memory"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bc19e46f070c81b5c9d1"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:49:45.596Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:49:45.596Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:49:45.596Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:49:45.596Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1bca0e46f070c81b5ca00"
+  },
+  "classroomId": {
+    "$oid": "66e1bae6e46f070c81b5c99c"
+  },
+  "title": "Programming for Embedded Systems",
+  "description": "Test your knowledge of programming concepts and languages used in embedded systems.",
+  "requirements": "Familiarity with programming languages and development environments for embedded systems.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:52:00.953Z"
+  },
+  "isPublished": false,
+  "maxScore": 5,
+  "questions": [
+    {
+      "questionText": "Which programming language is commonly used for embedded systems development?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Python",
+        "JavaScript",
+        "C",
+        "Ruby"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1bca0e46f070c81b5ca01"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:52:00.954Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:52:00.954Z"
+      }
+    },
+    {
+      "questionText": "Assembly language is often used in embedded systems to write low-level code that interacts directly with hardware.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bca0e46f070c81b5ca02"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:52:00.955Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:52:00.955Z"
+      }
+    },
+    {
+      "questionText": "hat is a common tool used for debugging embedded systems?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Logic Analyzer",
+        "Digital Multimeter",
+        "Oscilloscope",
+        "JTAG Debugger"
+      ],
+      "correctAnswer": "3",
+      "_id": {
+        "$oid": "66e1bca0e46f070c81b5ca03"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:52:00.955Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:52:00.955Z"
+      }
+    },
+    {
+      "questionText": "In embedded systems programming, real-time operating systems (RTOS) are used to manage tasks and resources efficiently.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bca0e46f070c81b5ca04"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:52:00.955Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:52:00.955Z"
+      }
+    },
+    {
+      "questionText": "What does the term \"bootloader\" refer to in embedded systems?",
+      "questionType": "multiple-choice",
+      "options": [
+        "A software that handles network communication",
+        "A program that initializes the hardware and loads the main application",
+        "A tool for data encryption",
+        " A component that controls power supply"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bca0e46f070c81b5ca05"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:52:00.955Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:52:00.955Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:52:00.955Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:52:00.955Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1bdffe46f070c81b5cc2e"
+  },
+  "classroomId": {
+    "$oid": "66e1bd4ce46f070c81b5cc20"
+  },
+  "title": "Parts of Speech",
+  "description": "Evaluate your understanding of the different parts of speech in English.",
+  "requirements": "Familiarity with nouns, verbs, adjectives, adverbs, and other parts of speech.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:57:51.467Z"
+  },
+  "isPublished": false,
+  "maxScore": 5,
+  "questions": [
+    {
+      "questionText": "Which part of speech describes an action or state?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Noun",
+        "Verb",
+        "Adjective",
+        "Adverb"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bdffe46f070c81b5cc2f"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      }
+    },
+    {
+      "questionText": "An adjective modifies a noun or pronoun.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bdffe46f070c81b5cc30"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      }
+    },
+    {
+      "questionText": "What is the function of an adverb in a sentence?",
+      "questionType": "multiple-choice",
+      "options": [
+        "To name a person, place, or thing",
+        "To describe a verb, adjective, or another adverb",
+        "To connect words or phrases",
+        "To express a complete thought"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bdffe46f070c81b5cc31"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      }
+    },
+    {
+      "questionText": "Pronouns are used to replace nouns in a sentence.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bdffe46f070c81b5cc32"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      }
+    },
+    {
+      "questionText": "Which of the following is an example of a preposition?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Quickly",
+        "Under",
+        "Happy",
+        "Run"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bdffe46f070c81b5cc33"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:57:51.469Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:57:51.469Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:57:51.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1be76e46f070c81b5cc4a"
+  },
+  "classroomId": {
+    "$oid": "66e1bd4ce46f070c81b5cc20"
+  },
+  "title": "Sentence Structure",
+  "description": "Assess your knowledge of sentence components and sentence types.",
+  "requirements": "Understanding of sentence structure, including clauses, phrases, and sentence types.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T15:59:50.069Z"
+  },
+  "isPublished": false,
+  "maxScore": 5,
+  "questions": [
+    {
+      "questionText": "What is the main clause in the sentence \"She went to the store because she needed groceries\"?",
+      "questionType": "multiple-choice",
+      "options": [
+        "She went to the store",
+        "Because she needed groceries",
+        "She needed groceries",
+        "She went to the store because she needed groceries"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1be76e46f070c81b5cc4b"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      }
+    },
+    {
+      "questionText": "A compound sentence consists of two or more independent clauses joined by a conjunction.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1be76e46f070c81b5cc4c"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      }
+    },
+    {
+      "questionText": "Which sentence is a simple sentence?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Although it was raining, we went for a walk.",
+        "I wanted to go to the park, but it started raining.",
+        "She runs every morning.",
+        "If you study hard, you will pass the exam."
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1be76e46f070c81b5cc4d"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      }
+    },
+    {
+      "questionText": "A fragment is a group of words that forms a complete sentence.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1be76e46f070c81b5cc4e"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      }
+    },
+    {
+      "questionText": "What is the purpose of a relative clause in a sentence?",
+      "questionType": "multiple-choice",
+      "options": [
+        "To add additional information about a noun",
+        "To express a condition",
+        "To show the relationship between ideas",
+        "To command or request"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1be76e46f070c81b5cc4f"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T15:59:50.072Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T15:59:50.072Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T15:59:50.072Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1beffe46f070c81b5cc7e"
+  },
+  "classroomId": {
+    "$oid": "66e1bd4ce46f070c81b5cc20"
+  },
+  "title": "Tenses and Verb Forms",
+  "description": "Test your knowledge of English verb tenses and forms.",
+  "requirements": "Understanding of different tenses and their correct usage.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T16:02:07.631Z"
+  },
+  "isPublished": false,
+  "maxScore": 5,
+  "questions": [
+    {
+      "questionText": "Which tense is used to describe an action that was completed before another action in the past?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Present Perfect",
+        "Past Perfect",
+        "Future Perfect",
+        "Present Continuous"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1beffe46f070c81b5cc7f"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      }
+    },
+    {
+      "questionText": "The present continuous tense is used to describe an action happening right now.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1beffe46f070c81b5cc80"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      }
+    },
+    {
+      "questionText": "Which of the following sentences uses the future simple tense?",
+      "questionType": "multiple-choice",
+      "options": [
+        "I am reading a book.",
+        "I have read the book.",
+        " I will read the book.",
+        "I was reading the book."
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1beffe46f070c81b5cc81"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      }
+    },
+    {
+      "questionText": "The verb form \"has been running\" is in the present perfect continuous tense.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1beffe46f070c81b5cc82"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      }
+    },
+    {
+      "questionText": "Which sentence is in the past continuous tense?",
+      "questionType": "multiple-choice",
+      "options": [
+        "She will be cooking dinner.",
+        "She is cooking dinner.",
+        "She was cooking dinner.",
+        "She has cooked dinner."
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e1beffe46f070c81b5cc83"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:02:07.635Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T16:02:07.635Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T16:02:07.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e1bf8ae46f070c81b5cd1d"
+  },
+  "classroomId": {
+    "$oid": "66e1bd4ce46f070c81b5cc20"
+  },
+  "title": "Articles and Determiners",
+  "description": "Assess your understanding of articles and determiners in English grammar.",
+  "requirements": "Knowledge of definite and indefinite articles, as well as other determiners.",
+  "allowMultipleSubmissions": false,
+  "startTime": {
+    "$date": "2024-09-11T16:04:26.124Z"
+  },
+  "isPublished": false,
+  "maxScore": 5,
+  "questions": [
+    {
+      "questionText": "Which article is used before a noun starting with a vowel sound?",
+      "questionType": "multiple-choice",
+      "options": [
+        "A",
+        "An",
+        "The"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bf8ae46f070c81b5cd1e"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      }
+    },
+    {
+      "questionText": "The definite article \"the\" is used to refer to something specific or known to the speaker.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bf8ae46f070c81b5cd1f"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      }
+    },
+    {
+      "questionText": "Which sentence correctly uses the definite article \"the\"?",
+      "questionType": "multiple-choice",
+      "options": [
+        "I saw a cat in the park.",
+        "The cat is sleeping on the couch.",
+        "She bought an car.",
+        "We visited a museum."
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bf8ae46f070c81b5cd20"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      }
+    },
+    {
+      "questionText": "Indefinite articles are used to refer to any member of a group or category.",
+      "questionType": "multiple-choice",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e1bf8ae46f070c81b5cd21"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      }
+    },
+    {
+      "questionText": "What type of determiner is used to show ownership?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Demonstrative",
+        "Possessive",
+        "Quantitative",
+        "Indefinite"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e1bf8ae46f070c81b5cd22"
+      },
+      "createdAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-11T16:04:26.127Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-11T16:04:26.127Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T16:04:26.127Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e43b52912d12c1274517ae"
+  },
+  "classroomId": {
+    "$oid": "66e1bae6e46f070c81b5c99c"
+  },
+  "title": "Embedded Systems Architecture",
+  "description": "Evaluate your understanding of the architecture and design principles of embedded systems.",
+  "requirements": "Basic knowledge of microcontrollers and embedded design patterns.",
+  "allowMultipleSubmissions": true,
+  "startTime": {
+    "$date": "2024-09-13T13:17:06.221Z"
+  },
+  "isPublished": false,
+  "maxScore": 4,
+  "questions": [
+    {
+      "questionText": "What is the primary role of a microcontroller in an embedded system?",
+      "questionType": "multiple-choice",
+      "options": [
+        "To provide networking capabilities.",
+        "To manage input/output and execute programs",
+        "To regulate power supply.",
+        "To act as an external memory unit."
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e43b52912d12c1274517af"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T13:17:06.226Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T13:17:06.226Z"
+      }
+    },
+    {
+      "questionText": "Which of the following is a common architecture used in embedded systems?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Harvard architecture",
+        "Neumann architecture",
+        "Dual-core architecture",
+        "Quantum architecture"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e43b52912d12c1274517b0"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T13:17:06.227Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T13:17:06.227Z"
+      }
+    },
+    {
+      "questionText": "In embedded systems, which memory type is typically used for long-term storage of the program code?",
+      "questionType": "multiple-choice",
+      "options": [
+        "RAM",
+        "Flash memory",
+        "Cache memory",
+        "ROM"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e43b52912d12c1274517b1"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T13:17:06.227Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T13:17:06.227Z"
+      }
+    },
+    {
+      "questionText": "Which of the following is a characteristic of real-time embedded systems?",
+      "questionType": "multiple-choice",
+      "options": [
+        "High throughput",
+        "High energy consumption",
+        "Deterministic behavior",
+        "General-purpose processing"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e43b52912d12c1274517b2"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T13:17:06.227Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T13:17:06.227Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-13T13:17:06.228Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T13:17:06.228Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e44e570d14718875b80ad0"
+  },
+  "classroomId": {
+    "$oid": "66e2aa046abc66d98e64e07d"
+  },
+  "title": "Test 1",
+  "description": "This test covers advanced algebra, geometry, trigonometry, and introductory calculus concepts.",
+  "requirements": "",
+  "allowMultipleSubmissions": true,
+  "startTime": {
+    "$date": "2024-09-13T14:38:15.481Z"
+  },
+  "isPublished": false,
+  "maxScore": 2,
+  "questions": [
+    {
+      "questionText": "Find the volume of a cylinder with a radius of 3 cm and a height of 7 cm.",
+      "questionType": "multiple-choice",
+      "options": [
+        "63π cm³",
+        "84π cm³ ",
+        "90π cm³",
+        "72π cm³"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e44e570d14718875b80ad1"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T14:38:15.484Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T14:38:15.484Z"
+      }
+    },
+    {
+      "questionText": "A triangle has sides of lengths 5 cm, 12 cm, and 13 cm. What type of triangle is it?",
+      "questionType": "multiple-choice",
+      "options": [
+        "Right triangle",
+        "Isosceles triangle",
+        "Equilateral triangle",
+        "Scalene triangle"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e44e570d14718875b80ad2"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T14:38:15.484Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T14:38:15.484Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-13T14:38:15.484Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T14:38:15.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e48189e4e55dc9194662cb"
+  },
+  "classroomId": {
+    "$oid": "66e47f45e4e55dc9194662b7"
+  },
+  "title": "基础知识与逻辑测试",
+  "description": "多项选择题和判断题测试旨在测试您的基础知识和逻辑思维能力。测试包括多项选择题和判断题，涵盖多个主题，如文化、历史、科技等。每道题将有若干个选项，您需要选择最合适的答案。",
+  "requirements": "请确保在规定时间内完成所有问题。 每个问题只有一个正确答案。 每道题回答后将无法更改，请谨慎作答。 完成所有题目后点击“提交”按钮以查看得分。 若允许多次提交，您可以重新尝试改进您的分数。",
+  "allowMultipleSubmissions": true,
+  "startTime": {
+    "$date": "2024-09-13T18:16:41.424Z"
+  },
+  "isPublished": false,
+  "maxScore": 10,
+  "questions": [
+    {
+      "questionText": "中国的首都是哪里？",
+      "questionType": "multiple-choice",
+      "options": [
+        " 上海",
+        "北京",
+        "广州",
+        "深圳"
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662cc"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    },
+    {
+      "questionText": "中国的国旗是什么颜色的？",
+      "questionType": "multiple-choice",
+      "options": [
+        "蓝色",
+        "绿色",
+        "红色",
+        "黄色"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662cd"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    },
+    {
+      "questionText": "长城位于哪个国家？",
+      "questionType": "multiple-choice",
+      "options": [
+        "日本",
+        "韩国",
+        "中国",
+        "印度"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662ce"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    },
+    {
+      "questionText": "中国最有名的食物是什么？",
+      "questionType": "multiple-choice",
+      "options": [
+        "饺子",
+        " 披萨",
+        "寿司",
+        " 三明治"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662cf"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    },
+    {
+      "questionText": "中国使用的主要语言是什么？",
+      "questionType": "multiple-choice",
+      "options": [
+        "英语",
+        "日语",
+        "中文",
+        "法语"
+      ],
+      "correctAnswer": "2",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662d0"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    },
+    {
+      "questionText": "中国是世界上人口最多的国家。",
+      "questionType": "multiple-choice",
+      "options": [
+        "对",
+        "错"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662d1"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    },
+    {
+      "questionText": "中国新年总是在1月1日庆祝。",
+      "questionType": "multiple-choice",
+      "options": [
+        "对",
+        "错 "
+      ],
+      "correctAnswer": "1",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662d2"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    },
+    {
+      "questionText": "熊猫是中国的国宝。",
+      "questionType": "multiple-choice",
+      "options": [
+        "对",
+        "错"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662d3"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    },
+    {
+      "questionText": "长江是中国最长的河流。",
+      "questionType": "multiple-choice",
+      "options": [
+        "对",
+        "错"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662d4"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    },
+    {
+      "questionText": "紫禁城曾经是中国皇帝的居住地。",
+      "questionType": "multiple-choice",
+      "options": [
+        "对",
+        "错"
+      ],
+      "correctAnswer": "0",
+      "_id": {
+        "$oid": "66e48189e4e55dc9194662d5"
+      },
+      "createdAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      },
+      "updatedAt": {
+        "$date": "2024-09-13T18:16:41.429Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-09-13T18:16:41.430Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T18:16:41.430Z"
+  },
+  "__v": 0
+}]

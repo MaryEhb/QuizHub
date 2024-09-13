@@ -1,0 +1,918 @@
+[{
+  "_id": {
+    "$oid": "66e404e8a019f3111cbe7db3"
+  },
+  "testId": {
+    "$oid": "66e1be76e46f070c81b5cc4a"
+  },
+  "userId": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1be76e46f070c81b5cc4b"
+      },
+      "answer": "She went to the store"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1be76e46f070c81b5cc4c"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1be76e46f070c81b5cc4d"
+      },
+      "answer": "Although it was raining, we went for a walk."
+    },
+    {
+      "questionId": {
+        "$oid": "66e1be76e46f070c81b5cc4e"
+      },
+      "answer": "False"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1be76e46f070c81b5cc4f"
+      },
+      "answer": "To show the relationship between ideas"
+    }
+  ],
+  "score": 3,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T09:24:56.846Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T09:24:56.848Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T09:24:56.848Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e416b3a019f3111cbe855f"
+  },
+  "testId": {
+    "$oid": "66e1beffe46f070c81b5cc7e"
+  },
+  "userId": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc7f"
+      },
+      "answer": "Present Perfect"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc80"
+      },
+      "answer": "False"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc81"
+      },
+      "answer": "I am reading a book."
+    },
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc82"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc83"
+      },
+      "answer": "She will be cooking dinner."
+    }
+  ],
+  "score": 1,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T10:40:51.237Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T10:40:51.238Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T10:40:51.238Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e416d0a019f3111cbe85ef"
+  },
+  "testId": {
+    "$oid": "66e1bdffe46f070c81b5cc2e"
+  },
+  "userId": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc2f"
+      },
+      "answer": "Noun"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc30"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc31"
+      },
+      "answer": "To describe a verb, adjective, or another adverb"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc32"
+      },
+      "answer": "False"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc33"
+      },
+      "answer": "Under"
+    }
+  ],
+  "score": 3,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T10:41:20.994Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T10:41:20.994Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T10:41:20.994Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e435c782d8bda7997f7555"
+  },
+  "testId": {
+    "$oid": "66e1bf8ae46f070c81b5cd1d"
+  },
+  "userId": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1bf8ae46f070c81b5cd1e"
+      },
+      "answer": "A"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bf8ae46f070c81b5cd1f"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bf8ae46f070c81b5cd20"
+      },
+      "answer": "I saw a cat in the park."
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bf8ae46f070c81b5cd21"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bf8ae46f070c81b5cd22"
+      },
+      "answer": "Demonstrative"
+    }
+  ],
+  "score": 2,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T12:53:27.293Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T12:53:27.294Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T12:53:27.294Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e43bf9c285a2416057b54b"
+  },
+  "testId": {
+    "$oid": "66e43b52912d12c1274517ae"
+  },
+  "userId": {
+    "$oid": "66e0568ea630320e5e45b281"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b2"
+      },
+      "answer": "Deterministic behavior"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b1"
+      },
+      "answer": "Flash memory"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b0"
+      },
+      "answer": "Harvard architecture"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517af"
+      },
+      "answer": "To manage input/output and execute programs"
+    }
+  ],
+  "score": 4,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T13:19:53.033Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T13:19:53.035Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T13:19:53.035Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e44073c285a2416057be04"
+  },
+  "testId": {
+    "$oid": "66e43b52912d12c1274517ae"
+  },
+  "userId": {
+    "$oid": "66e0568ea630320e5e45b281"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b2"
+      },
+      "answer": "General-purpose processing"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b1"
+      },
+      "answer": "ROM"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b0"
+      },
+      "answer": "Quantum architecture"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517af"
+      },
+      "answer": "To act as an external memory unit."
+    }
+  ],
+  "score": 0,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T13:38:59.161Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T13:38:59.162Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T13:38:59.162Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e4407ec285a2416057be14"
+  },
+  "testId": {
+    "$oid": "66e43b52912d12c1274517ae"
+  },
+  "userId": {
+    "$oid": "66e0568ea630320e5e45b281"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517af"
+      },
+      "answer": "To provide networking capabilities."
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b0"
+      },
+      "answer": "Harvard architecture"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b1"
+      },
+      "answer": "RAM"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b2"
+      },
+      "answer": "High throughput"
+    }
+  ],
+  "score": 1,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T13:39:10.996Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T13:39:10.997Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T13:39:10.997Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e443c8c285a2416057c45a"
+  },
+  "testId": {
+    "$oid": "66e1b88ae46f070c81b5c6f5"
+  },
+  "userId": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1b88ae46f070c81b5c6f6"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b88ae46f070c81b5c6f7"
+      },
+      "answer": "Increase revenue"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b88ae46f070c81b5c6f8"
+      },
+      "answer": "False"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b88ae46f070c81b5c6f9"
+      },
+      "answer": "To create high-fidelity mockups"
+    }
+  ],
+  "score": 0,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T13:53:12.844Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T13:53:12.845Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T13:53:12.845Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e44ba70d14718875b8088a"
+  },
+  "testId": {
+    "$oid": "66e1b8eee46f070c81b5c72c"
+  },
+  "userId": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1b8eee46f070c81b5c72d"
+      },
+      "answer": "Consistency"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b8eee46f070c81b5c72e"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b8eee46f070c81b5c72f"
+      },
+      "answer": "Error messages"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b8eee46f070c81b5c730"
+      },
+      "answer": "True"
+    }
+  ],
+  "score": 2,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T14:26:47.293Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T14:26:47.294Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T14:26:47.294Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e44bca0d14718875b808ca"
+  },
+  "testId": {
+    "$oid": "66e1b946e46f070c81b5c74d"
+  },
+  "userId": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1b946e46f070c81b5c74e"
+      },
+      "answer": "Surveys"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b946e46f070c81b5c74f"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b946e46f070c81b5c750"
+      },
+      "answer": "To evaluate how users interact with a product"
+    }
+  ],
+  "score": 1,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T14:27:22.219Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T14:27:22.219Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T14:27:22.219Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e44c040d14718875b8097c"
+  },
+  "testId": {
+    "$oid": "66e1ba14e46f070c81b5c773"
+  },
+  "userId": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1ba14e46f070c81b5c774"
+      },
+      "answer": "Low-fidelity prototype"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1ba14e46f070c81b5c775"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1ba14e46f070c81b5c776"
+      },
+      "answer": "It identifies usability issues before the product is finalized"
+    }
+  ],
+  "score": 3,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T14:28:20.180Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T14:28:20.181Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T14:28:20.181Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e44c2a0d14718875b80a48"
+  },
+  "testId": {
+    "$oid": "66e43b52912d12c1274517ae"
+  },
+  "userId": {
+    "$oid": "66e0568ea630320e5e45b281"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517af"
+      },
+      "answer": "To provide networking capabilities."
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b0"
+      },
+      "answer": "Quantum architecture"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b1"
+      },
+      "answer": "ROM"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b2"
+      },
+      "answer": "General-purpose processing"
+    }
+  ],
+  "score": 0,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T14:28:58.617Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T14:28:58.618Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T14:28:58.618Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e457a24c9d7d0ae8f8c00e"
+  },
+  "testId": {
+    "$oid": "66e44e570d14718875b80ad0"
+  },
+  "userId": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e44e570d14718875b80ad1"
+      },
+      "answer": "72π cm³"
+    },
+    {
+      "questionId": {
+        "$oid": "66e44e570d14718875b80ad2"
+      },
+      "answer": "Scalene triangle"
+    }
+  ],
+  "score": 0,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T15:17:54.652Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T15:17:54.653Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T15:17:54.653Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e47b8fe4e55dc919465ecc"
+  },
+  "testId": {
+    "$oid": "66e1e18ab049f36a2e79819e"
+  },
+  "userId": {
+    "$oid": "66e47ae7e4e55dc919465dc9"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1e18ab049f36a2e79819f"
+      },
+      "answer": "Salma"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1e18ab049f36a2e7981a0"
+      },
+      "answer": "lila"
+    }
+  ],
+  "score": 1,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T17:51:11.471Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T17:51:11.472Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T17:51:11.472Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e47c3de4e55dc919465ff8"
+  },
+  "testId": {
+    "$oid": "66e1bdffe46f070c81b5cc2e"
+  },
+  "userId": {
+    "$oid": "66e47ae7e4e55dc919465dc9"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc33"
+      },
+      "answer": "Under"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc32"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc31"
+      },
+      "answer": "To describe a verb, adjective, or another adverb"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc30"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bdffe46f070c81b5cc2f"
+      },
+      "answer": "Verb"
+    }
+  ],
+  "score": 5,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T17:54:05.791Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T17:54:05.791Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T17:54:05.791Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e47c69e4e55dc91946604a"
+  },
+  "testId": {
+    "$oid": "66e1beffe46f070c81b5cc7e"
+  },
+  "userId": {
+    "$oid": "66e47ae7e4e55dc919465dc9"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc7f"
+      },
+      "answer": "Future Perfect"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc81"
+      },
+      "answer": " I will read the book."
+    },
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc80"
+      },
+      "answer": "False"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc82"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1beffe46f070c81b5cc83"
+      },
+      "answer": "She is cooking dinner."
+    }
+  ],
+  "score": 2,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T17:54:49.184Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T17:54:49.185Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T17:54:49.185Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e47c88e4e55dc9194660d5"
+  },
+  "testId": {
+    "$oid": "66e1b88ae46f070c81b5c6f5"
+  },
+  "userId": {
+    "$oid": "66e47ae7e4e55dc919465dc9"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1b88ae46f070c81b5c6f6"
+      },
+      "answer": "False"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b88ae46f070c81b5c6f7"
+      },
+      "answer": "Boost social media presence"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b88ae46f070c81b5c6f8"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1b88ae46f070c81b5c6f9"
+      },
+      "answer": "To write user stories"
+    }
+  ],
+  "score": 2,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T17:55:20.302Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T17:55:20.303Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T17:55:20.303Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e48281e4e55dc919466443"
+  },
+  "testId": {
+    "$oid": "66e48189e4e55dc9194662cb"
+  },
+  "userId": {
+    "$oid": "66e1dfb8b049f36a2e7980d5"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662cc"
+      },
+      "answer": "北京"
+    },
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662cd"
+      },
+      "answer": "红色"
+    },
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662ce"
+      },
+      "answer": "中国"
+    },
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662cf"
+      },
+      "answer": "饺子"
+    },
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662d0"
+      },
+      "answer": "中文"
+    },
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662d1"
+      },
+      "answer": "对"
+    },
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662d2"
+      },
+      "answer": "对"
+    },
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662d3"
+      },
+      "answer": "对"
+    },
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662d4"
+      },
+      "answer": "错"
+    },
+    {
+      "questionId": {
+        "$oid": "66e48189e4e55dc9194662d5"
+      },
+      "answer": "错"
+    }
+  ],
+  "score": 7,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-13T18:20:49.671Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-13T18:20:49.672Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T18:20:49.672Z"
+  },
+  "__v": 0
+}]

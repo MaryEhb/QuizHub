@@ -1,0 +1,260 @@
+[{
+  "_id": {
+    "$oid": "66e1b368e46f070c81b5c5c6"
+  },
+  "title": "Programming Basics",
+  "description": "A beginner’s guide to programming concepts and fundamentals.",
+  "owner": {
+    "$oid": "66e0568ea630320e5e45b281"
+  },
+  "isPublic": true,
+  "members": [
+    {
+      "$oid": "66e03fc351c2414379b40b59"
+    },
+    {
+      "$oid": "66e1bcffe46f070c81b5cae7"
+    },
+    {
+      "$oid": "66e1c17ae46f070c81b5d179"
+    }
+  ],
+  "enrollRequests": [],
+  "tests": [
+    {
+      "$oid": "66e1b567e46f070c81b5c5d4"
+    },
+    {
+      "$oid": "66e1b6f0e46f070c81b5c63f"
+    }
+  ],
+  "maxScore": 0,
+  "leaderboard": [],
+  "createdAt": {
+    "$date": "2024-09-11T15:12:40.949Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-11T16:13:05.032Z"
+  },
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "66e1b798e46f070c81b5c6e1"
+  },
+  "title": "UX Design",
+  "description": "Explore the principles and best practices of User Experience (UX) Design.\n\n",
+  "owner": {
+    "$oid": "66e0568ea630320e5e45b281"
+  },
+  "isPublic": true,
+  "members": [
+    {
+      "$oid": "66e03fc351c2414379b40b59"
+    },
+    {
+      "$oid": "66e2b0036abc66d98e64e36b"
+    }
+  ],
+  "enrollRequests": [],
+  "tests": [
+    {
+      "$oid": "66e1b88ae46f070c81b5c6f5"
+    },
+    {
+      "$oid": "66e1b8eee46f070c81b5c72c"
+    },
+    {
+      "$oid": "66e1b946e46f070c81b5c74d"
+    },
+    {
+      "$oid": "66e1ba14e46f070c81b5c773"
+    }
+  ],
+  "maxScore": 0,
+  "leaderboard": [],
+  "createdAt": {
+    "$date": "2024-09-11T15:30:32.583Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-12T17:51:58.383Z"
+  },
+  "__v": 6
+},
+{
+  "_id": {
+    "$oid": "66e1bae6e46f070c81b5c99c"
+  },
+  "title": "Basic Embedded Systems",
+  "description": "An introduction to embedded systems, covering fundamental concepts and practical applications.",
+  "owner": {
+    "$oid": "66e03fc351c2414379b40b59"
+  },
+  "isPublic": true,
+  "members": [
+    {
+      "$oid": "66e1bcffe46f070c81b5cae7"
+    },
+    {
+      "$oid": "66e0568ea630320e5e45b281"
+    },
+    {
+      "$oid": "66e1c17ae46f070c81b5d179"
+    },
+    {
+      "$oid": "66e2b0036abc66d98e64e36b"
+    }
+  ],
+  "enrollRequests": [],
+  "tests": [
+    {
+      "$oid": "66e1bb84e46f070c81b5c9a7"
+    },
+    {
+      "$oid": "66e1bc19e46f070c81b5c9cc"
+    },
+    {
+      "$oid": "66e1bca0e46f070c81b5ca00"
+    },
+    {
+      "$oid": "66e43b52912d12c1274517ae"
+    }
+  ],
+  "maxScore": 0,
+  "leaderboard": [],
+  "createdAt": {
+    "$date": "2024-09-11T15:44:38.022Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T13:17:06.232Z"
+  },
+  "__v": 10
+},
+{
+  "_id": {
+    "$oid": "66e1bd4ce46f070c81b5cc20"
+  },
+  "title": "English Grammar",
+  "description": "An introduction to English grammar concepts, focusing on the rules and structures that form the foundation of effective communication in English.",
+  "owner": {
+    "$oid": "66e1bcffe46f070c81b5cae7"
+  },
+  "isPublic": true,
+  "members": [
+    {
+      "$oid": "66e03fc351c2414379b40b59"
+    },
+    {
+      "$oid": "66e1c17ae46f070c81b5d179"
+    },
+    {
+      "$oid": "66e1dfb8b049f36a2e7980d5"
+    },
+    {
+      "$oid": "66e1e1e2b049f36a2e7981d7"
+    },
+    {
+      "$oid": "66e2b0036abc66d98e64e36b"
+    },
+    {
+      "$oid": "66e47ae7e4e55dc919465dc9"
+    }
+  ],
+  "enrollRequests": [],
+  "tests": [
+    {
+      "$oid": "66e1bdffe46f070c81b5cc2e"
+    },
+    {
+      "$oid": "66e1be76e46f070c81b5cc4a"
+    },
+    {
+      "$oid": "66e1beffe46f070c81b5cc7e"
+    },
+    {
+      "$oid": "66e1bf8ae46f070c81b5cd1d"
+    }
+  ],
+  "maxScore": 0,
+  "leaderboard": [],
+  "createdAt": {
+    "$date": "2024-09-11T15:54:52.403Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T17:52:43.450Z"
+  },
+  "__v": 14
+},
+{
+  "_id": {
+    "$oid": "66e2aa046abc66d98e64e07d"
+  },
+  "title": "Maths 6",
+  "description": "This is a private classroom for mathematics 6 class in SCU university.",
+  "owner": {
+    "$oid": "66e0568ea630320e5e45b281"
+  },
+  "isPublic": false,
+  "members": [
+    {
+      "$oid": "66e2b0036abc66d98e64e36b"
+    }
+  ],
+  "enrollRequests": [
+    {
+      "$oid": "66e1c17ae46f070c81b5d179"
+    }
+  ],
+  "tests": [
+    {
+      "$oid": "66e44e570d14718875b80ad0"
+    }
+  ],
+  "maxScore": 0,
+  "leaderboard": [],
+  "createdAt": {
+    "$date": "2024-09-12T08:44:52.242Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T18:40:45.285Z"
+  },
+  "__v": 7
+},
+{
+  "_id": {
+    "$oid": "66e47f45e4e55dc9194662b7"
+  },
+  "title": "中文教室",
+  "description": "苏伊士运河大学中文课堂描述",
+  "owner": {
+    "$oid": "66e47ae7e4e55dc919465dc9"
+  },
+  "isPublic": false,
+  "members": [
+    {
+      "$oid": "66e1dfb8b049f36a2e7980d5"
+    },
+    {
+      "$oid": "66e03fc351c2414379b40b59"
+    }
+  ],
+  "enrollRequests": [
+    {
+      "$oid": "66e0568ea630320e5e45b281"
+    }
+  ],
+  "tests": [
+    {
+      "$oid": "66e48189e4e55dc9194662cb"
+    }
+  ],
+  "maxScore": 0,
+  "leaderboard": [],
+  "createdAt": {
+    "$date": "2024-09-13T18:07:01.113Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-13T18:42:20.710Z"
+  },
+  "__v": 6
+}]
