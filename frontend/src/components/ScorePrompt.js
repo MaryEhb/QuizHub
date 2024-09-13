@@ -3,7 +3,7 @@ import stressedImage from '../assets/stressed.svg';  // Imported as an image
 import studyingImage from '../assets/studying.svg';  // Imported as an image
 import celebratingImage from '../assets/great-job.svg';  // Imported as an image
 
-const ScorePrompt = ({ handleViewTest, correctAnswersCount, totalQuestionsCount, handleGoBackToClassroom }) => {
+const ScorePrompt = ({ onClose, correctAnswersCount, totalQuestionsCount, handleGoBackToClassroom }) => {
 
     const scorePercentage = (correctAnswersCount / totalQuestionsCount) * 100;
     let chosenImage, message, scoreClass;
@@ -25,7 +25,7 @@ const ScorePrompt = ({ handleViewTest, correctAnswersCount, totalQuestionsCount,
   return (
     <div className='score-prompt'>
       <div className='prompt-container'>
-        <div className='prompt-background' onClick={handleViewTest}></div>
+        <div className='prompt-background' onClick={onClose}></div>
         <div className="submission-prompt prompt">
           <div className='icon score-illustration' style={{ backgroundImage: `url(${chosenImage})` }}></div>
           <p className='score-container'>
@@ -35,7 +35,7 @@ const ScorePrompt = ({ handleViewTest, correctAnswersCount, totalQuestionsCount,
             </p>
           <p className='encourage-msg'>{message}</p>
           <div>
-            <button className='btn' onClick={handleViewTest}>View Test</button>
+            <button className='btn' onClick={onClose}>View Test</button>
             <button className='btn btn-close' onClick={handleGoBackToClassroom}>Go Back to Classroom</button>
           </div>
         </div>

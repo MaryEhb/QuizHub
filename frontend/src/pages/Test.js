@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import ScorePrompt from '../components/ScorePrompt';
-import { createSubmission } from '../services/submissionService';
+import { createSubmission, deleteSubmission } from '../services/submissionService';  // Import deleteSubmission
 import { useLoadingUpdate } from '../context/LoadingContext';
 
 const Test = () => {
@@ -55,6 +55,16 @@ const Test = () => {
 
     getTestDetails();
   }, [classroomId, testId]);
+
+  const handleDeleteSubmission = async (submissionId) => {
+    try {
+      await deleteSubmission(testId, submissionId);
+      setSubmissions(submissions.filter(submission => submission._id !== submissionId));
+      generalMsgUpdate('Submission deleted successfully', 'success');
+    } catch (error) {
+      generalMsgUpdate('Failed to delete submission', 'error');
+    }
+  };
 
   const handleAnswerChange = (questionId, answer) => {
     setAnswers(prevAnswers => ({
@@ -237,11 +247,14 @@ const Test = () => {
             <h2>Submissions</h2>
             <ul>
               {submissions.map((submission, index) => (
-                <li 
-                  key={submission._id} 
-                  onClick={() => handleSelectSubmission(submission)}
-                >
-                  {index}. <span className='name'>{submission.userId.firstName} {submission.userId.lastName}</span> - Score: {submission.score}
+                <li key={submission._id}>
+                  {index + 1}.
+                  <span className='name'>{submission.userId.firstName} {submission.userId.lastName}</span>
+                  <div className='btns'>
+                    <button className='btn-show' onClick={() => handleSelectSubmission(submission)}>Show</button>
+                    <button className='btn-remove' onClick={() => handleDeleteSubmission(submission._id)}>Delete</button> {/* Delete button */}
+                  </div>
+                  <span className='submission-score'>{submission.score} / {test.maxScore}</span>
                 </li>
               ))}
             </ul>
@@ -251,10 +264,11 @@ const Test = () => {
 
       {/* Score Prompt */}
       {showScorePrompt && (
-        <ScorePrompt 
-          score={correctAnswersCount} 
-          onClick={handleViewTest}
-          onClickToTest={() => navigate(-1)}
+        <ScorePrompt
+          correctAnswersCount={correctAnswersCount}
+          test={test}
+          onClose={handleViewTest}
+          handleGoBackToClassroom={handleGoBackToClassroom}
         />
       )}
     </div>
