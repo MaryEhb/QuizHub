@@ -32,10 +32,21 @@ const Test = () => {
         const testData = await fetchTestDetails(classroomId, testId);
         setTest(testData);
         setSubmissions(testData.submissions || []);
+
+        // Use the first submission if available
+        if (testData.submissions.length > 0) {
+          const firstSubmission = testData.submissions[0];
+          setAnswers(firstSubmission.answers.reduce((acc, { questionId, answer }) => {
+            acc[questionId] = answer;
+            return acc;
+          }, {}));
+          setSubmitted(true);
+          setSelectedSubmission(firstSubmission);
+          setSelectedUserName(`${firstSubmission.userId.firstName} ${firstSubmission.userId.lastName}`);
+        }
       } catch (error) {
         generalMsgUpdate('Failed to fetch test details', 'error');
         navigate(-1);
-        // console.error('Failed to fetch test details:', error);
       } finally {
         setLoading(false);
       }
@@ -79,8 +90,7 @@ const Test = () => {
         generalMsgUpdate('Submitted answers successfully', 'success');
         setSubmitted(true);
         setShowScorePrompt(true); // Show score prompt after submission
-      }  catch (error) {
-        // console.error('Failed to submit test:', error);
+      } catch (error) {
         generalMsgUpdate('Failed to submit answers', 'error');
       } finally {
         setSubmissionLoading(false);
@@ -102,7 +112,6 @@ const Test = () => {
 
   const handleCloseSubmissionsPrompt = () => {
     setShowSubmissionPrompt(false);
-    // Do not clear selectedUserName here
   };
 
   const handleSelectSubmission = (submission) => {
@@ -133,7 +142,7 @@ const Test = () => {
   return (
     <div className="test-page">
       <div className='top-options'>
-        <button className="close-button" onClick={() => navigate(-1)}><IoIosArrowBack /></button>
+        <button className="close-button" onClick={handleGoBackToClassroom}><IoIosArrowBack /></button>
         {isOwner && (
           <div className="submission-container">
             <button className="btn btn-info" onClick={handleShowSubmissionsPrompt}>
@@ -145,7 +154,7 @@ const Test = () => {
       
       <div className='test-info-container'>
         <h1>{test.title}</h1>
-        {selectedUserName && (
+        {selectedUserName && isOwner && (
           <div className="submission-info">
             <button className="clear-button btn-remove" onClick={handleClearSelectedSubmission}>&#x2715;</button>
             <h3>Submitted by: {selectedUserName}</h3>
@@ -210,7 +219,7 @@ const Test = () => {
             onClick={handleSubmit}
             disabled={!allQuestionsAnswered}
           >
-            {submissionLoading ? 'submitting...' : 'Submit'}
+            {submissionLoading ? 'Submitting...' : 'Submit'}
           </button>
           {!allQuestionsAnswered && (
             <span className="tooltip">Please answer all questions before submitting.</span>
@@ -239,13 +248,12 @@ const Test = () => {
         </div>
       )}
 
-      {/* Prompt after submission */}
-      {showScorePrompt && !isOwner && (
+      {/* Score Prompt */}
+      {showScorePrompt && (
         <ScorePrompt 
-          handleViewTest={handleViewTest}
-          correctAnswersCount={correctAnswersCount}
-          totalQuestionsCount={test.questions.length}
-          handleGoBackToClassroom={handleGoBackToClassroom}
+          score={correctAnswersCount} 
+          onClick={handleViewTest}
+          onClickToTest={() => navigate(-1)}
         />
       )}
     </div>
