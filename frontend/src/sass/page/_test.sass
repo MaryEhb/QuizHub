@@ -4,6 +4,22 @@
   margin: 0 auto
   border-radius: 0.5rem
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)
+
+  .top-options, .submission-info
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  .submission-info
+    justify-content: flex-start
+    gap: 1rem
+    .btn-remove
+      color: $color-black
+      background-color: $color-tangerine
+      font-size: 1rem
+      font-weight: 600
+      padding: .2rem .5rem
+      border-radius: 0.25rem
   h1
     text-align: center
     padding-bottom: 2rem
@@ -98,3 +114,15 @@
 .btn:disabled
   background-color: #ddd
   cursor: not-allowed
+
+.submission-prompt
+  .close-button
+    padding-bottom: 0
+
+  li
+    cursor: pointer
+    text-decoration: underline
+    padding-bottom: 1rem
+    .name
+      font-weight: 600
+      

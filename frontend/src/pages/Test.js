@@ -5,6 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import ScorePrompt from '../components/ScorePrompt';
+import { createSubmission } from '../services/submissionService';
+import { useLoadingUpdate } from '../context/LoadingContext';
 
 const Test = () => {
   const { classroomId, testId } = useParams();
@@ -14,17 +16,28 @@ const Test = () => {
   const [submitted, setSubmitted] = useState(false);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [showScorePrompt, setShowScorePrompt] = useState(false);
+  const [showSubmissionPrompt, setShowSubmissionPrompt] = useState(false);
+  const [selectedSubmission, setSelectedSubmission] = useState(null);
+  const [selectedUserName, setSelectedUserName] = useState('');
+  const [submissionLoading, setSubmissionLoading] = useState(false);
+  const [submissions, setSubmissions] = useState([]);
   const navigate = useNavigate();
   const generalMsgUpdate = useGeneralMsgUpdate();
+  const setLoading = useLoadingUpdate();
 
   useEffect(() => {
     const getTestDetails = async () => {
       try {
+        setLoading(true);
         const testData = await fetchTestDetails(classroomId, testId);
-        console.log(testData);
         setTest(testData);
+        setSubmissions(testData.submissions || []);
       } catch (error) {
-        console.error('Failed to fetch test details:', error);
+        generalMsgUpdate('Failed to fetch test details', 'error');
+        navigate(-1);
+        // console.error('Failed to fetch test details:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -38,7 +51,8 @@ const Test = () => {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setSubmissionLoading(true);
     if (test) {
       let count = 0;
 
@@ -50,9 +64,27 @@ const Test = () => {
       });
 
       setCorrectAnswersCount(count);
-      generalMsgUpdate('Submitted answers successfully', 'success');
-      setSubmitted(true);
-      setShowScorePrompt(true); // Show score prompt after submission
+
+      try {
+        const submissionData = {
+          answers: Object.entries(answers).map(([questionId, answer]) => ({
+            questionId,
+            answer
+          })),
+          score: count
+        };
+
+        await createSubmission(testId, submissionData);
+
+        generalMsgUpdate('Submitted answers successfully', 'success');
+        setSubmitted(true);
+        setShowScorePrompt(true); // Show score prompt after submission
+      }  catch (error) {
+        // console.error('Failed to submit test:', error);
+        generalMsgUpdate('Failed to submit answers', 'error');
+      } finally {
+        setSubmissionLoading(false);
+      }
     }
   };
 
@@ -62,6 +94,32 @@ const Test = () => {
 
   const handleGoBackToClassroom = () => {
     navigate(-1); // Navigate back to the classroom
+  };
+
+  const handleShowSubmissionsPrompt = () => {
+    setShowSubmissionPrompt(true);
+  };
+
+  const handleCloseSubmissionsPrompt = () => {
+    setShowSubmissionPrompt(false);
+    // Do not clear selectedUserName here
+  };
+
+  const handleSelectSubmission = (submission) => {
+    setSelectedSubmission(submission);
+    setSelectedUserName(`${submission.userId.firstName} ${submission.userId.lastName}`);
+    const answersMap = submission.answers.reduce((acc, { questionId, answer }) => {
+      acc[questionId] = answer;
+      return acc;
+    }, {});
+    setAnswers(answersMap);
+    setShowSubmissionPrompt(false);
+  };
+
+  const handleClearSelectedSubmission = () => {
+    setSelectedSubmission(null);
+    setSelectedUserName('');
+    setAnswers({});
   };
 
   const isOwner = user._id === test?.classroomId.owner; // Check if user is the owner
@@ -74,9 +132,25 @@ const Test = () => {
 
   return (
     <div className="test-page">
-      <button className="close-button" onClick={() => navigate(-1)}><IoIosArrowBack /></button>
+      <div className='top-options'>
+        <button className="close-button" onClick={() => navigate(-1)}><IoIosArrowBack /></button>
+        {isOwner && (
+          <div className="submission-container">
+            <button className="btn btn-info" onClick={handleShowSubmissionsPrompt}>
+              Submissions ({submissions.length})
+            </button>
+          </div>
+        )}
+      </div>
+      
       <div className='test-info-container'>
         <h1>{test.title}</h1>
+        {selectedUserName && (
+          <div className="submission-info">
+            <button className="clear-button btn-remove" onClick={handleClearSelectedSubmission}>&#x2715;</button>
+            <h3>Submitted by: {selectedUserName}</h3>
+          </div>
+        )}
         {test.description && (
           <div className='test-info'>
             <h2>Description:</h2>
@@ -136,7 +210,7 @@ const Test = () => {
             onClick={handleSubmit}
             disabled={!allQuestionsAnswered}
           >
-            Submit
+            {submissionLoading ? 'submitting...' : 'Submit'}
           </button>
           {!allQuestionsAnswered && (
             <span className="tooltip">Please answer all questions before submitting.</span>
@@ -144,13 +218,34 @@ const Test = () => {
         </div>
       )}
 
+      {/* Submission Prompt */}
+      {showSubmissionPrompt && (
+        <div className='prompt-container'>
+          <div className='prompt-background' onClick={handleCloseSubmissionsPrompt}></div>
+          <div className="submission-prompt prompt">
+            <button className="close-button close-button-submission" onClick={handleCloseSubmissionsPrompt}><IoIosArrowBack /></button>
+            <h2>Submissions</h2>
+            <ul>
+              {submissions.map((submission, index) => (
+                <li 
+                  key={submission._id} 
+                  onClick={() => handleSelectSubmission(submission)}
+                >
+                  {index}. <span className='name'>{submission.userId.firstName} {submission.userId.lastName}</span> - Score: {submission.score}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
       {/* Prompt after submission */}
       {showScorePrompt && !isOwner && (
         <ScorePrompt 
-        handleViewTest={handleViewTest}
-        correctAnswersCount={correctAnswersCount}
-        totalQuestionsCount={test.questions.length}
-        handleGoBackToClassroom={handleGoBackToClassroom}
+          handleViewTest={handleViewTest}
+          correctAnswersCount={correctAnswersCount}
+          totalQuestionsCount={test.questions.length}
+          handleGoBackToClassroom={handleGoBackToClassroom}
         />
       )}
     </div>
