@@ -182,6 +182,8 @@ const Test = () => {
 
   const allQuestionsAnswered = test ? test.questions.every(question => answers[question._id]) : false;
 
+  const totalQuestionsCount = test ? test.questions.length : 0;
+
   if (!test) {
     return <p>Loading test details...</p>;
   }
@@ -318,7 +320,7 @@ const Test = () => {
           test={test}
           onClose={handleViewTest}
           handleGoBackToClassroom={handleGoBackToClassroom}
-          // totalQuestionsCount={totalQuestionsCount} TODO: put questions count
+          totalQuestionsCount={totalQuestionsCount}
         />
       )}
     </div>
