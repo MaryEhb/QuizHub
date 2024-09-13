@@ -1,5 +1,7 @@
 import Test from '../model/Test.js';
 import Classroom from '../model/Classroom.js';
+import Submission from '../model/Submission.js';
+import User from '../model/User.js'
 
 class TestController {
   // Static method to create a new test in a classroom
@@ -74,7 +76,23 @@ class TestController {
       if (!test) {
         return res.status(404).json({ message: 'Test not found' });
       }
-      return res.status(200).json(test);
+
+      // Check if the authenticated user is the owner
+      const isOwner = test.classroomId.owner.toString() === req.user._id.toString();
+      let submissions = [];
+      if (isOwner) {
+        // Fetch submissions and populate user details
+        submissions = await Submission.find({ testId })
+          .populate({
+            path: 'userId',
+            select: 'firstName lastName'
+          });
+
+      }
+      return res.status(200).json({
+        ...test.toObject(),
+        submissions
+      });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ message: 'Failed to get test', error });

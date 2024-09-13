@@ -2,6 +2,7 @@ import express from 'express';
 import UserController from '../controllers/userController.js';
 import ClassroomController from '../controllers/classroomController.js';
 import TestController from '../controllers/testController.js';
+import SubmissionController from '../controllers/SubmissionController.js';
 
 const router = express.Router();
 
@@ -50,5 +51,8 @@ router.get('/classrooms/:classroomId/tests/:testId', TestController.getTestById)
 router.put('/classrooms/:classroomId/tests/:testId', TestController.updateTest);
 // Delete a test
 router.delete('/classrooms/:classroomId/tests/:testId', TestController.deleteTest);
+
+// Submit a test by testId
+router.post('/tests/:testId/submit', SubmissionController.createSubmission);
 
 export default router;
