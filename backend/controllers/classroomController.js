@@ -3,6 +3,7 @@
 import User from '../model/User.js';
 import Classroom from '../model/Classroom.js';
 import Test from '../model/Test.js';
+import Submission from '../model/Submission.js';
 
 class ClassroomController {
   // Create a new classroom
@@ -95,14 +96,48 @@ class ClassroomController {
         return res.status(404).json({ message: 'Classroom not found' });
       }
 
-      // If the classroom is public, allow access to anyone
-      if (classroom.isPublic) {
-        return res.status(200).json(classroom);
-      }
+      let testsWithSubmissionData = classroom.tests;
 
       // Check if the user is the owner or a member of the classroom
       const isOwner = classroom.owner._id.toString() === userId;
       const isMember = classroom.members.some(member => member._id.toString() === userId);
+      
+
+      // get users last submission if found and attach it to the test
+      if (!isOwner){
+        // Prepare to attach latest submission data to each test
+        testsWithSubmissionData = await Promise.all(
+          classroom.tests.map(async (test) => {
+            const testId = test._id;
+
+            // Retrieve the latest submission for the current test by this user
+            const latestSubmission = await Submission.findOne({
+              testId,
+              userId: req.user._id
+            }).sort({ submittedAt: -1 }); // Sort by submission date in descending order
+
+            return {
+              _id: test._id,
+              title: test.title,
+              startTime: test.startTime,
+              endTime: test.endTime,
+              maxScore: test.maxScore,
+              submitScore: latestSubmission ? latestSubmission.score : undefined,
+              submitTime: latestSubmission ? latestSubmission.submittedAt : undefined,
+              isPublished: test.isPublished
+            };
+          })
+        );
+      }
+
+      // If the classroom is public, allow access to anyone
+      if (classroom.isPublic) {
+        return res.status(200).json({
+          ...classroom.toObject(),
+          tests: testsWithSubmissionData
+        });
+  
+      }
 
       if (!isOwner && !isMember) {
         return res.status(403).json({ message: 'Not authorized to view this classroom' });
@@ -111,6 +146,7 @@ class ClassroomController {
       const response = {
         ...classroom.toObject(), // Convert the classroom to a plain object
         enrollRequests: isOwner ? classroom.enrollRequests : undefined, // Include enrollRequests only for owners
+        tests: testsWithSubmissionData // Attach tests with latest submission data
       };
       
       res.status(200).json(response);
