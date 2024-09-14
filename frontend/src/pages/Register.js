@@ -130,6 +130,7 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder='Password'
+              autocomplete="new-password" 
             />
             <span className='password-toggle-icon' onClick={togglePasswordVisibility}>
               {passwordVisible ? <AiFillEye /> : <AiFillEyeInvisible />}  {/* Toggle icon */}

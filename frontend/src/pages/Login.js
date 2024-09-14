@@ -74,6 +74,8 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder='Email Address'
+            autocomplete="username"
+            name="email"
           />
           {emailError && <div className='error'><GoAlert className='error-icon'/> {emailError}</div>}
         </div>
@@ -85,6 +87,8 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder='Password'
+              autocomplete="current-password"
+              name="password"
             />
             <span className='password-toggle-icon' onClick={togglePasswordVisibility}>
               {passwordVisible ? <AiFillEye /> : <AiFillEyeInvisible />}  {/* Toggle icon */}
