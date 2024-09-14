@@ -8,7 +8,7 @@ class TestController {
   static async createTest(req, res) {
     try {
       const { classroomId } = req.params;
-      const { title, description, requirements, allowMultipleSubmissions, questions } = req.body;
+      const { title, description, requirements, allowMultipleSubmissions, questions, isPublished=true } = req.body;
 
       // Ensure title is a string
       const testTitle = String(title);
@@ -39,6 +39,7 @@ class TestController {
         startTime: testStartTime,
         questions,
         maxScore: calculatedMaxScore,
+        isPublished,
       });
 
       await newTest.save();
