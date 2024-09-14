@@ -125,9 +125,16 @@
 
   li
     display: flex
-    align-items: center
+    align-items: flex-start
+    justify-content: space-between
     gap: 1rem
-    padding-bottom: 1rem
+    padding-bottom: 2rem
+
+    .name-container
+      display: flex
+      flex-direction: column
+      // max-width: 200px
+
     .name
       font-weight: 600
       font-size: 1.3rem

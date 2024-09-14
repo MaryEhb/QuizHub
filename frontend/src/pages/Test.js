@@ -296,27 +296,47 @@ const Test = () => {
 
       {/* Submission Prompt */}
       {showSubmissionPrompt && (
-        <div className='prompt-container'>
-          <div className='prompt-background' onClick={handleCloseSubmissionsPrompt}></div>
-          <div className="submission-prompt prompt">
-            <button className="close-button close-button-submission" onClick={handleCloseSubmissionsPrompt}><IoIosArrowBack /></button>
-            <h2>Submissions</h2>
-            <ul>
-              {submissions.map((submission, index) => (
-                <li key={submission._id}>
-                  {index + 1}.
-                  <span className='name'>{submission.userId.firstName} {submission.userId.lastName}</span>
-                  <div className='btns'>
-                    <button className='btn-show' onClick={() => handleSelectSubmission(submission)}>Show</button>
-                    <button className='btn-remove' onClick={() => handleDeleteSubmission(submission._id)}>Delete</button> {/* Delete button */}
-                  </div>
-                  <span className='submission-score'>{submission.score} / {test.maxScore}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+  <div className='prompt-container'>
+    <div className='prompt-background' onClick={handleCloseSubmissionsPrompt}></div>
+    <div className="submission-prompt prompt">
+      <button className="close-button close-button-submission" onClick={handleCloseSubmissionsPrompt}>
+        <IoIosArrowBack />
+      </button>
+      <h2>Submissions</h2>
+
+      {/* Check if there are any submissions */}
+      {submissions.length === 0 ? (
+        <p>There are no submissions yet.</p> // Display this when no submissions are available
+      ) : (
+        <ul>
+          {submissions.map((submission, index) => (
+            <li key={submission._id}>
+              <div className='name-container'>
+                <span className='name'>{index + 1}. {submission.userId.firstName} {submission.userId.lastName}</span>
+                              {/* Display submission time */}
+                <span className='submission-time'>
+                  Submitted on: {new Date(submission.submittedAt).toLocaleString()}
+                </span>
+                <div className='btns'>
+                  <button className='btn-show' onClick={() => handleSelectSubmission(submission)}>
+                    Show
+                  </button>
+                  <button className='btn-remove' onClick={() => handleDeleteSubmission(submission._id)}>
+                    Delete
+                  </button>
+                </div>
+              </div>
+
+              
+
+              <span className='submission-score'>{submission.score} / {test.maxScore}</span>
+            </li>
+          ))}
+        </ul>
       )}
+    </div>
+  </div>
+)}
 
       {/* Score Prompt */}
       {showScorePrompt && (
