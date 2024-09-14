@@ -85,6 +85,7 @@ const Sidebar = () => {
       >
         <FaSignOutAlt />{!isShrink && 'Logout'}
       </button>
+      <div className='close-background'></div>
     </nav>
   );
 };
