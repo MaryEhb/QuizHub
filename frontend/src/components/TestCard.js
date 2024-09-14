@@ -8,7 +8,6 @@ const TestCard = ({ test, isOwner, classroomId}) => {
 
   const handleCardClick = () => {
     navigate(`/classrooms/${classroomId}/tests/${test._id}`);
-    console.log(test)
   };
 
   return (
