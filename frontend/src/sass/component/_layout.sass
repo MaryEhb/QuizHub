@@ -7,12 +7,16 @@
     .content-container
         position: relative
         width: 100%
-        padding: 3rem 6rem
+        padding: 3rem 5rem
         overflow: hidden
         overflow-y: scroll
-        &::-webkit-scrollbar
-            display: none
-            scrollbar-width: none
+        // &::-webkit-scrollbar
+        //     display: none
+        //     scrollbar-width: none
+
+        @media (max-width: $mobile-screens)
+            padding: 1.5rem
+            padding-top: 8rem
 
         .content
             max-width: 1105px

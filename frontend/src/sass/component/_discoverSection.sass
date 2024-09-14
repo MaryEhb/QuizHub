@@ -15,7 +15,8 @@
         align-items: center
         gap: 1rem
         padding-top: 2rem
-        align-self: flex-end
+        @media (min-width: $mobile-screens)
+            align-self: flex-end
 
         button
             background-color: $color-mint-green

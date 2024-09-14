@@ -37,15 +37,17 @@ const RecentClassrooms = () => {
       <h2>Recent Classrooms</h2>
 
       {recentClassrooms.length > 0 ? (
-        <div className='classroom-list'>
-          {recentClassrooms.slice(shownStart, shownEnd).map((classroom, index) => (
-            <ClassroomCard
-              key={classroom._id || classroom.id}
-              classroom={classroom}
-              small={true}
-              index={index}
-            />
-          ))}
+        <div className='classroom-list-container'>
+          <div className='classroom-list'>
+            {recentClassrooms.slice(shownStart, shownEnd).map((classroom, index) => (
+              <ClassroomCard
+                key={classroom._id || classroom.id}
+                classroom={classroom}
+                small={true}
+                index={index}
+              />
+            ))}
+          </div>
         </div>
       ) : (
         <p>You have no recent classrooms.</p>

@@ -48,14 +48,16 @@ const DiscoverSection = ({ initialPage }) => {
             <p>No classrooms available.</p>
           ) : (
             <>
-              <div className="classroom-list">
-                {classrooms.map((classroom, index) => (
-                  <ClassroomCard
-                    key={classroom.id}
-                    classroom={classroom}
-                    index={index + 4}
-                  />
-                ))}
+              <div className='classroom-list-container'>
+                <div className="classroom-list">
+                  {classrooms.map((classroom, index) => (
+                    <ClassroomCard
+                      key={classroom.id}
+                      classroom={classroom}
+                      index={index + 4}
+                    />
+                  ))}
+                </div>
               </div>
               <div className="pagination-controls">
                 <button

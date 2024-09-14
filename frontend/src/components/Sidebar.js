@@ -11,7 +11,7 @@ import { CgProfile } from "react-icons/cg";
 import { LuSettings } from "react-icons/lu";
 
 const Sidebar = () => {
-  const [isShrink, setIsShrink] = useState(false);
+  const [isShrink, setIsShrink] = useState(true);
   const { logout } = useAuth();
   const setGeneralMsg = useGeneralMsgUpdate();
   const location = useLocation();

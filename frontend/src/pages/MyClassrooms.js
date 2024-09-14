@@ -71,11 +71,14 @@ const MyClassrooms = () => {
         </div>
 
         {ownedClassrooms.length > 0 ? (
-          <div className="classroom-list">
-            {visibleOwnedClassrooms.map((classroom, index) => (
-              <ClassroomCard key={classroom._id} classroom={classroom} index={index}/>
-            ))}
+          <div  className='classroom-list-container'>
+            <div className="classroom-list">
+              {visibleOwnedClassrooms.map((classroom, index) => (
+                <ClassroomCard key={classroom._id} classroom={classroom} index={index}/>
+              ))}
+            </div>
           </div>
+          
         ) : (
           <p>You do not own any classrooms.</p>
         )}
@@ -93,10 +96,12 @@ const MyClassrooms = () => {
         </div>
 
         {enrolledClassrooms.length > 0 ? (
-          <div className="classroom-list">
-            {visibleEnrolledClassrooms.map((classroom, index) => (
-              <ClassroomCard key={classroom._id} classroom={classroom} index={index + 4}/>
-            ))}
+          <div  className='classroom-list-container'>
+            <div className="classroom-list">
+              {visibleEnrolledClassrooms.map((classroom, index) => (
+                <ClassroomCard key={classroom._id} classroom={classroom} index={index + 4}/>
+              ))}
+            </div>
           </div>
         ) : (
           <p>You are not enrolled in any classrooms.</p>
