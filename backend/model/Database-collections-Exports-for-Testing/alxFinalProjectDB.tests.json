@@ -12,7 +12,7 @@
   "startTime": {
     "$date": "2024-09-11T15:21:11.278Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 6,
   "questions": [
     {
@@ -151,7 +151,7 @@
   "startTime": {
     "$date": "2024-09-11T15:27:44.146Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 10,
   "questions": [
     {
@@ -364,7 +364,7 @@
   "startTime": {
     "$date": "2024-09-11T15:34:34.469Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 4,
   "questions": [
     {
@@ -466,7 +466,7 @@
   "startTime": {
     "$date": "2024-09-11T15:36:14.938Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 4,
   "questions": [
     {
@@ -568,7 +568,7 @@
   "startTime": {
     "$date": "2024-09-11T15:37:42.493Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 3,
   "questions": [
     {
@@ -651,7 +651,7 @@
   "startTime": {
     "$date": "2024-09-11T15:41:08.230Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 3,
   "questions": [
     {
@@ -735,7 +735,7 @@
   "startTime": {
     "$date": "2024-09-11T15:47:16.174Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 5,
   "questions": [
     {
@@ -857,7 +857,7 @@
   "startTime": {
     "$date": "2024-09-11T15:49:45.593Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 5,
   "questions": [
     {
@@ -979,7 +979,7 @@
   "startTime": {
     "$date": "2024-09-11T15:52:00.953Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 5,
   "questions": [
     {
@@ -1101,7 +1101,7 @@
   "startTime": {
     "$date": "2024-09-11T15:57:51.467Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 5,
   "questions": [
     {
@@ -1223,7 +1223,7 @@
   "startTime": {
     "$date": "2024-09-11T15:59:50.069Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 5,
   "questions": [
     {
@@ -1345,7 +1345,7 @@
   "startTime": {
     "$date": "2024-09-11T16:02:07.631Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 5,
   "questions": [
     {
@@ -1467,7 +1467,7 @@
   "startTime": {
     "$date": "2024-09-11T16:04:26.124Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 5,
   "questions": [
     {
@@ -1588,7 +1588,7 @@
   "startTime": {
     "$date": "2024-09-13T13:17:06.221Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 4,
   "questions": [
     {
@@ -1694,7 +1694,7 @@
   "startTime": {
     "$date": "2024-09-13T14:38:15.481Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 2,
   "questions": [
     {
@@ -1760,7 +1760,7 @@
   "startTime": {
     "$date": "2024-09-13T18:16:41.424Z"
   },
-  "isPublished": false,
+  "isPublished": true,
   "maxScore": 10,
   "questions": [
     {

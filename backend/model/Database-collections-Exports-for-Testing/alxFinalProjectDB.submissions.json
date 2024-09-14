@@ -269,55 +269,6 @@
 },
 {
   "_id": {
-    "$oid": "66e44073c285a2416057be04"
-  },
-  "testId": {
-    "$oid": "66e43b52912d12c1274517ae"
-  },
-  "userId": {
-    "$oid": "66e0568ea630320e5e45b281"
-  },
-  "answers": [
-    {
-      "questionId": {
-        "$oid": "66e43b52912d12c1274517b2"
-      },
-      "answer": "General-purpose processing"
-    },
-    {
-      "questionId": {
-        "$oid": "66e43b52912d12c1274517b1"
-      },
-      "answer": "ROM"
-    },
-    {
-      "questionId": {
-        "$oid": "66e43b52912d12c1274517b0"
-      },
-      "answer": "Quantum architecture"
-    },
-    {
-      "questionId": {
-        "$oid": "66e43b52912d12c1274517af"
-      },
-      "answer": "To act as an external memory unit."
-    }
-  ],
-  "score": 0,
-  "status": "finalized",
-  "submittedAt": {
-    "$date": "2024-09-13T13:38:59.161Z"
-  },
-  "createdAt": {
-    "$date": "2024-09-13T13:38:59.162Z"
-  },
-  "updatedAt": {
-    "$date": "2024-09-13T13:38:59.162Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
     "$oid": "66e4407ec285a2416057be14"
   },
   "testId": {
@@ -546,55 +497,6 @@
   },
   "updatedAt": {
     "$date": "2024-09-13T14:28:20.181Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "66e44c2a0d14718875b80a48"
-  },
-  "testId": {
-    "$oid": "66e43b52912d12c1274517ae"
-  },
-  "userId": {
-    "$oid": "66e0568ea630320e5e45b281"
-  },
-  "answers": [
-    {
-      "questionId": {
-        "$oid": "66e43b52912d12c1274517af"
-      },
-      "answer": "To provide networking capabilities."
-    },
-    {
-      "questionId": {
-        "$oid": "66e43b52912d12c1274517b0"
-      },
-      "answer": "Quantum architecture"
-    },
-    {
-      "questionId": {
-        "$oid": "66e43b52912d12c1274517b1"
-      },
-      "answer": "ROM"
-    },
-    {
-      "questionId": {
-        "$oid": "66e43b52912d12c1274517b2"
-      },
-      "answer": "General-purpose processing"
-    }
-  ],
-  "score": 0,
-  "status": "finalized",
-  "submittedAt": {
-    "$date": "2024-09-13T14:28:58.617Z"
-  },
-  "createdAt": {
-    "$date": "2024-09-13T14:28:58.618Z"
-  },
-  "updatedAt": {
-    "$date": "2024-09-13T14:28:58.618Z"
   },
   "__v": 0
 },
@@ -913,6 +815,110 @@
   },
   "updatedAt": {
     "$date": "2024-09-13T18:20:49.672Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e57b180be5610dad839bf5"
+  },
+  "testId": {
+    "$oid": "66e1bc19e46f070c81b5c9cc"
+  },
+  "userId": {
+    "$oid": "66e0568ea630320e5e45b281"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e1bc19e46f070c81b5c9cd"
+      },
+      "answer": "To process data and execute instructions"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bc19e46f070c81b5c9ce"
+      },
+      "answer": "False"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bc19e46f070c81b5c9cf"
+      },
+      "answer": "Analog-to-Digital Converter (ADC)"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bc19e46f070c81b5c9d0"
+      },
+      "answer": "True"
+    },
+    {
+      "questionId": {
+        "$oid": "66e1bc19e46f070c81b5c9d1"
+      },
+      "answer": "Electronic Erasable Programmable Read-Only Memory"
+    }
+  ],
+  "score": 2,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-14T12:01:28.598Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-14T12:01:28.599Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-14T12:01:28.599Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e57dd70be5610dad839eaf"
+  },
+  "testId": {
+    "$oid": "66e43b52912d12c1274517ae"
+  },
+  "userId": {
+    "$oid": "66e0568ea630320e5e45b281"
+  },
+  "answers": [
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517af"
+      },
+      "answer": "To act as an external memory unit."
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b0"
+      },
+      "answer": "Quantum architecture"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b1"
+      },
+      "answer": "ROM"
+    },
+    {
+      "questionId": {
+        "$oid": "66e43b52912d12c1274517b2"
+      },
+      "answer": "General-purpose processing"
+    }
+  ],
+  "score": 0,
+  "status": "finalized",
+  "submittedAt": {
+    "$date": "2024-09-14T12:13:11.303Z"
+  },
+  "createdAt": {
+    "$date": "2024-09-14T12:13:11.303Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-14T12:13:11.303Z"
   },
   "__v": 0
 }]
