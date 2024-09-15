@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ClassroomCard from './ClassroomCard';
-import { getRecentClassrooms } from '../services/userService';
+import { getRecentClassrooms } from '../services/classroomService';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 
 const RecentClassrooms = () => {

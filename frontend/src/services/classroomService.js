@@ -103,3 +103,26 @@ export const sendUnenrollmentRequest = async (classroomId, userId = null) => {
       : 'An error occurred while rejecting the enrollment request.';
   }
 }
+
+
+export const updateRecentClassrooms = async (recentClassrooms) => {
+  try {
+    const response = await API.post(`/users/recent-classrooms/${recentClassrooms}`);
+    return response.data;
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred while updating recent classrooms.';
+  }
+};
+
+export const getRecentClassrooms = async () => {
+  try {
+    const response = await API.get('/users/recent-classrooms');
+    return response.data;
+  } catch (error) {
+    throw error.response && error.response.data
+      ? error.response.data.message
+      : 'An error occurred while fetching recent classrooms.';
+  }
+};
