@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth, useAuthUpdate } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import { IoIosArrowBack } from "react-icons/io";
 import lock from '../assets/lock.svg';
 import request from '../assets/request.svg';
 import person from '../assets/person.svg';
 import EnrollmentRequests from '../components/EnrollmentRequest';
-import { sendEnrollmentRequest, sendUnenrollmentRequest, fetchClassroomDetails } from '../services/classroomService';
+import { sendEnrollmentRequest, sendUnenrollmentRequest, fetchClassroomDetails, updateRecentClassrooms } from '../services/classroomService';
 import { useGeneralMsgUpdate } from '../context/GenralMsgContext';
 import { useLoadingUpdate } from '../context/LoadingContext';
 import TestCard from '../components/TestCard';
 import { useNavigate, useParams } from 'react-router-dom';
-import { updateRecentClassrooms } from '../services/userService';
 
 const Classroom = () => {
   const [classroomDetails, setClassroomDetails] = useState(null);
   const { user } = useAuth();
-  const setUser = useAuthUpdate();
   const [activeTab, setActiveTab] = useState('tests');
   const [showRequests, setShowRequests] = useState(false); 
   const [showEnrollmentPrompt, setShowEnrollmentPrompt] = useState(false);
@@ -122,21 +120,7 @@ const Classroom = () => {
   const handleEnroll = async () => {
     try {
       await sendEnrollmentRequest(classroomId);
-      setUser(prevUser => ({
-        ...prevUser,
-        enrolledClassrooms: [
-          ...prevUser.enrolledClassrooms,
-          {
-            id: classroomId,
-            title: classroomDetails.title,
-            description: classroomDetails.description,
-            isPublic: classroomDetails.isPublic,
-            membersCount: (classroomDetails.membersCount + 1),
-            testsCount: classroomDetails.testsCount,
-            maxScore: classroomDetails.maxScore
-          }
-        ]
-      }));
+      
       setClassroomDetails(prevDetails => ({
         ...prevDetails,
         membersCount: classroomDetails.membersCount + 1,
@@ -156,12 +140,6 @@ const Classroom = () => {
   const handleUnenroll = async () => {
     try {
       await sendUnenrollmentRequest(classroomId);
-      setUser(prevUser => ({
-        ...prevUser,
-        enrolledClassrooms: prevUser.enrolledClassrooms.filter(
-          classroom => classroom.id !== classroomId
-        )
-      }));
   
       setClassroomDetails(prevDetails => ({
         ...prevDetails,
