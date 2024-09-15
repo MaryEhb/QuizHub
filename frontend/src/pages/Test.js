@@ -36,14 +36,14 @@ const Test = () => {
 
         // Use the first submission if available
         if (testData.submissions.length > 0 && user._id !== testData.classroomId.owner) {
-          const firstSubmission = testData.submissions[0];
-          setAnswers(firstSubmission.answers.reduce((acc, { questionId, answer }) => {
+          const lastSubmission = testData.submissions[testData.submissions.length - 1];
+          setAnswers(lastSubmission.answers.reduce((acc, { questionId, answer }) => {
             acc[questionId] = answer;
             return acc;
           }, {}));
           setSubmitted(true);
-          setSelectedSubmission(firstSubmission);
-          setSelectedUserName(`${firstSubmission.userId.firstName} ${firstSubmission.userId.lastName}`);
+          setSelectedSubmission(lastSubmission);
+          setSelectedUserName(`${lastSubmission.userId.firstName} ${lastSubmission.userId.lastName}`);
 
           if (!testData.allowMultipleSubmissions)
             generalMsgUpdate('You have already submitted this test. Only one submission is allowed.', 'info');
@@ -207,7 +207,7 @@ const Test = () => {
         {!isOwner && test.allowMultipleSubmissions && submissions?.length > 0 && (
           <div>
             <select className="submission-dropdown" onChange={handleDropdownSelect} value={handleSelectSubmission || ''}>
-              <option value="">Select Submission</option>
+              <option value="">{new Date(selectedSubmission.submittedAt).toLocaleDateString()}</option>
               {submissions.map(submission => (
                 <option key={submission._id} value={submission._id}>
                   {submission.userId.firstName} {submission.userId.lastName} - {new Date(submission.submittedAt).toLocaleDateString()}
