@@ -508,6 +508,67 @@ static async getClassroomsForUser(req, res) {
       return res.status(500).json({ message: 'An error occurred during unenrollment' });
     }
   }
+
+  static async updateRecentClassrooms(req, res) {
+    try {
+      const user = req.user; // Extract user ID from authenticated request
+      const { id: classroomId } = req.params; // Expecting classroom ID in the request body
+
+      if (!classroomId) {
+        return res.status(400).json({ message: 'Classroom ID is required' });
+      }
+
+      // Remove the classroom if it already exists in recentClassrooms
+      user.recentClassrooms = user.recentClassrooms.filter(id => id.toString() !== classroomId.toString());
+
+      // Add the new classroom to the beginning of the array
+      user.recentClassrooms.unshift(classroomId);
+
+      // Limit the array length to a maximum of 5 recent classrooms
+      if (user.recentClassrooms.length > 4) {
+        user.recentClassrooms.pop();
+      }
+
+      // Save the user with updated recentClassrooms
+      await user.save();
+
+      res.status(200).json(user.recentClassrooms);
+    } catch (error) {
+      console.error('Error updating recent classrooms:', error); // Log error details
+      res.status(500).json({ message: 'Server error', error });
+    }
+  }
+
+  // Get the currently authenticated user's recent classrooms
+  static async getRecentClassrooms(req, res) {
+    try {
+      const user = req.user; // Extract user ID from authenticated request
+
+      // Fetch recent classrooms if any
+      const recentClassrooms = user.recentClassrooms && user.recentClassrooms.length > 0
+        ? await Classroom.find({ _id: { $in: user.recentClassrooms } })
+            .select('title description isPublic members tests maxScore')
+            .populate('members', 'firstName lastName')
+            .populate('tests', 'title')
+        : [];
+
+      // Prepare response with recent classrooms details
+      const response = recentClassrooms.map(classroom => ({
+        id: classroom._id,
+        title: classroom.title,
+        description: classroom.description,
+        isPublic: classroom.isPublic,
+        membersCount: classroom.members.length,
+        testsCount: classroom.tests.length,
+        maxScore: classroom.maxScore,
+      }));
+
+      res.status(200).json(response);
+    } catch (error) {
+      console.error('Error fetching recent classrooms:', error); // Log error details
+      res.status(500).json({ message: 'Server error', error });
+    }
+  }
 }
 
 export default ClassroomController;
