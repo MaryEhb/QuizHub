@@ -3,6 +3,7 @@ import UserController from '../controllers/userController.js';
 import ClassroomController from '../controllers/classroomController.js';
 import TestController from '../controllers/testController.js';
 import SubmissionController from '../controllers/SubmissionController.js';
+import AuthController from '../controllers/authController.js';
 
 const router = express.Router();
 
@@ -15,9 +16,14 @@ router.get('/users/user/:id', UserController.getUserById);
 // Get and update the currently authenticated user's profile
 router.get('/users/profile', UserController.getUserProfile);
 router.put('/users/profile', UserController.updateUserProfile);
+// Change user password
+router.post('/users/change-password', AuthController.changePassword);
+
 // Update and get recent classrooms viewed by the user
-router.post('/users/recent-classrooms/:id', UserController.updateRecentClassrooms);
-router.get('/users/recent-classrooms', UserController.getRecentClassrooms);
+router.post('/users/recent-classrooms/:id', ClassroomController.updateRecentClassrooms);
+router.get('/users/recent-classrooms', ClassroomController.getRecentClassrooms);
+// Get all classrooms for a user
+router.get('/users/:userId/classrooms', ClassroomController.getClassroomsForUser);
 
 // Create a new classroom
 router.post('/classrooms', ClassroomController.createClassroom);
@@ -37,9 +43,6 @@ router.post('/classrooms/:id/enroll', ClassroomController.enrollInClassroom);
 router.post('/classrooms/:id/unenroll', ClassroomController.unEnrollRequest);
 router.put('/classrooms/:classroomId/enroll/:userId/accept', ClassroomController.acceptEnrollmentRequest);
 router.put('/classrooms/:classroomId/enroll/:userId/reject', ClassroomController.rejectEnrollmentRequest);
-
-// Get all classrooms for a user
-router.get('/users/:userId/classrooms', ClassroomController.getClassroomsForUser);
 
 // Create a new test in a classroom
 router.post('/classrooms/:classroomId/tests', TestController.createTest);
