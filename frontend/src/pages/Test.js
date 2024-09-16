@@ -231,6 +231,7 @@ const Test = () => {
           <div className='test-info'>
             <h2>Description:</h2>
             <p>{test.description}</p>
+            <p>{test.allowMultipleSubmissions? 'Multiple Submissions are allowed.' : 'Only one submission is allowed.'}</p>
           </div>
         )}
         {test.requirements && (
