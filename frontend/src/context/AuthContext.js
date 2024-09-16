@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
 
     const initializeAuth = async () => {
         setLoading(true);
+        await new Promise((resolve) => setTimeout(resolve, 3000)); // TODO: remove timeput in actual production its used now to simulate the time taken to load the app
         try {
             const user = await checkAuth();
             // Set user if authenticated, otherwise null
