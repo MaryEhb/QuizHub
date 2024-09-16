@@ -227,6 +227,9 @@ const Test = () => {
             <h3>Submitted by: {selectedUserName}</h3>
           </div>
         )}
+        {selectedUserName && (
+          <div className="submission-info">Submitted at: {new Date(selectedSubmission.submittedAt).toLocaleString()}</div>
+        )}
         {test.description && (
           <div className='test-info'>
             <h2>Description:</h2>
