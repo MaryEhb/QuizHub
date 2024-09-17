@@ -38,7 +38,7 @@ const EnrollmentRequests = ({ classroomId, requests, updateRequests, updateMembe
           <ul>
             {requests.map((request, index) => (
               <li key={request._id}>
-                <p>{index}. {request.firstName} {request.lastName}</p>
+                <p>{index + 1}. {request.firstName} {request.lastName}</p>
                 <button className='btn btn-success' onClick={() => handleAccept(request)}>Accept</button>
                 <button className='btn btn-remove' onClick={() => handleReject(request._id)}>Reject</button>
               </li>

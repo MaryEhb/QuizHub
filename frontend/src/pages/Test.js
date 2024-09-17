@@ -313,7 +313,7 @@ const Test = () => {
         <p>There are no submissions yet.</p> // Display this when no submissions are available
       ) : (
         <ul>
-          {submissions.map((submission, index) => (
+          {submissions.slice().reverse().map((submission, index) => (
             <li key={submission._id}>
               <div className='name-container'>
                 <span className='name'>{index + 1}. {submission.userId.firstName} {submission.userId.lastName}</span>

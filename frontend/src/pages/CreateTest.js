@@ -245,13 +245,23 @@ const CreateTest = () => {
           Add Another Question
         </button>
 
-        <button
-          className='btn btn-success'
-          type="submit"
-          disabled={loading}  // Disable button during submission
-        >
-          {loading ? 'Submitting...' : 'Publish Test'}
-        </button>
+        <div className='btns'>
+          <button
+            className='btn btn-success'
+            type="submit"
+            disabled={loading}  // Disable button during submission
+          >
+            {loading ? 'Submitting...' : 'Publish Test'}
+          </button>
+
+          <button
+            className='btn'
+            type="submit"
+            disabled={loading}  // Disable button during submission
+          >
+            Save as Draft
+          </button>
+        </div>
       </form>
     </div>
   );
