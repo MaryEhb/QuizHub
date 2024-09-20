@@ -11,8 +11,6 @@ const router = express.Router();
 router.get('/users/me', UserController.getCurrentUser);
 // Get user names and profile pictures by a list of IDs
 router.post('/users/usersByIds', UserController.getUserInfoByIds);
-// Get another user's info by ID
-router.get('/users/user/:id', UserController.getUserById);
 // Get and update the currently authenticated user's profile
 router.get('/users/profile', UserController.getUserProfile);
 router.put('/users/profile', UserController.updateUserProfile);
