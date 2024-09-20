@@ -15,61 +15,6 @@ class UserController {
     }
   }
 
-  // Get a user by their ID
-  static async getUserById(req, res) {
-    try {
-      const userId = req.params.id;
-
-      // Fetch user information
-      const user = await User.findById(userId)
-        .select('firstName lastName email profileScore profilePicture ownedClassrooms enrolledClassrooms');
-
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-
-      // Fetch owned classrooms
-      const ownedClassrooms = await Classroom.find({ _id: { $in: user.ownedClassrooms } })
-        .select('title description isPublic members tests maxScore')
-        .populate('members', 'firstName lastName')
-        .populate('tests', 'title');
-
-      // Fetch enrolled classrooms
-      const enrolledClassrooms = await Classroom.find({ _id: { $in: user.enrolledClassrooms } })
-        .select('title description isPublic members tests maxScore')
-        .populate('members', 'firstName lastName')
-        .populate('tests', 'title');
-
-      // Prepare response with user and classroom details
-      const response = {
-        ...user.toObject(),
-        ownedClassrooms: ownedClassrooms.map(classroom => ({
-          id: classroom._id,
-          title: classroom.title,
-          description: classroom.description,
-          isPublic: classroom.isPublic,
-          membersCount: classroom.members.length,
-          testsCount: classroom.tests.length,
-          maxScore: classroom.maxScore,
-        })),
-        enrolledClassrooms: enrolledClassrooms.map(classroom => ({
-          id: classroom._id,
-          title: classroom.title,
-          description: classroom.description,
-          isPublic: classroom.isPublic,
-          membersCount: classroom.members.length,
-          testsCount: classroom.tests.length,
-          maxScore: classroom.maxScore,
-        })),
-      };
-
-      res.status(200).json(response);
-    } catch (error) {
-      console.error('Error fetching user by ID:', error);
-      res.status(500).json({ message: 'Server error', error });
-    }
-  }
-
   // Get user information by a list of IDs
   static async getUserInfoByIds(req, res) {
     try {
@@ -80,7 +25,7 @@ class UserController {
       }
 
       const users = await User.find({ _id: { $in: ids } })
-        .select('firstName lastName profilePicture').exec();
+        .select('firstName lastName profilePicture');
 
       res.json(users);
     } catch (err) {
