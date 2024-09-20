@@ -1,34 +1,38 @@
 import Test from '../model/Test.js';
 import Classroom from '../model/Classroom.js';
 import Submission from '../model/Submission.js';
-import User from '../model/User.js'
+import User from '../model/User.js';
 
 class TestController {
+  // Helper method to fetch classroom and check ownership
+  static async getClassroomAndCheckOwnership(classroomId, userId) {
+    const classroom = await Classroom.findById(classroomId);
+    if (!classroom) {
+      throw new Error('Classroom not found');
+    }
+    if (classroom.owner.toString() !== userId.toString()) {
+      throw new Error('Unauthorized');
+    }
+    return classroom;
+  }
+
   // Static method to create a new test in a classroom
   static async createTest(req, res) {
     try {
       const { classroomId } = req.params;
-      const { title, description, requirements, allowMultipleSubmissions, questions, isPublished=true } = req.body;
+      const { title, description, requirements, allowMultipleSubmissions, questions, isPublished = true } = req.body;
 
       // Ensure title is a string
       const testTitle = String(title);
 
       // Set startTime to the current time if not provided
-      const testStartTime = new Date();
+      const testStartTime = new Date(); // TODO: when adding draft feature add check here for if it was provided
 
       // Calculate maxScore based on the number of questions if not provided
-      const calculatedMaxScore = questions ? questions.length : 0;
+      const calculatedMaxScore = questions ? questions.length : 0; // TODO: modify when adding feature of specifing score for each question
 
-      // Find the classroom and verify the user is the owner
-      const classroom = await Classroom.findById(classroomId);
-      if (!classroom) {
-        return res.status(404).json({ message: 'Classroom not found' });
-      }
-      
-      // Check if the authenticated user is the owner of the classroom
-      if (classroom.owner.toString() !== req.user._id.toString()) {
-        return res.status(403).json({ message: 'You are not authorized to perform this action' });
-      }
+      // Find the classroom and check ownership
+      const classroom = await TestController.getClassroomAndCheckOwnership(classroomId, req.user._id);
 
       const newTest = new Test({
         classroomId,
@@ -49,6 +53,12 @@ class TestController {
       return res.status(201).json(newTest);
     } catch (error) {
       console.error('Error creating test:', error);
+      if (error.message === 'Classroom not found') {
+        return res.status(404).json({ message: error.message });
+      }
+      if (error.message === 'Unauthorized') {
+        return res.status(403).json({ message: error.message });
+      }
       return res.status(500).json({ message: 'Failed to create test', error });
     }
   }
@@ -71,9 +81,9 @@ class TestController {
       const { testId } = req.params;
       const test = await Test.findById(testId).populate({
         path: 'classroomId',
-        select: 'owner'
+        select: 'owner',
       });
-  
+
       if (!test) {
         return res.status(404).json({ message: 'Test not found' });
       }
@@ -83,24 +93,21 @@ class TestController {
       let submissions = [];
       if (isOwner) {
         // Fetch submissions and populate user details
-        submissions = await Submission.find({ testId })
-          .populate({
-            path: 'userId',
-            select: 'firstName lastName'
-          });
-
+        submissions = await Submission.find({ testId }).populate({
+          path: 'userId',
+          select: 'firstName lastName',
+        });
       } else {
         // Fetch the authenticated user's submission if they have one
         submissions = await Submission.find({
           testId,
-          userId: req.user._id
+          userId: req.user._id,
         });
       }
 
-
       return res.status(200).json({
         ...test.toObject(),
-        submissions
+        submissions,
       });
     } catch (error) {
       console.error(error);
@@ -113,16 +120,8 @@ class TestController {
     try {
       const { classroomId, testId } = req.params;
 
-      // Find the classroom and verify the user is the owner
-      const classroom = await Classroom.findById(classroomId);
-      if (!classroom) {
-        return res.status(404).json({ message: 'Classroom not found' });
-      }
-
-      // Check if the authenticated user is the owner of the classroom
-      if (classroom.owner.toString() !== req.user._id.toString()) {
-        return res.status(403).json({ message: 'You are not authorized to perform this action' });
-      }
+      // Find the classroom and check ownership
+      await TestController.getClassroomAndCheckOwnership(classroomId, req.user._id);
 
       const updatedTest = await Test.findByIdAndUpdate(testId, req.body, { new: true });
       if (!updatedTest) {
@@ -131,6 +130,12 @@ class TestController {
       return res.status(200).json(updatedTest);
     } catch (error) {
       console.error(error);
+      if (error.message === 'Classroom not found') {
+        return res.status(404).json({ message: error.message });
+      }
+      if (error.message === 'Unauthorized') {
+        return res.status(403).json({ message: error.message });
+      }
       return res.status(500).json({ message: 'Failed to update test', error });
     }
   }
@@ -140,16 +145,8 @@ class TestController {
     try {
       const { classroomId, testId } = req.params;
 
-      // Find the classroom and verify the user is the owner
-      const classroom = await Classroom.findById(classroomId);
-      if (!classroom) {
-        return res.status(404).json({ message: 'Classroom not found' });
-      }
-
-      // Check if the authenticated user is the owner of the classroom
-      if (classroom.owner.toString() !== req.user._id.toString()) {
-        return res.status(403).json({ message: 'You are not authorized to perform this action' });
-      }
+      // Find the classroom and check ownership
+      const classroom = await TestController.getClassroomAndCheckOwnership(classroomId, req.user._id);
 
       const test = await Test.findByIdAndDelete(testId);
       if (!test) {
@@ -157,12 +154,18 @@ class TestController {
       }
 
       // Remove test from classroom's tests array
-      classroom.tests = classroom.tests.filter(id => id.toString() !== testId);
+      classroom.tests = classroom.tests.filter((id) => id.toString() !== testId);
       await classroom.save();
 
       return res.status(200).json({ message: 'Test deleted successfully' });
     } catch (error) {
       console.error(error);
+      if (error.message === 'Classroom not found') {
+        return res.status(404).json({ message: error.message });
+      }
+      if (error.message === 'Unauthorized') {
+        return res.status(403).json({ message: error.message });
+      }
       return res.status(500).json({ message: 'Failed to delete test', error });
     }
   }
