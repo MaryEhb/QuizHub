@@ -2,7 +2,7 @@
 name: General Question or Discussion
 about: Feel free to ask a question or open a discussion
 title: ''
-labels: ''
+labels: question
 assignees: ''
 
 ---
