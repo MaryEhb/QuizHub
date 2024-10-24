@@ -140,7 +140,9 @@ Working on *QuizHub* has been a tremendous learning experience. I deepened my un
 
 ## Contributing
 
-Contributions are welcome! Here's how you can help:
+Contributions are welcome! Please make sure to read the [Contributing Guide](./CONTRIBUTING.md) before you start.
+
+Here's how you can help:
 
     1. Fork the repository.
     2. Create a new branch for your feature: `git checkout -b feature/my-new-feature`.
@@ -150,4 +152,8 @@ Contributions are welcome! Here's how you can help:
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](./LICENSE).  
+You are free to use, modify, and distribute this software, provided you include the original copyright notice and this license in any substantial portions of the software.
+
+For more details, refer to the [LICENSE file](./LICENSE).
+
